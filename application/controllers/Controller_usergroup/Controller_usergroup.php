@@ -33,6 +33,7 @@ class Controller_usergroup extends CI_Controller
     {
         $usergroup = array(
             'Description' => $this->input->post('hakakses'),
+            'Create_at' => get_current_date()
         );
         $addusergroup = $this->Model_usergroup->add_usergroup($usergroup); // yg ini yg dicek 
         if ($addusergroup) {

@@ -99,7 +99,8 @@ $route['formeditbagian/(:any)'] = 'Controller_bagian/Controller_bagian/viewFormE
 $route['deletebagian/(:any)'] = 'Controller_bagian/Controller_bagian/deleteBagian/$1';
 
 //Route Barang Masuk
-$route['barangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/get_Barang_masuk';
+$route['barangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/data_barang_masuk';
+$route['viewaddbarangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/get_Barang_masuk';
 $route['addbarangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/addbarangMasuk';
 
 $route['404_override'] = '';

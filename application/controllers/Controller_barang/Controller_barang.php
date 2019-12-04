@@ -48,7 +48,7 @@ class Controller_barang extends CI_Controller
             'Jumlah' => $this->input->post('jumlah'),
             'Satuan' => $this->input->post('satuan'),
             'Harga' => $this->input->post('harga'),
-            'Creat_at' => get_current_date()
+            'Create_at' => get_current_date()
         );
         $add_barang = $this->Model_barang->add_barang($barang);
         if ($add_barang) {
@@ -69,7 +69,7 @@ class Controller_barang extends CI_Controller
             'Jumlah' => $this->input->post('jumlah'),
             'Satuan' => $this->input->post('satuan'),
             'Harga' => $this->input->post('harga'),
-            'update_at' => get_current_date()
+            'Update_at' => get_current_date()
         );
         $editbarang = $this->Model_barang->update_barang($id_barang, $barang);
         if ($editbarang) {

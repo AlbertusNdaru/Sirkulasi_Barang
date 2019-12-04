@@ -18,6 +18,13 @@ class Controller_barangmasuk extends CI_Controller
         $this->template->load('Template/Template_admin', 'Form_barang_masuk/Form_add_barang_masuk', $data);
     }
 
+    function data_barang_masuk()
+    {
+        $data['barang'] = $this->Model_barang_masuk->get_barang_masuk();
+        // echo json_encode($data);
+        $this->template->load('Template/Template_admin', 'Form_barang_masuk/Form_data_barangmasuk', $data);
+    }
+
     
     function get_Barang_by_id()
     {
@@ -47,7 +54,7 @@ class Controller_barangmasuk extends CI_Controller
             'id_tipe_barang' => $this->input->post('kategori'),
             'Jumlah' => $this->input->post('jumlah'),
             'Harga' => $this->input->post('harga'),
-            'Creat_at' => get_current_date()
+            'Create_at' => get_current_date()
         );
         $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
         $barangedit = array(
@@ -74,7 +81,7 @@ class Controller_barangmasuk extends CI_Controller
             'Jumlah' => $this->input->post('jumlah'),
             'Satuan' => $this->input->post('satuan'),
             'Harga' => $this->input->post('harga'),
-            'update_at' => get_current_date()
+            'Update_at' => get_current_date()
         );
         $editbarang = $this->Model_barang->update_barang($id_barang, $barang);
         if ($editbarang) {

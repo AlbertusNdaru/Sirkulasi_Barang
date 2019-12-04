@@ -32,7 +32,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Jumlah Masuk</label>
-                <input class="form-control form-control-alternative" name="jumlah" type="number">
+                <input required class="form-control form-control-alternative" name="jumlah" type="number">
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Harga</label>
-                <input class="form-control form-control-alternative" name="harga" type="number">
+                <input required class="form-control form-control-alternative" name="harga" type="number">
               </div>
             </div>
           </div>

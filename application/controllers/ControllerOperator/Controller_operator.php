@@ -32,6 +32,7 @@ class Controller_operator extends CI_Controller
         'Gender' => $this->input->post('gender'),
         'Address' => $this->input->post('address'),
         'email_operator'=> $this->input->post('email_operator'),
+        'Create_at'=> get_current_date()
         );
         $addoperator = $this->Model_operator->add_operator($operator);
         if ($addoperator){
@@ -51,6 +52,7 @@ class Controller_operator extends CI_Controller
         'Gender' => $this->input->post('gender'),
         'Address' => $this->input->post('address'),
         'email_operator'=> $this->input->post('email_operator'),
+        'Update_at'=> get_current_date()
         );
         // echo json_encode($id_operator);
         $editoperator = $this->Model_operator->update_operator($id_operator,$operator);
