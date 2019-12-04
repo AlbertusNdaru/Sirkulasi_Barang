@@ -1,5 +1,5 @@
 <?php
-class Model_barang extends CI_Model
+class Model_barang_masuk extends CI_Model
 {
     function get_barang()
     {
@@ -36,9 +36,9 @@ class Model_barang extends CI_Model
         return $getbarangById;
     }
 
-    function add_barang($dataBarang)
+    function add_barang_masuk($dataBarang)
     {
-        $add_barang = $this->db->insert('tb_barang', $dataBarang);
+        $add_barang = $this->db->insert('tb_barang_masuk', $dataBarang);
         return $add_barang;
     }
 

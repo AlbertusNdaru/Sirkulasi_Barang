@@ -17,7 +17,7 @@ class Model_admin extends CI_Model
 
     function get_admin_by_user_password($username, $password)
     {
-        $this->db->select('tb_user.*,tb_operator.Status as StatusOperator');
+        $this->db->select('tb_user.*,tb_operator.Status as StatusOperator, tb_operator.Name as NamaOperator');
         $this->db->from('tb_user');
         $this->db->join('tb_operator', 'tb_operator.id_operator=tb_user.id_operator');
         $this->db->where("tb_user.username", $username);

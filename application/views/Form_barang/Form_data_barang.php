@@ -10,7 +10,7 @@
                 <h3 class="mb-0">Data Barang</h3>
             </div>
             <div class="table-responsive">
-                <table class="table align-items-center table-flush">
+                <table class="table align-items-center table-flush ">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">No</th>
@@ -34,10 +34,10 @@
                                     <td><?= $i ?> </td>
                                 </div>
                                 <div class="adge badge-dot mr-4">
-                                    <td><?= $o->operator ?></td>
+                                    <td><?= $o->NameOperator ?></td>
                                 </div>
                                 <div class="adge badge-dot mr-4">
-                                    <td><?= $o->tipebarang ?></td>
+                                    <td><?= $o->NamaTipe ?></td>
                                 </div>
 
                                 <div class="adge badge-dot mr-4">
@@ -45,7 +45,7 @@
 
                                 </div>
                                 <div class="adge badge-dot mr-4">
-                                    <td><?= $o->jumlah ?></td>
+                                    <td><?= $o->Jumlah ?></td>
 
                                 </div>
                                 <div class="adge badge-dot mr-4">
@@ -58,7 +58,7 @@
 
 
                                 <div class="adge badge-dot mr-4">
-                                    <td><?= $o->jumlah ?></td>
+                                    <td><?php $total= $o->Jumlah*$o->Harga; echo $total ?></td>
 
                                 </div>
 
@@ -69,7 +69,7 @@
                         <i class="glyphicon glyphicon-edit icon-white"></i>
                         Edit
                     </a>
-                    <a class="btn btn-danger" href="<?= base_url('deletebarang/' . $o->id_barang . '') ?>">
+                    <a class="btn btn-danger" href="<?= base_url('deleteBarang/' . $o->id_barang . '') ?>">
                         <i class="glyphicon glyphicon-trash icon-white"></i>
                         Delete
                     </a></td>
@@ -118,7 +118,7 @@
 
 
     function setnotifstatus(err) {
-        if (err == 'Input Success' || err == 'Update Success' || err == 'Delete Succes') {
+        if (err == 'Input Success' || err == 'Edit Success' || err == 'Delete Success') {
             ttp = 'success';
         } else {
             ttp = 'danger';

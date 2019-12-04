@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Controller_barang extends CI_Controller
+class Controller_barangmasuk extends CI_Controller
 {
 
     function __construct()
@@ -8,21 +8,22 @@ class Controller_barang extends CI_Controller
         parent::__construct();
         $this->load->model('Model_barang');
         $this->load->model('Model_tipebarang');
+        $this->load->model('Model_barang_masuk');
     }
 
-    function get_Barang()
+    function get_Barang_masuk()
     {
-        $data['barang'] = $this->Model_barang->get_barang();
+        $data['kategori'] = $this->Model_tipebarang->get_tipe_barang();
         // echo json_encode($data);
-        $this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
+        $this->template->load('Template/Template_admin', 'Form_barang_masuk/Form_add_barang_masuk', $data);
     }
 
     
     function get_Barang_by_id()
     {
         $kategori= $this->input->post('id');
-        $barang = $this->Model_barang->get_barang_by_kategori($kategori);
-        echo json_encode($barang);
+        $data['barang'] = $this->Model_barang->get_barang_by_kategori($kategori);
+        echo json_encode($data);
         //$this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
     }
 
@@ -39,18 +40,22 @@ class Controller_barang extends CI_Controller
         $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang',$data);
     }
 
-    function addbarangg()
+    function addbarangMasuk()
     {
         $barang = array(
-            'Name' => $this->input->post('namabarang'),
-            'id_operator' => $_SESSION['Admin']->id_operator,
-            'id_tipe_barang' => $this->input->post('tipe'),
+            'id_barang' => $this->input->post('barang'),
+            'id_tipe_barang' => $this->input->post('kategori'),
             'Jumlah' => $this->input->post('jumlah'),
-            'Satuan' => $this->input->post('satuan'),
             'Harga' => $this->input->post('harga'),
             'Creat_at' => get_current_date()
         );
-        $add_barang = $this->Model_barang->add_barang($barang);
+        $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
+        $barangedit = array(
+                'Jumlah' =>  $databarang->Jumlah + $this->input->post('jumlah'),
+                'Harga' => $this->input->post('harga')
+        );
+        $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);
+        $add_barang = $this->Model_barang_masuk->add_barang_masuk($barang);
         if ($add_barang) {
             $this->session->set_flashdata('Status', 'Input Success');
             redirect('barang');

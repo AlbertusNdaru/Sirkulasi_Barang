@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2019 at 06:02 PM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Dec 04, 2019 at 10:53 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,8 +55,19 @@ CREATE TABLE `tb_barang` (
   `Satuan` varchar(10) DEFAULT NULL,
   `Harga` int(11) DEFAULT NULL,
   `Creat_at` datetime DEFAULT NULL,
-  `Update_at` datetime DEFAULT NULL
+  `Update_at` datetime DEFAULT NULL,
+  `deleted` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_barang`
+--
+
+INSERT INTO `tb_barang` (`id_barang`, `id_operator`, `id_tipe_barang`, `Name`, `Jumlah`, `Satuan`, `Harga`, `Creat_at`, `Update_at`, `deleted`) VALUES
+(2, 1, 1, 'sdadsadad', 12, 'RIM', 200000, '2019-12-04 14:31:55', '2019-12-04 15:15:28', 0),
+(3, 1, 1, 'dsdsdsd', 12, 'RIM', 900000, '2019-12-04 14:34:24', '2019-12-04 15:15:32', 0),
+(4, 1, 1, 'dsdsdsd', 121212, 'Buah', 2121212, '2019-12-04 14:35:58', '2019-12-04 15:15:35', 0),
+(5, 1, 1, 'dsdsdsdsdsdsdsd', 2000024, 'RIM', 20000, '2019-12-04 15:15:02', '2019-12-04 15:20:34', 0);
 
 -- --------------------------------------------------------
 
@@ -83,15 +94,22 @@ CREATE TABLE `tb_barang_keluar` (
 
 CREATE TABLE `tb_barang_masuk` (
   `id_barang_masuk` smallint(6) NOT NULL,
-  `id_barang_keluar` smallint(6) DEFAULT NULL,
-  `Name` varchar(20) DEFAULT NULL,
+  `id_barang` smallint(6) DEFAULT NULL,
   `Jumlah` int(3) DEFAULT NULL,
-  `Satuan` varchar(10) DEFAULT NULL,
   `Harga` int(11) DEFAULT NULL,
   `Id_tipe_barang` smallint(6) DEFAULT NULL,
   `Creat_at` date DEFAULT NULL,
   `Update_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_barang_masuk`
+--
+
+INSERT INTO `tb_barang_masuk` (`id_barang_masuk`, `id_barang`, `Jumlah`, `Harga`, `Id_tipe_barang`, `Creat_at`, `Update_at`) VALUES
+(1, 5, 12, 1221212, 1, '2019-12-04', NULL),
+(2, 5, 2000000, 121212121, 1, '2019-12-04', NULL),
+(3, 5, 24, 20000, 1, '2019-12-04', NULL);
 
 -- --------------------------------------------------------
 
@@ -102,7 +120,7 @@ CREATE TABLE `tb_barang_masuk` (
 CREATE TABLE `tb_hak_akses` (
   `id_level` smallint(6) NOT NULL,
   `Description` varchar(40) DEFAULT NULL,
-  `Creat_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Creat_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Update_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -127,7 +145,7 @@ CREATE TABLE `tb_kepala_cabang` (
   `Gender` varchar(2) DEFAULT NULL,
   `Address` varchar(40) DEFAULT NULL,
   `Email_kepala_cabang` varchar(30) DEFAULT NULL,
-  `Creat_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Creat_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Update_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -144,8 +162,8 @@ CREATE TABLE `tb_operator` (
   `Address` varchar(40) DEFAULT NULL,
   `email_operator` varchar(30) DEFAULT NULL,
   `Status` varchar(10) NOT NULL DEFAULT 'Off',
-  `Creat_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `Update_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `Creat_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Update_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -164,7 +182,7 @@ INSERT INTO `tb_operator` (`id_operator`, `Name`, `Gender`, `Address`, `email_op
 CREATE TABLE `tb_tipe_barang` (
   `id_tipe_barang` smallint(6) NOT NULL,
   `Name` varchar(30) DEFAULT NULL,
-  `Creat_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Creat_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Update_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -173,7 +191,8 @@ CREATE TABLE `tb_tipe_barang` (
 --
 
 INSERT INTO `tb_tipe_barang` (`id_tipe_barang`, `Name`, `Creat_at`, `Update_at`) VALUES
-(1, 'ATK', '2019-11-27 08:26:08', '2019-11-27 15:26:08');
+(1, 'ATK', '2019-11-27 08:26:08', '2019-11-27 15:26:08'),
+(2, 'Cetak', '2019-12-04 09:04:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -188,7 +207,7 @@ CREATE TABLE `tb_user` (
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(20) DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
-  `creat_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creat_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `update_at` datetime DEFAULT NULL,
   `Status` varchar(10) DEFAULT 'NotAprove'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -230,7 +249,7 @@ ALTER TABLE `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_masuk`
   ADD PRIMARY KEY (`id_barang_masuk`),
-  ADD KEY `id_barang_keluar` (`id_barang_keluar`),
+  ADD KEY `id_barang_keluar` (`id_barang`),
   ADD KEY `Id_tipe_barang` (`Id_tipe_barang`);
 
 --
@@ -280,13 +299,19 @@ ALTER TABLE `tb_bagian`
 -- AUTO_INCREMENT for table `tb_barang`
 --
 ALTER TABLE `tb_barang`
-  MODIFY `id_barang` smallint(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_barang` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_keluar`
   MODIFY `id_barang_keluar` smallint(6) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_barang_masuk`
+--
+ALTER TABLE `tb_barang_masuk`
+  MODIFY `id_barang_masuk` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_hak_akses`
@@ -310,7 +335,7 @@ ALTER TABLE `tb_operator`
 -- AUTO_INCREMENT for table `tb_tipe_barang`
 --
 ALTER TABLE `tb_tipe_barang`
-  MODIFY `id_tipe_barang` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tipe_barang` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
@@ -339,7 +364,7 @@ ALTER TABLE `tb_barang_keluar`
 -- Constraints for table `tb_barang_masuk`
 --
 ALTER TABLE `tb_barang_masuk`
-  ADD CONSTRAINT `tb_barang_masuk_ibfk_1` FOREIGN KEY (`id_barang_keluar`) REFERENCES `tb_barang_keluar` (`id_barang_keluar`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_barang_masuk_ibfk_2` FOREIGN KEY (`id_barang`) REFERENCES `tb_barang` (`id_barang`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_kepala_cabang`

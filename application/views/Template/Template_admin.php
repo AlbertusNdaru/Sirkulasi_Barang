@@ -18,11 +18,14 @@
   <!-- Custom styles for this template-->
   <link href="<?= base_url() ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="<?= base_url() ?>assets/css/animate.min.css" rel="stylesheet">
+  <!-- <link href='<?= base_url('assets/') ?>css/bootstrap-select.min.css' rel='stylesheet'> -->
 
   <!-- Bootstrap core JavaScript-->
   <script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
   <script src="<?= base_url() ?>assets/js/bootstrap-notify.js"></script>
   <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="<?= base_url() ?>assets/js/bootstrap-select.min.js"></script> -->
+
 
 
   <!-- Core plugin JavaScript-->

@@ -85,10 +85,12 @@ $route['deleteTipebarang/(:any)'] = 'Controller_tipebarang/Controller_tipebarang
 
 //Route Barang
 $route['barang'] = 'Controller_barang/Controller_barang/get_Barang';
+$route['barangid'] = 'Controller_barang/Controller_barang/get_Barang_by_id';
 $route['formaddbarang'] = 'Controller_barang/Controller_barang/viewFormAddBarang';
 $route['formeditbarang/(:any)'] = 'Controller_barang/Controller_barang/viewFormEditbarang/$1';
-$route['deleteBarang/(:any)'] = 'Controller_barang/Controller_barang/deletetbarang/$1';
+$route['deleteBarang/(:any)'] = 'Controller_barang/Controller_barang/deleteBarang/$1';
 $route['AddBarang'] = 'Controller_barang/Controller_barang/addbarangg';
+$route['EditBarang'] = 'Controller_barang/Controller_barang/editbarang';
 
 //Route Bagian
 $route['bagian'] = 'Controller_bagian/Controller_bagian/get_Bagian';
@@ -96,6 +98,9 @@ $route['formaddbagian'] = 'Controller_bagian/Controller_bagian/viewFormAddBagian
 $route['formeditbagian/(:any)'] = 'Controller_bagian/Controller_bagian/viewFormEditbagian/$1';
 $route['deletebagian/(:any)'] = 'Controller_bagian/Controller_bagian/deleteBagian/$1';
 
+//Route Barang Masuk
+$route['barangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/get_Barang_masuk';
+$route['addbarangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/addbarangMasuk';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
