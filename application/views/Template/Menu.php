@@ -33,6 +33,7 @@
           <a class="collapse-item" href="<?= base_url('tipebarang') ?>">Tipe Barang</a>
           <a class="collapse-item" href="<?= base_url('barang') ?>">Barang</a>
           <a class="collapse-item" href="<?= base_url('barangmasuk') ?>">Barang Masuk</a>
+          <a class="collapse-item" href="<?= base_url('barangkeluar ') ?>">Barang Keluar</a>
           <a class="collapse-item" href="<?= base_url('bagian') ?>">Bagian</a>
 
         <?php } ?>

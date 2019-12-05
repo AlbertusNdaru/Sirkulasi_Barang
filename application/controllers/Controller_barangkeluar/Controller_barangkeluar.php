@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Controller_barangmasuk extends CI_Controller
+class Controller_barangkeluar extends CI_Controller
 {
 
     function __construct()
@@ -8,7 +8,7 @@ class Controller_barangmasuk extends CI_Controller
         parent::__construct();
         $this->load->model('Model_barang');
         $this->load->model('Model_tipebarang');
-        $this->load->model('Model_barang_masuk');
+        $this->load->model('Model_barang_keluar');
     }
 
     function get_Barang_masuk()
@@ -18,11 +18,11 @@ class Controller_barangmasuk extends CI_Controller
         $this->template->load('Template/Template_admin', 'Form_barang_masuk/Form_add_barang_masuk', $data);
     }
 
-    function data_barang_masuk()
+    function data_barang_keluar()
     {
-        $data['barang'] = $this->Model_barang_masuk->get_barang_masuk();
+        $data['barang'] = $this->Model_barang_keluar->get_barang_keluar();
         // echo json_encode($data);
-        $this->template->load('Template/Template_admin', 'Form_barang_masuk/Form_data_barangmasuk', $data);
+        $this->template->load('Template/Template_admin', 'Form_barang_keluar/Form_data_barangkeluar', $data);
     }
 
     

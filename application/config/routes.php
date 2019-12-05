@@ -103,5 +103,10 @@ $route['barangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/data_bara
 $route['viewaddbarangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/get_Barang_masuk';
 $route['addbarangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/addbarangMasuk';
 
+//Route Barang Keluar
+$route['barangkeluar'] = 'Controller_barangkeluar/Controller_barangkeluar/data_barang_keluar';
+$route['viewaddbarangkeluar'] = 'Controller_barangkeluar/Controller_barangkeluar/get_Barang_keluar';
+$route['addbarangmasuk'] = 'Controller_barangkeluar/Controller_barangkeluar/addbarangKeluar';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
