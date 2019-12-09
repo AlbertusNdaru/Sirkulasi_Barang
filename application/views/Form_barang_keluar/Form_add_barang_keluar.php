@@ -2,7 +2,7 @@
   <div class="card shadow">
     <div class="card-header border-0">
       <form name="fromaddoperator" action="<?= base_url('addbarangmasuk') ?>" method="post">
-        <h6 class="heading-small text-muted mb-4">Add Barang Masuk</h6>
+        <h6 class="heading-small text-muted mb-4">Add Barang Keluar </h6>
         <hr class="my-4" />
         <div class="pl-lg-4">
           <div class="row">
@@ -23,7 +23,6 @@
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Nama Alat</label>
                 <select name="barang" id="barangbykat" class="form-control selectpicker" data-live-search="true">
-
                 </select>
               </div>
             </div>
@@ -31,7 +30,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="form-control-label" for="input-address">Jumlah Masuk</label>
+                <label class="form-control-label" for="input-address">Jumlah Keluar</label>
                 <input required class="form-control form-control-alternative" name="jumlah" type="number">
               </div>
             </div>
@@ -39,8 +38,13 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="form-control-label" for="input-address">Harga</label>
-                <input required class="form-control form-control-alternative" name="harga" type="number">
+                <label class="form-control-label" for="input-address">Bagian</label>
+                <select name="bagian" id="idbagian" class="form-control selectpicker">
+                  <option value="" selected>Silahkan Pilih Bagian</option>
+                  <?php foreach ($bagian as $k) { ?>
+                    <option value="<?= $k->id_bagian ?>"><?= $k->Name ?></option>
+                  <?php } ?>
+                </select>
               </div>
             </div>
           </div>

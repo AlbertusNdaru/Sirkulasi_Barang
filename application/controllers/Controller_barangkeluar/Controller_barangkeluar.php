@@ -8,14 +8,16 @@ class Controller_barangkeluar extends CI_Controller
         parent::__construct();
         $this->load->model('Model_barang');
         $this->load->model('Model_tipebarang');
+        $this->load->model('Model_bagian');
         $this->load->model('Model_barang_keluar');
     }
 
-    function get_Barang_masuk()
+    function get_Barang_keluar()
     {
         $data['kategori'] = $this->Model_tipebarang->get_tipe_barang();
+        $data['bagian'] = $this->Model_bagian->get_bagian();
         // echo json_encode($data);
-        $this->template->load('Template/Template_admin', 'Form_barang_masuk/Form_add_barang_masuk', $data);
+        $this->template->load('Template/Template_admin', 'Form_barang_keluar/Form_add_barang_keluar', $data);
     }
 
     function data_barang_keluar()
