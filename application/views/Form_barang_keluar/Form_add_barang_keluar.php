@@ -47,7 +47,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Bagian</label>
-                <select name="bagian" id="idbagian" class="form-control selectpicker">
+                <select required name="bagian" id="idbagian" class="form-control selectpicker">
                   <option value="" selected>Silahkan Pilih Bagian</option>
                   <?php foreach ($bagian as $k) { ?>
                     <option value="<?= $k->id_bagian ?>"><?= $k->Name ?></option>
