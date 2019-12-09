@@ -4,107 +4,82 @@
       <div class="card-header border-0">
         <h3 class="mb-0">Data User</h3>
       </div>
-      <div class="table-responsive">
-        <table class="table align-items-center table-flush">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">No</th>
-              <th scope="col">Username</th>
-              <th scope="col">Password</th>
-              <th scope="col">Level Id</th>
-              <th scope="col">Nama Operator</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            $i = 1;
-            foreach ($user as $o) { ?>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead class="thead-light">
               <tr>
-                <div class="adge badge-dot mr-4">
-                  <td><?= $i ?> </td>
-                </div>
-                <div class="adge badge-dot mr-4">
-                  <td><?= $o->username ?></td>
-                </div>
-                <div class="adge badge-dot mr-4">
-                  <td><?= $o->password ?></td>
-                </div>
-
-                <div class="adge badge-dot mr-4">
-                  <td><?= $o->Hak_akses ?></td>
-                </div>
-
-                <div class="adge badge-dot mr-4">
-                  <td><?= $o->Operator ?></td>
-                </div>
-
-                <div class="adge badge-dot mr-6">
-                  <td class="center"><span class="badge badge-success <?php if ($o->Status == 'Aprove') echo 'label-default';
-                                                                        else echo 'badge badge-danger'; ?>"><?= $o->Status ?></span></td>
-                </div>
-
-                <div class="adge badge-dot mr-6">
-                  <td class="center"><?php if ($_SESSION['Admin']->id_level == 1) { ?>
-                      <?php if ($o->Status == "NotAprove") { ?>
-                        <a class="btn badge-success" style="width: 94px;" href="<?= base_url('editstatususer/' . $o->id_user . '/Aprove') ?>">
-                          <i class="glyphicon glyphicon-ok icon-white"></i>
-                          Aprove
-                        <?php } else { ?>
-                          <a class="btn badge-danger" style="width: 104px;" href="<?= base_url('editstatususer/' . $o->id_user . '/NotAprove') ?>">
-                            <i class="glyphicon glyphicon-remove icon-white"></i>
-                            NotAprove
-                          <?php } ?>
-                          </a>
-                        <?php } ?>
-                        <a class="btn btn-info" href="<?= base_url('formedituser/' . $o->id_user . '') ?>">
-                          <i class="glyphicon glyphicon-edit icon-white"></i>
-                          Edit
-                        </a>
-                        <a class="btn btn-danger" href="<?= base_url('deleteuser/' . $o->id_user . '') ?>">
-                          <i class="glyphicon glyphicon-trash icon-white"></i>
-                          Delete
-                        </a></td>
-                </div>
+                <th scope="col">No</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
+                <th scope="col">Level Id</th>
+                <th scope="col">Nama Operator</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
               </tr>
-            <?php
-              $i++;
-            } ?>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <?php
+              $i = 1;
+              foreach ($user as $o) { ?>
+                <tr>
+                  <div class="adge badge-dot mr-4">
+                    <td><?= $i ?> </td>
+                  </div>
+                  <div class="adge badge-dot mr-4">
+                    <td><?= $o->username ?></td>
+                  </div>
+                  <div class="adge badge-dot mr-4">
+                    <td><?= $o->password ?></td>
+                  </div>
+
+                  <div class="adge badge-dot mr-4">
+                    <td><?= $o->Hak_akses ?></td>
+                  </div>
+
+                  <div class="adge badge-dot mr-4">
+                    <td><?= $o->Operator ?></td>
+                  </div>
+
+                  <div class="adge badge-dot mr-6">
+                    <td class="center"><span class="badge badge-success <?php if ($o->Status == 'Aprove') echo 'label-default';
+                                                                          else echo 'badge badge-danger'; ?>"><?= $o->Status ?></span></td>
+                  </div>
+
+                  <div class="adge badge-dot mr-6">
+                    <td class="center"><?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                        <?php if ($o->Status == "NotAprove") { ?>
+                          <a class="btn badge-success" style="width: 94px;" href="<?= base_url('editstatususer/' . $o->id_user . '/Aprove') ?>">
+                            <i class="glyphicon glyphicon-ok icon-white"></i>
+                            Aprove
+                          <?php } else { ?>
+                            <a class="btn badge-danger" style="width: 104px;" href="<?= base_url('editstatususer/' . $o->id_user . '/NotAprove') ?>">
+                              <i class="glyphicon glyphicon-remove icon-white"></i>
+                              NotAprove
+                            <?php } ?>
+                            </a>
+                          <?php } ?>
+                          <a class="btn btn-info" href="<?= base_url('formedituser/' . $o->id_user . '') ?>">
+                            <i class="glyphicon glyphicon-edit icon-white"></i>
+                            Edit
+                          </a>
+                          <a class="btn btn-danger" href="<?= base_url('deleteuser/' . $o->id_user . '') ?>">
+                            <i class="glyphicon glyphicon-trash icon-white"></i>
+                            Delete
+                          </a></td>
+                  </div>
+                </tr>
+              <?php
+                $i++;
+              } ?>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-<div class="card-footer py-4">
-  <nav aria-label="...">
-    <ul class="pagination justify-content-end mb-0">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">
-          <i class="fas fa-angle-left"></i>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
-      <li class="page-item active">
-        <a class="page-link" href="#">1</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">
-          <i class="fas fa-angle-right"></i>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-</div>
-</div>
+
 <script>
   function setnotifstatus(err) {
     if (err == 'Input Success' || err == 'Update Success' || err == 'Delete Succes') {

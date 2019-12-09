@@ -65,6 +65,7 @@
         for (var i = 0; i < dataalat.length; i++) {
           $('#barangbykat').append('<option value="' + dataalat[i]['id_barang'] + '">' + dataalat[i]['Name'] + '</option>')
         }
+        $('#barangbykat').selectpicker('refresh');
 
       }
     });

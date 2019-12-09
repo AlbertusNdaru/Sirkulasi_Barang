@@ -9,49 +9,50 @@
             <div class="card-header border-0">
                 <h3 class="mb-0">Data Barang Masuk</h3>
             </div>
-            <div class="table-responsive">
-                <table class="table align-items-center table-flush ">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Name Barang</th>
-                            <th scope="col">Bagian</th>
-                            <th scope="col">Jumlah</th>
-                            <th scope="col">Harga</th>
-                            <th scope="col">Tanggal Keluar</th>
-                            <!-- <th scope="col">Action</th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $i = 1;
-                        foreach ($barang as $o) { ?>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush " id="dataTable" width="100%" cellspacing="0">
+                        <thead class="thead-light">
                             <tr>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $i ?> </td>
-                                </div>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->NamaBarang ?></td>
-                                </div>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->NamaBagian ?></td>
-                                </div>
+                                <th scope="col">No</th>
+                                <th scope="col">Name Barang</th>
+                                <th scope="col">Bagian</th>
+                                <th scope="col">Jumlah</th>
+                                <th scope="col">Harga</th>
+                                <th scope="col">Tanggal Keluar</th>
+                                <!-- <th scope="col">Action</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i = 1;
+                            foreach ($barang as $o) { ?>
+                                <tr>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $i ?> </td>
+                                    </div>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->NamaBarang ?></td>
+                                    </div>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->NamaBagian ?></td>
+                                    </div>
 
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->Jumlah ?></td>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->Jumlah ?></td>
 
-                                </div>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->Harga ?></td>
+                                    </div>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->Harga ?></td>
 
-                                </div>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->Create_at ?></td>
+                                    </div>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->Create_at ?></td>
 
-                                </div>
+                                    </div>
 
-            </div>
-            <!-- <div class="adge badge-dot mr-6">
+                </div>
+                <!-- <div class="adge badge-dot mr-6">
                 <td class="center">
                     <a class="btn btn-info" href="<?= base_url('formeditbarang/' . $o->id_barang . '') ?>">
                         <i class="glyphicon glyphicon-edit icon-white"></i>
@@ -62,40 +63,15 @@
                         Delete
                     </a></td>
             </div> -->
+            </div>
+            </tr>
+        <?php
+            $i++;
+        } ?>
+        </tbody>
+        </table>
         </div>
-        </tr>
-    <?php
-        $i++;
-    } ?>
-    </tbody>
-    </table>
     </div>
-    <div class="card-footer py-4">
-        <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">
-                        <i class="fas fa-angle-left"></i>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="fas fa-angle-right"></i>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
 </div>
 </div>
 

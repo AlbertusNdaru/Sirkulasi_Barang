@@ -10,7 +10,7 @@
         <h3 class="mb-0">Data Tipe Barang</h3>
       </div>
       <div class="table-responsive">
-        <table class="table align-items-center table-flush">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead class="thead-light">
             <tr>
               <th scope="col">No</th>
@@ -18,7 +18,6 @@
               <th scope="col">Creat at</th>
               <th scope="col">Update at</th>
               <th scope="col">Action</th>
-              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>

@@ -18,18 +18,10 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Tipe Barang</label>
                                 <select name="tipe" class="form-control selectpicker">
-                                    <?php foreach($tipebarang as $t) {?>
-                                    <option value="<?= $t->id_tipe_barang?>"><?= $t->Name?></option>
+                                    <?php foreach ($tipebarang as $t) { ?>
+                                        <option value="<?= $t->id_tipe_barang ?>"><?= $t->Name ?></option>
                                     <?php } ?>
                                 </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-address">Jumlah</label>
-                                <input required type="number" min="1" class="form-control form-control-alternative" name="jumlah">
                             </div>
                         </div>
                     </div>
@@ -44,14 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-address">Harga</label>
-                                <input required type="number" min="1" class="form-control form-control-alternative" name="harga">
-                            </div>
-                        </div>
-                    </div>
+
                     <button type="submit" class="btn btn-primary">Add Data</button>
             </form>
         </div>

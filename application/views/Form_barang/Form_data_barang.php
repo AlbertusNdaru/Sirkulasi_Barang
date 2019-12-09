@@ -9,105 +9,80 @@
             <div class="card-header border-0">
                 <h3 class="mb-0">Data Barang</h3>
             </div>
-            <div class="table-responsive">
-                <table class="table align-items-center table-flush ">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Name Operator</th>
-                            <th scope="col">Tipe barang</th>
-                            <th scope="col">Nama Barang</th>
-                            <th scope="col">Jumlah</th>
-                            <th scope="col">Satuan</th>
-                            <th scope="col">Harga</th>
-                            <th scope="col">Total Harga</th>
-                            <th scope="col">Action</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $i = 1;
-                        foreach ($barang as $o) { ?>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead class="thead-light">
                             <tr>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $i ?> </td>
-                                </div>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->NameOperator ?></td>
-                                </div>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->NamaTipe ?></td>
-                                </div>
+                                <th scope="col">No</th>
+                                <th scope="col">Name Operator</th>
+                                <th scope="col">Tipe barang</th>
+                                <th scope="col">Nama Barang</th>
+                                <th scope="col">Jumlah</th>
+                                <th scope="col">Satuan</th>
+                                <th scope="col">Harga</th>
+                                <th scope="col">Total Harga</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i = 1;
+                            foreach ($barang as $o) { ?>
+                                <tr>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $i ?> </td>
+                                    </div>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->NameOperator ?></td>
+                                    </div>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->NamaTipe ?></td>
+                                    </div>
 
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->Name ?></td>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->Name ?></td>
 
-                                </div>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->Jumlah ?></td>
+                                    </div>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->Jumlah ?></td>
 
-                                </div>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->Satuan ?></td>
+                                    </div>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->Satuan ?></td>
 
-                                </div>
-                                <div class="adge badge-dot mr-4">
-                                    <td><?= $o->Harga ?></td>
-                                </div>
+                                    </div>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?= $o->Harga ?></td>
+                                    </div>
 
 
-                                <div class="adge badge-dot mr-4">
-                                    <td><?php $total= $o->Jumlah*$o->Harga; echo $total ?></td>
+                                    <div class="adge badge-dot mr-4">
+                                        <td><?php $total = $o->Jumlah * $o->Harga;
+                                                echo $total ?></td>
 
-                                </div>
-
-            </div>
-            <div class="adge badge-dot mr-6">
-                <td class="center">
-                    <a class="btn btn-info" href="<?= base_url('formeditbarang/' . $o->id_barang . '') ?>">
-                        <i class="glyphicon glyphicon-edit icon-white"></i>
-                        Edit
-                    </a>
-                    <a class="btn btn-danger" href="<?= base_url('deleteBarang/' . $o->id_barang . '') ?>">
-                        <i class="glyphicon glyphicon-trash icon-white"></i>
-                        Delete
-                    </a></td>
+                                    </div>
+                                    <div class="adge badge-dot mr-6">
+                                        <td class="center">
+                                            <a class="btn btn-info" href="<?= base_url('formeditbarang/' . $o->id_barang . '') ?>">
+                                                <i class="glyphicon glyphicon-edit icon-white"></i>
+                                                Edit
+                                            </a>
+                                            <a class="btn btn-danger" href="<?= base_url('deleteBarang/' . $o->id_barang . '') ?>">
+                                                <i class="glyphicon glyphicon-trash icon-white"></i>
+                                                Delete
+                                            </a></td>
+                                    </div>
+                </div>
+                </tr>
+            <?php
+                $i++;
+            } ?>
+            </tbody>
+            </table>
             </div>
         </div>
-        </tr>
-    <?php
-        $i++;
-    } ?>
-    </tbody>
-    </table>
     </div>
-    <div class="card-footer py-4">
-        <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">
-                        <i class="fas fa-angle-left"></i>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="fas fa-angle-right"></i>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
 </div>
 </div>
 
