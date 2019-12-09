@@ -9,7 +9,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Kategori Alat</label>
-                <select name="kategori" id="idkategori" class="form-control selectpicker" onchange="setBarangbykategori()">
+                <select required name="kategori" id="idkategori" class="form-control selectpicker" onchange="setBarangbykategori()">
                   <option value="" selected>Silahkan Pilih Kategori</option>
                   <?php foreach ($kategori as $k) { ?>
                     <option value="<?= $k->id_tipe_barang ?>"><?= $k->Name ?></option>
@@ -22,7 +22,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Nama Alat</label>
-                <select name="barang" id="barangbykat" class="form-control selectpicker" data-live-search="true">
+                <select required name="barang" id="barangbykat" class="form-control selectpicker" data-live-search="true">
 
                 </select>
               </div>
@@ -32,7 +32,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Jumlah Masuk</label>
-                <input required class="form-control form-control-alternative" name="jumlah" type="number">
+                <input required min="1" id="jmlid" class="form-control form-control-alternative" name="jumlah" type="number">
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Harga</label>
-                <input required class="form-control form-control-alternative" name="harga" type="number">
+                <input required min="1" id="hargaid" class="form-control form-control-alternative" name="harga" type="number">
               </div>
             </div>
           </div>
@@ -66,6 +66,8 @@
           $('#barangbykat').append('<option value="' + dataalat[i]['id_barang'] + '">' + dataalat[i]['Name'] + '</option>')
         }
         $('#barangbykat').selectpicker('refresh');
+        $('#jmlid').val('');
+        $('#hargaid').val('');
 
       }
     });
