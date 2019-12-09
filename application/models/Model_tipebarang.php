@@ -14,6 +14,13 @@ class Model_tipebarang extends CI_Model
         return $gettipe_barangById;
     }
 
+    function get_id_tipe_max()
+    {
+        $this->db->select("max(id_tipe_barang) as maxKode");
+        $this->db->from("tb_tipe_barang");
+        return $this->db->get()->row();
+    }
+
     function add_tipebarang($datatipe_barang)
     {
         $addtipe_barang = $this->db->insert('tb_tipe_barang', $datatipe_barang);

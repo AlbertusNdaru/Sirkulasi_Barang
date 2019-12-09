@@ -29,7 +29,15 @@ class Controller_bagian extends CI_Controller
 
     function addbagian()
     {
+        $data =$this->Model_bagian->get_id_bagian_max();
+		$id_bagian = $data->maxKode;
+		$noUrut = (int) substr($id_bagian,3,3);
+		$noUrut++;
+		$char = "BGN";
+        $newID = $char. sprintf("%03s",$noUrut);
+        
         $bagian = array(
+            'id_bagian' => $newID,
             'Name' => $this->input->post('name')
         );
         $add_bagian = $this->Model_bagian->add_bagian($bagian);

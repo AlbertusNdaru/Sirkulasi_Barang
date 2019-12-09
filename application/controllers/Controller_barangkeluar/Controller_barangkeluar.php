@@ -8,14 +8,16 @@ class Controller_barangkeluar extends CI_Controller
         parent::__construct();
         $this->load->model('Model_barang');
         $this->load->model('Model_tipebarang');
+        $this->load->model('Model_bagian');
         $this->load->model('Model_barang_keluar');
     }
 
-    function get_Barang_masuk()
+    function get_Barang_keluar()
     {
         $data['kategori'] = $this->Model_tipebarang->get_tipe_barang();
+        $data['bagian'] = $this->Model_bagian->get_bagian();
         // echo json_encode($data);
-        $this->template->load('Template/Template_admin', 'Form_barang_masuk/Form_add_barang_masuk', $data);
+        $this->template->load('Template/Template_admin', 'Form_barang_keluar/Form_add_barang_keluar', $data);
     }
 
     function data_barang_keluar()
@@ -47,28 +49,28 @@ class Controller_barangkeluar extends CI_Controller
         $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang',$data);
     }
 
-    function addbarangMasuk()
+    function addbarangKeluar()
     {
         $barang = array(
             'id_barang' => $this->input->post('barang'),
-            'id_tipe_barang' => $this->input->post('kategori'),
+            'id_bagian' => $this->input->post('bagian'),
             'Jumlah' => $this->input->post('jumlah'),
             'Harga' => $this->input->post('harga'),
             'Create_at' => get_current_date()
         );
         $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
         $barangedit = array(
-                'Jumlah' =>  $databarang->Jumlah + $this->input->post('jumlah'),
+                'Jumlah' =>  $databarang->Jumlah - $this->input->post('jumlah'),
                 'Harga' => $this->input->post('harga')
         );
         $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);
-        $add_barang = $this->Model_barang_masuk->add_barang_masuk($barang);
+        $add_barang = $this->Model_barang_keluar->add_barang_keluar($barang);
         if ($add_barang) {
             $this->session->set_flashdata('Status', 'Input Success');
-            redirect('barangmasuk');
+            redirect('barangkeluar');
         } else {
             $this->session->set_flashdata('Status', 'Input Failed');
-            redirect('barangmasuk');
+            redirect('barangkeluar');
         }
     }
 

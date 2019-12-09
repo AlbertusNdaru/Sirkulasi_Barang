@@ -1,85 +1,95 @@
 <div class="col">
-    <a href="<?= base_url('formaddbarang'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
-        <button type="button" class="btn btn-primary">Add Barang</button>
-    </a>
+
+    <form action="<?= base_url('reportBarang')?>" method="POST">
+        <a style="margin-top: -7px;" href="<?= base_url('formaddbarang'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+            <button type="button" class="btn btn-primary">Add Barang</button>
+        </a>
+
+        <button type="submit" style="float: right" type="button" class="btn btn-primary">Cetak Barang</button>
+        <input id="tanggal2" required disabled name="tanggal2" style="float: right; margin-top: 4px;  margin-right: 5px; margin-left: 5px" type="date"><label style="float: right;  margin-top: 5px;"> - </label>
+        <input id="tanggal1" required name="tanggal1" onchange="datevalidation()" style="float: right; margin-top: 4px;  margin-right: 5px;" type="date">
+    </form>
+
 </div>
-<div class="row">
-    <div class="col">
-        <div class="card shadow">
-            <div class="card-header border-0">
-                <h3 class="mb-0">Data Barang</h3>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Name Operator</th>
-                                <th scope="col">Tipe barang</th>
-                                <th scope="col">Nama Barang</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Satuan</th>
-                                <th scope="col">Harga</th>
-                                <th scope="col">Total Harga</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            foreach ($barang as $o) { ?>
-                                <tr>
-                                    <div class="adge badge-dot mr-4">
-                                        <td><?= $i ?> </td>
-                                    </div>
-                                    <div class="adge badge-dot mr-4">
-                                        <td><?= $o->NameOperator ?></td>
-                                    </div>
-                                    <div class="adge badge-dot mr-4">
-                                        <td><?= $o->NamaTipe ?></td>
-                                    </div>
-
-                                    <div class="adge badge-dot mr-4">
-                                        <td><?= $o->Name ?></td>
-
-                                    </div>
-                                    <div class="adge badge-dot mr-4">
-                                        <td><?= $o->Jumlah ?></td>
-
-                                    </div>
-                                    <div class="adge badge-dot mr-4">
-                                        <td><?= $o->Satuan ?></td>
-
-                                    </div>
-                                    <div class="adge badge-dot mr-4">
-                                        <td><?= $o->Harga ?></td>
-                                    </div>
-
-
-                                    <div class="adge badge-dot mr-4">
-                                        <td><?php $total = $o->Jumlah * $o->Harga;
-                                                echo $total ?></td>
-
-                                    </div>
-                                    <div class="adge badge-dot mr-6">
-                                        <td class="center">
-                                            <a class="btn btn-info" href="<?= base_url('formeditbarang/' . $o->id_barang . '') ?>">
-                                                <i class="glyphicon glyphicon-edit icon-white"></i>
-                                                Edit
-                                            </a>
-                                            <a class="btn btn-danger" href="<?= base_url('deleteBarang/' . $o->id_barang . '') ?>">
-                                                <i class="glyphicon glyphicon-trash icon-white"></i>
-                                                Delete
-                                            </a></td>
-                                    </div>
+<div class="col">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Data Barang</h3>
                 </div>
-                </tr>
-            <?php
-                $i++;
-            } ?>
-            </tbody>
-            </table>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Name Operator</th>
+                                    <th scope="col">Tipe barang</th>
+                                    <th scope="col">Nama Barang</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Satuan</th>
+                                    <th scope="col">Harga</th>
+                                    <th scope="col">Total Harga</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $i = 1;
+                                foreach ($barang as $o) { ?>
+                                    <tr>
+                                        <div class="adge badge-dot mr-4">
+                                            <td><?= $i ?> </td>
+                                        </div>
+                                        <div class="adge badge-dot mr-4">
+                                            <td><?= $o->NameOperator ?></td>
+                                        </div>
+                                        <div class="adge badge-dot mr-4">
+                                            <td><?= $o->NamaTipe ?></td>
+                                        </div>
+
+                                        <div class="adge badge-dot mr-4">
+                                            <td><?= $o->Name ?></td>
+
+                                        </div>
+                                        <div class="adge badge-dot mr-4">
+                                            <td><?= $o->Jumlah ?></td>
+
+                                        </div>
+                                        <div class="adge badge-dot mr-4">
+                                            <td><?= $o->Satuan ?></td>
+
+                                        </div>
+                                        <div class="adge badge-dot mr-4">
+                                            <td><?= $o->Harga ?></td>
+                                        </div>
+
+
+                                        <div class="adge badge-dot mr-4">
+                                            <td><?php $total = $o->Jumlah * $o->Harga;
+                                                    echo $total ?></td>
+
+                                        </div>
+                                        <div class="adge badge-dot mr-6">
+                                            <td class="center">
+                                                <a class="btn btn-info" href="<?= base_url('formeditbarang/' . $o->id_barang . '') ?>">
+                                                    <i class="glyphicon glyphicon-edit icon-white"></i>
+                                                    Edit
+                                                </a>
+                                                <a class="btn btn-danger" href="<?= base_url('deleteBarang/' . $o->id_barang . '') ?>">
+                                                    <i class="glyphicon glyphicon-trash icon-white"></i>
+                                                    Delete
+                                                </a></td>
+                                        </div>
+                    </div>
+                    </tr>
+                <?php
+                    $i++;
+                } ?>
+                </tbody>
+                </table>
+                </div>
             </div>
         </div>
     </div>
@@ -142,5 +152,22 @@
                 '</div>'
         });
 
+    }
+
+    document.getElementById('tanggal1').value="";
+    document.getElementById('tanggal2').value="";
+
+    function datevalidation()
+    {
+        var x = document.getElementById("tanggal1").value;
+        document.getElementById('tanggal2').min= x;
+        $('#tanggal2').removeAttr('disabled');
+        console.log(x);
+        if (x=="")
+        {
+
+            $('#tanggal2').attr('disabled','true');
+            document.getElementById('tanggal2').value="";
+        }
     }
 </script>

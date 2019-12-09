@@ -85,6 +85,7 @@ $route['deleteTipebarang/(:any)'] = 'Controller_tipebarang/Controller_tipebarang
 
 //Route Barang
 $route['barang'] = 'Controller_barang/Controller_barang/get_Barang';
+$route['barangkategori'] = 'Controller_barang/Controller_barang/get_Barang_by_kategori';
 $route['barangid'] = 'Controller_barang/Controller_barang/get_Barang_by_id';
 $route['formaddbarang'] = 'Controller_barang/Controller_barang/viewFormAddBarang';
 $route['formeditbarang/(:any)'] = 'Controller_barang/Controller_barang/viewFormEditbarang/$1';
@@ -98,6 +99,11 @@ $route['formaddbagian'] = 'Controller_bagian/Controller_bagian/viewFormAddBagian
 $route['formeditbagian/(:any)'] = 'Controller_bagian/Controller_bagian/viewFormEditbagian/$1';
 $route['deletebagian/(:any)'] = 'Controller_bagian/Controller_bagian/deleteBagian/$1';
 
+//Route Report
+$route['reportBarang'] = 'Controller_report/Controller_report/cetakBarangAll';
+$route['reportBarangMasuk'] = 'Controller_report/Controller_report/cetakBarangmasukAll';
+$route['reportBarangKeluar'] = 'Controller_report/Controller_report/cetakBarangKeluarAll';
+
 //Route Barang Masuk
 $route['barangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/data_barang_masuk';
 $route['viewaddbarangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/get_Barang_masuk';
@@ -106,7 +112,7 @@ $route['addbarangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/addbar
 //Route Barang Keluar
 $route['barangkeluar'] = 'Controller_barangkeluar/Controller_barangkeluar/data_barang_keluar';
 $route['viewaddbarangkeluar'] = 'Controller_barangkeluar/Controller_barangkeluar/get_Barang_keluar';
-$route['addbarangmasuk'] = 'Controller_barangkeluar/Controller_barangkeluar/addbarangKeluar';
+$route['addbarangkeluar'] = 'Controller_barangkeluar/Controller_barangkeluar/addbarangKeluar';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -51,7 +51,6 @@ class Controller_barangmasuk extends CI_Controller
     {
         $barang = array(
             'id_barang' => $this->input->post('barang'),
-            'id_tipe_barang' => $this->input->post('kategori'),
             'Jumlah' => $this->input->post('jumlah'),
             'Harga' => $this->input->post('harga'),
             'Create_at' => get_current_date()
@@ -77,7 +76,6 @@ class Controller_barangmasuk extends CI_Controller
         $id_barang = $this->input->post('submitid');
         $barang = array(
             'Name' => $this->input->post('namabarang'),
-            'id_tipe_barang' => $this->input->post('tipe'),
             'Jumlah' => $this->input->post('jumlah'),
             'Satuan' => $this->input->post('satuan'),
             'Harga' => $this->input->post('harga'),

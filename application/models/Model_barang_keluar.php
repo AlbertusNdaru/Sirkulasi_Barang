@@ -29,16 +29,16 @@ class Model_barang_keluar extends CI_Model
         $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe');
         $this->db->from('tb_barang as a');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
-        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
+        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=b.id_tipe_barang');
         $this->db->where('deleted',0);
         $this->db->where("a.id_tipe_barang", $kategori);
         $getbarangById = $this->db->get()->result();
         return $getbarangById;
     }
 
-    function add_barang_masuk($dataBarang)
+    function add_barang_keluar($dataBarang)
     {
-        $add_barang = $this->db->insert('tb_barang_masuk', $dataBarang);
+        $add_barang = $this->db->insert('tb_barang_keluar', $dataBarang);
         return $add_barang;
     }
 

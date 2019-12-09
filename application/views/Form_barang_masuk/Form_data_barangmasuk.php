@@ -1,7 +1,17 @@
 <div class="col">
-    <a href="<?= base_url('viewaddbarangmasuk'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+    <!-- <a href="<?= base_url('viewaddbarangmasuk'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
         <button type="button" class="btn btn-primary">Add Barang Masuk</button>
-    </a>
+    </a> -->
+
+    <form action="<?= base_url('reportBarangMasuk')?>" method="POST">
+        <a style="margin-top: -7px;" href="<?= base_url('viewaddbarangmasuk'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+            <button type="button" class="btn btn-primary">Add Barang Masuk</button>
+        </a>
+
+        <button type="submit" style="float: right" type="button" class="btn btn-primary">Cetak Barang Masuk</button>
+        <input id="tanggal2" required disabled name="tanggal2" style="float: right; margin-top: 4px;  margin-right: 5px; margin-left: 5px" type="date"><label style="float: right;  margin-top: 5px;"> - </label>
+        <input id="tanggal1" required name="tanggal1" onchange="datevalidation()" style="float: right; margin-top: 4px;  margin-right: 5px;" type="date">
+    </form>
 </div>
 <div class="row">
     <div class="col">
@@ -132,5 +142,22 @@
                 '</div>'
         });
 
+    }
+
+    document.getElementById('tanggal1').value="";
+    document.getElementById('tanggal2').value="";
+
+    function datevalidation()
+    {
+        var x = document.getElementById("tanggal1").value;
+        document.getElementById('tanggal2').min= x;
+        $('#tanggal2').removeAttr('disabled');
+        console.log(x);
+        if (x=="")
+        {
+
+            $('#tanggal2').attr('disabled','true');
+            document.getElementById('tanggal2').value="";
+        }
     }
 </script>
