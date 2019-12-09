@@ -103,7 +103,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <select name="gender" class="form-control selectpicker">
+                      <select name="level" class="form-control selectpicker">
                         <option>Select Hak Akses</option>
                         <?php foreach ($usergroup as $k) {
                           echo "<option value='$k->id_level'>$k->Description</option>";

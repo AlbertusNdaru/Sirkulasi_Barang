@@ -13,6 +13,12 @@ class Model_bagian extends CI_Model
         $get_bagianById = $this->db->get('tb_bagian')->row();
         return $get_bagianById;
     }
+    function get_id_bagian_max()
+    {
+        $this->db->select("max(id_bagian) as maxKode");
+        $this->db->from("tb_bagian");
+        return $this->db->get()->row();
+    }
 
     function add_bagian($data_bagian)
     {

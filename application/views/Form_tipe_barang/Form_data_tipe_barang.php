@@ -9,55 +9,57 @@
       <div class="card-header border-0">
         <h3 class="mb-0">Data Tipe Barang</h3>
       </div>
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">No</th>
-              <th scope="col">Nama</th>
-              <th scope="col">Creat at</th>
-              <th scope="col">Update at</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            $i = 1;
-            foreach ($tipebarang as $o) { ?>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead class="thead-light">
               <tr>
-                <div class="adge badge-dot mr-4">
-                  <td><?= $i ?> </td>
-                </div>
-                <div class="adge badge-dot mr-4">
-                  <td><?= $o->Name ?></td>
-                </div>
-                <div class="adge badge-dot mr-4">
-                  <td><?= $o->Creat_at ?></td>
-                </div>
+                <th scope="col">No</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Creat at</th>
+                <th scope="col">Update at</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $i = 1;
+              foreach ($tipebarang as $o) { ?>
+                <tr>
+                  <div class="adge badge-dot mr-4">
+                    <td><?= $i ?> </td>
+                  </div>
+                  <div class="adge badge-dot mr-4">
+                    <td><?= $o->Name ?></td>
+                  </div>
+                  <div class="adge badge-dot mr-4">
+                    <td><?= $o->Creat_at ?></td>
+                  </div>
 
-                <div class="adge badge-dot mr-4">
-                  <td><?= $o->Update_at ?></td>
-                </div>
-      </div>
+                  <div class="adge badge-dot mr-4">
+                    <td><?= $o->Update_at ?></td>
+                  </div>
+        </div>
 
-      <div class="adge badge-dot mr-6">
-        <td class="center">
-          <a class="btn btn-info" href="<?= base_url('formedittipebarang/' . $o->id_tipe_barang . '') ?>">
-            <i class="glyphicon glyphicon-edit icon-white"></i>
-            Edit
-          </a>
-          <a class="btn btn-danger" href="<?= base_url('deleteTipebarang/' . $o->id_tipe_barang . '') ?>">
-            <i class="glyphicon glyphicon-trash icon-white"></i>
-            Delete
-          </a></td>
+        <div class="adge badge-dot mr-6">
+          <td class="center">
+            <a class="btn btn-info" href="<?= base_url('formedittipebarang/' . $o->id_tipe_barang . '') ?>">
+              <i class="glyphicon glyphicon-edit icon-white"></i>
+              Edit
+            </a>
+            <a class="btn btn-danger" href="<?= base_url('deleteTipebarang/' . $o->id_tipe_barang . '') ?>">
+              <i class="glyphicon glyphicon-trash icon-white"></i>
+              Delete
+            </a></td>
+        </div>
       </div>
+      </tr>
+    <?php
+      $i++;
+    } ?>
+    </tbody>
+    </table>
     </div>
-    </tr>
-  <?php
-    $i++;
-  } ?>
-  </tbody>
-  </table>
   </div>
   <div class="card-footer py-4">
     <nav aria-label="...">

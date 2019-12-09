@@ -6,7 +6,7 @@ class Model_barang_masuk extends CI_Model
         $this->db->select('a.*, b.Name as NamaBarang, c.Name as NamaTipe');
         $this->db->from('tb_barang_masuk as a');
         $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
-        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
+        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=b.id_tipe_barang');
         $this->db->where('deleted',0);
         $dataBarang = $this->db->get()->result();
         return $dataBarang;
@@ -17,7 +17,7 @@ class Model_barang_masuk extends CI_Model
         $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe');
         $this->db->from('tb_barang as a');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
-        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
+        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=b.id_tipe_barang');
         $this->db->where('deleted',0);
         $this->db->where("id_barang", $id_barang);
         $getbarangById = $this->db->get()->row();
@@ -29,7 +29,7 @@ class Model_barang_masuk extends CI_Model
         $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe');
         $this->db->from('tb_barang as a');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
-        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
+        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=b.id_tipe_barang');
         $this->db->where('deleted',0);
         $this->db->where("a.id_tipe_barang", $kategori);
         $getbarangById = $this->db->get()->result();

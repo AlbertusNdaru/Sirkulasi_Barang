@@ -12,6 +12,13 @@ class Model_barang extends CI_Model
         return $dataBarang;
     }
 
+    function get_id_barang_max()
+    {
+        $this->db->select("max(id_barang) as maxKode");
+        $this->db->from("tb_barang");
+        return $this->db->get()->row();
+    }
+
     function get_barang_by_id($id_barang)
     {
         $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe');

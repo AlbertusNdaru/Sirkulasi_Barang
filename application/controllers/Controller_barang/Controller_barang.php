@@ -18,10 +18,18 @@ class Controller_barang extends CI_Controller
     }
 
     
-    function get_Barang_by_id()
+    function get_Barang_by_kategori()
     {
         $kategori= $this->input->post('id');
         $barang = $this->Model_barang->get_barang_by_kategori($kategori);
+        echo json_encode($barang);
+        //$this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
+    }
+
+    function get_Barang_by_id()
+    {
+        $id= $this->input->post('id');
+        $barang = $this->Model_barang->get_barang_by_id($id);
         echo json_encode($barang);
         //$this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
     }
@@ -41,14 +49,21 @@ class Controller_barang extends CI_Controller
 
     function addbarangg()
     {
+        $data =$this->Model_barang->get_id_barang_max();
+		$id_barang = $data->maxKode;
+		$noUrut = (int) substr($id_barang,3,3);
+		$noUrut++;
+		$char = "BRG";
+        $newID = $char. sprintf("%03s",$noUrut);
+        
+        $id_barang = $newID;
         $barang = array(
-            'Name' => $this->input->post('namabarang'),
-            'id_operator' => $_SESSION['Admin']->id_operator,
+            'id_barang'      => $newID,
+            'Name'           => $this->input->post('namabarang'),
+            'id_operator'    => $_SESSION['Admin']->id_operator,
             'id_tipe_barang' => $this->input->post('tipe'),
-            'Jumlah' => $this->input->post('jumlah'),
-            'Satuan' => $this->input->post('satuan'),
-            'Harga' => $this->input->post('harga'),
-            'Create_at' => get_current_date()
+            'Satuan'         => $this->input->post('satuan'),
+            'Create_at'      => get_current_date()
         );
         $add_barang = $this->Model_barang->add_barang($barang);
         if ($add_barang) {
@@ -64,12 +79,12 @@ class Controller_barang extends CI_Controller
     {
         $id_barang = $this->input->post('submitid');
         $barang = array(
-            'Name' => $this->input->post('namabarang'),
+            'Name'           => $this->input->post('namabarang'),
             'id_tipe_barang' => $this->input->post('tipe'),
-            'Jumlah' => $this->input->post('jumlah'),
-            'Satuan' => $this->input->post('satuan'),
-            'Harga' => $this->input->post('harga'),
-            'Update_at' => get_current_date()
+            'Jumlah'         => $this->input->post('jumlah'),
+            'Satuan'         => $this->input->post('satuan'),
+            'Harga'          => $this->input->post('harga'),
+            'Update_at'      => get_current_date()
         );
         $editbarang = $this->Model_barang->update_barang($id_barang, $barang);
         if ($editbarang) {

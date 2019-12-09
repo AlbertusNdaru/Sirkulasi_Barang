@@ -29,9 +29,18 @@ class Controller_tipebarang extends CI_Controller
 
     function addtipebarang()
     {
+        $data =$this->Model_tipebarang->get_id_tipe_max();
+		$id_barang = $data->maxKode;
+		$noUrut = (int) substr($id_barang,4,3);
+		$noUrut++;
+		$char = "TIPE";
+        $newID = $char. sprintf("%03s",$noUrut);
+        
+        $id_tipe = $newID;
         $tipebarang = array(
-            'Name' => $this->input->post('name'),
-            'Creat_at' => get_current_date()
+            'id_tipe_barang' => $id_tipe,
+            'Name'           => $this->input->post('name'),
+            'Creat_at'       => get_current_date()
         );
         $addtipe_barang = $this->Model_tipebarang->add_tipebarang($tipebarang);
         if ($addtipe_barang) {

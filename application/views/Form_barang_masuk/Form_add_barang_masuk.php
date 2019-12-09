@@ -53,7 +53,7 @@
   function setBarangbykategori() {
     var id = document.getElementById('idkategori').value;
     $.ajax({
-      url: "<?php echo base_url('barangid'); ?>",
+      url: "<?php echo base_url('barangkategori'); ?>",
       type: "POST",
       data: {
         id: id
