@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2019 at 05:15 PM
+-- Generation Time: Dec 09, 2019 at 03:43 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_bagian` (
-  `id_bagian` smallint(6) NOT NULL,
+  `id_bagian` varchar(10) NOT NULL,
   `Name` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -38,7 +38,8 @@ CREATE TABLE `tb_bagian` (
 --
 
 INSERT INTO `tb_bagian` (`id_bagian`, `Name`) VALUES
-(2, 'TEKNIK');
+('BGN001', 'Teknik'),
+('BGN002', 'ENUM');
 
 -- --------------------------------------------------------
 
@@ -47,13 +48,13 @@ INSERT INTO `tb_bagian` (`id_bagian`, `Name`) VALUES
 --
 
 CREATE TABLE `tb_barang` (
-  `id_barang` smallint(6) NOT NULL,
-  `id_operator` smallint(6) DEFAULT NULL,
-  `id_tipe_barang` smallint(6) DEFAULT NULL,
+  `id_barang` varchar(10) NOT NULL,
+  `id_operator` varchar(10) NOT NULL,
+  `id_tipe_barang` varchar(10) NOT NULL,
   `Name` varchar(20) DEFAULT NULL,
-  `Jumlah` int(3) DEFAULT NULL,
+  `Jumlah` int(11) DEFAULT '0',
   `Satuan` varchar(10) DEFAULT NULL,
-  `Harga` int(11) DEFAULT NULL,
+  `Harga` int(11) DEFAULT '0',
   `Create_at` datetime DEFAULT NULL,
   `Update_at` datetime DEFAULT NULL,
   `deleted` int(11) DEFAULT '0'
@@ -64,10 +65,9 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`id_barang`, `id_operator`, `id_tipe_barang`, `Name`, `Jumlah`, `Satuan`, `Harga`, `Create_at`, `Update_at`, `deleted`) VALUES
-(2, 1, 2, 'sdadsadad', 12, 'RIM', 200000, '2019-12-04 14:31:55', '2019-12-04 23:13:37', 0),
-(3, 1, 1, 'dsdsdsd', 12, 'RIM', 0, '2019-12-04 14:34:24', '2019-12-04 15:15:32', 0),
-(4, 1, 1, 'dsdsdsd', 121212, 'Buah', 2121212, '2019-12-04 14:35:58', '2019-12-04 15:15:35', 0),
-(5, 1, 1, 'dsdsdsdsdsdsdsd', 2000024, 'RIM', 20000, '2019-12-04 15:15:02', '2019-12-04 22:43:13', 0);
+('BRG001', '1', 'TIPE001', 'sadsadasdasdsadsadas', 14, 'RIM', 300000, '2019-12-09 10:26:25', NULL, 0),
+('BRG002', '1', 'TIPE002', 'dsdsdsd', 20, 'RIM', 120000, '2019-12-09 10:46:52', '2019-12-09 15:32:06', 0),
+('BRG003', '1', 'TIPE001', 'sdasdadasd', 12, 'RIM', 30000, '2019-12-09 15:42:35', '2019-12-09 15:43:38', 0);
 
 -- --------------------------------------------------------
 
@@ -77,15 +77,21 @@ INSERT INTO `tb_barang` (`id_barang`, `id_operator`, `id_tipe_barang`, `Name`, `
 
 CREATE TABLE `tb_barang_keluar` (
   `id_barang_keluar` smallint(6) NOT NULL,
-  `id_barang` smallint(6) DEFAULT NULL,
-  `id_bagian` smallint(6) DEFAULT NULL,
-  `Name` varchar(20) DEFAULT NULL,
+  `id_barang` varchar(10) NOT NULL,
+  `id_bagian` varchar(10) NOT NULL,
   `Jumlah` int(3) DEFAULT NULL,
-  `Satuan` varchar(10) DEFAULT NULL,
   `Harga` int(11) DEFAULT NULL,
-  `Creat_at` date DEFAULT NULL,
+  `Create_at` date DEFAULT NULL,
   `Update_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_barang_keluar`
+--
+
+INSERT INTO `tb_barang_keluar` (`id_barang_keluar`, `id_barang`, `id_bagian`, `Jumlah`, `Harga`, `Create_at`, `Update_at`) VALUES
+(3, 'BRG001', 'BGN002', 12, 120000, '2019-12-09', NULL),
+(4, 'BRG002', 'BGN002', 4, 120000, '2019-12-09', NULL);
 
 -- --------------------------------------------------------
 
@@ -94,11 +100,10 @@ CREATE TABLE `tb_barang_keluar` (
 --
 
 CREATE TABLE `tb_barang_masuk` (
-  `id_barang_masuk` smallint(6) NOT NULL,
-  `id_barang` smallint(6) DEFAULT NULL,
+  `id_barang_masuk` smallint(10) NOT NULL,
+  `id_barang` varchar(10) NOT NULL,
   `Jumlah` int(3) DEFAULT NULL,
   `Harga` int(11) DEFAULT NULL,
-  `Id_tipe_barang` smallint(6) DEFAULT NULL,
   `Create_at` date DEFAULT NULL,
   `Update_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -107,10 +112,12 @@ CREATE TABLE `tb_barang_masuk` (
 -- Dumping data for table `tb_barang_masuk`
 --
 
-INSERT INTO `tb_barang_masuk` (`id_barang_masuk`, `id_barang`, `Jumlah`, `Harga`, `Id_tipe_barang`, `Create_at`, `Update_at`) VALUES
-(1, 5, 12, 1221212, 1, '2019-12-04', NULL),
-(2, 5, 2000000, 121212121, 1, '2019-12-04', NULL),
-(3, 5, 24, 20000, 1, '2019-12-04', NULL);
+INSERT INTO `tb_barang_masuk` (`id_barang_masuk`, `id_barang`, `Jumlah`, `Harga`, `Create_at`, `Update_at`) VALUES
+(1, 'BRG001', 12, 120000, '2019-12-09', NULL),
+(2, 'BRG002', 12, 120000, '2019-12-09', NULL),
+(3, 'BRG001', 2, 120000, '2019-12-09', NULL),
+(4, 'BRG001', 12, 300000, '2019-12-09', NULL),
+(5, 'BRG003', 12, 1212122121, '2019-12-09', NULL);
 
 -- --------------------------------------------------------
 
@@ -130,8 +137,9 @@ CREATE TABLE `tb_hak_akses` (
 --
 
 INSERT INTO `tb_hak_akses` (`id_level`, `Description`, `Create_at`, `Update_at`) VALUES
-(1, 'Admin', '2019-11-30 01:20:52', NULL),
-(3, 'Super Admin', '2019-11-30 01:20:33', NULL);
+(1, 'Super Admin', '2019-12-09 10:17:11', NULL),
+(2, 'Kepala Cabang', '2019-12-09 21:14:32', NULL),
+(3, 'Admin', '2019-12-09 21:14:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -172,7 +180,9 @@ CREATE TABLE `tb_operator` (
 --
 
 INSERT INTO `tb_operator` (`id_operator`, `Name`, `Gender`, `Address`, `email_operator`, `Status`, `Create_at`, `Update_at`) VALUES
-(1, 'faris', 'L', 'Gunungkidul', 'ikhsanalfarishy@gmail.com', 'Aktif', '2019-11-28 16:36:42', '2019-12-04 22:39:18');
+(1, 'Admin', 'L', 'Yogyakarta', 'ndarualbert21@gmail.com', 'Aktif', '2019-12-09 10:20:35', '2019-12-09 21:15:17'),
+(2, 'Kepala Cabang', 'L', 'Berbah', 'kepala@gmail.com', 'Aktif', '2019-12-09 21:16:26', '2019-12-09 21:16:28'),
+(3, 'Admin 2', 'P', 'Berbah', 'Admin@gmail.com', 'Aktif', '2019-12-09 21:20:22', '2019-12-09 21:20:24');
 
 -- --------------------------------------------------------
 
@@ -181,7 +191,7 @@ INSERT INTO `tb_operator` (`id_operator`, `Name`, `Gender`, `Address`, `email_op
 --
 
 CREATE TABLE `tb_tipe_barang` (
-  `id_tipe_barang` smallint(6) NOT NULL,
+  `id_tipe_barang` varchar(10) NOT NULL,
   `Name` varchar(30) DEFAULT NULL,
   `Creat_at` datetime DEFAULT NULL,
   `Update_at` datetime DEFAULT NULL
@@ -192,8 +202,8 @@ CREATE TABLE `tb_tipe_barang` (
 --
 
 INSERT INTO `tb_tipe_barang` (`id_tipe_barang`, `Name`, `Creat_at`, `Update_at`) VALUES
-(1, 'ATK', '2019-11-27 15:26:08', '2019-11-27 15:26:08'),
-(2, 'Cetak', '2019-12-04 22:36:34', '2019-12-04 22:36:34');
+('TIPE001', 'Cetak', '2019-12-09 10:26:14', NULL),
+('TIPE002', 'ENUMxxx', '2019-12-09 15:31:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -218,7 +228,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `id_operator`, `id_level`, `username`, `password`, `email`, `creat_at`, `update_at`, `Status`) VALUES
-(1, 1, 1, 'faris', 'faris', NULL, '2019-11-26 19:07:16', NULL, 'Aprove');
+(2, 1, 1, 'Ndaru', '12345', NULL, '2019-12-09 03:22:47', NULL, 'Aprove'),
+(3, 2, 2, 'Ajeng', '12345', NULL, '2019-12-09 14:17:07', NULL, 'Aprove'),
+(4, 3, 3, 'Ajeng123', '12345', NULL, '2019-12-09 14:20:54', NULL, 'Aprove');
 
 --
 -- Indexes for dumped tables
@@ -251,8 +263,7 @@ ALTER TABLE `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_masuk`
   ADD PRIMARY KEY (`id_barang_masuk`),
-  ADD KEY `id_barang_keluar` (`id_barang`),
-  ADD KEY `Id_tipe_barang` (`Id_tipe_barang`);
+  ADD KEY `id_barang_keluar` (`id_barang`);
 
 --
 -- Indexes for table `tb_hak_akses`
@@ -292,28 +303,16 @@ ALTER TABLE `tb_user`
 --
 
 --
--- AUTO_INCREMENT for table `tb_bagian`
---
-ALTER TABLE `tb_bagian`
-  MODIFY `id_bagian` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tb_barang`
---
-ALTER TABLE `tb_barang`
-  MODIFY `id_barang` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_keluar`
-  MODIFY `id_barang_keluar` smallint(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_barang_keluar` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_barang_masuk`
 --
 ALTER TABLE `tb_barang_masuk`
-  MODIFY `id_barang_masuk` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_barang_masuk` smallint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_hak_akses`
@@ -331,43 +330,30 @@ ALTER TABLE `tb_kepala_cabang`
 -- AUTO_INCREMENT for table `tb_operator`
 --
 ALTER TABLE `tb_operator`
-  MODIFY `id_operator` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tb_tipe_barang`
---
-ALTER TABLE `tb_tipe_barang`
-  MODIFY `id_tipe_barang` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_operator` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `tb_barang`
---
-ALTER TABLE `tb_barang`
-  ADD CONSTRAINT `tb_barang_ibfk_1` FOREIGN KEY (`id_tipe_barang`) REFERENCES `tb_tipe_barang` (`id_tipe_barang`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_barang_ibfk_2` FOREIGN KEY (`id_operator`) REFERENCES `tb_operator` (`id_operator`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_keluar`
-  ADD CONSTRAINT `tb_barang_keluar_ibfk_1` FOREIGN KEY (`id_bagian`) REFERENCES `tb_bagian` (`id_bagian`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_barang_keluar_ibfk_2` FOREIGN KEY (`id_barang`) REFERENCES `tb_barang` (`id_barang`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_barang_keluar_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `tb_barang` (`id_barang`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_barang_keluar_ibfk_2` FOREIGN KEY (`id_bagian`) REFERENCES `tb_bagian` (`id_bagian`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_barang_masuk`
 --
 ALTER TABLE `tb_barang_masuk`
-  ADD CONSTRAINT `tb_barang_masuk_ibfk_2` FOREIGN KEY (`id_barang`) REFERENCES `tb_barang` (`id_barang`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_barang_masuk_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `tb_barang` (`id_barang`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_kepala_cabang`

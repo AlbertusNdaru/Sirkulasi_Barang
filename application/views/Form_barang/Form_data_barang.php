@@ -1,6 +1,6 @@
 <div class="col">
 
-    <form action="<?= base_url('reportBarang')?>" method="POST">
+    <form action="<?= base_url('reportBarang')?>" target="blank" method="POST">
         <a style="margin-top: -7px;" href="<?= base_url('formaddbarang'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
             <button type="button" class="btn btn-primary">Add Barang</button>
         </a>

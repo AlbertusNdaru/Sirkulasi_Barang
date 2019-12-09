@@ -3,7 +3,7 @@
         <button type="button" class="btn btn-primary">Add Barang Masuk</button>
     </a> -->
 
-    <form action="<?= base_url('reportBarangMasuk')?>" method="POST">
+    <form action="<?= base_url('reportBarangMasuk')?>" target="blank" method="POST">
         <a style="margin-top: -7px;" href="<?= base_url('viewaddbarangmasuk'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
             <button type="button" class="btn btn-primary">Add Barang Masuk</button>
         </a>
