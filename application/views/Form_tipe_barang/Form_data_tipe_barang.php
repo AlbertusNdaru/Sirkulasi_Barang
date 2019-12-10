@@ -20,9 +20,9 @@
                 <th scope="col">Nama</th>
                 <th scope="col">Creat at</th>
                 <th scope="col">Update at</th>
-                <?php if($_SESSION['Admin']->id_level == 1) {?>
-                <th scope="col">Action</th>
-                <?php }?>
+                <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                  <th scope="col">Action</th>
+                <?php } ?>
               </tr>
             </thead>
             <tbody>
@@ -44,19 +44,19 @@
                     <td><?= $o->Update_at ?></td>
                   </div>
         </div>
-        <?php if($_SESSION['Admin']->id_level == 1) {?>
-        <div class="adge badge-dot mr-6">
-          <td class="center">
-            <a class="btn btn-info" href="<?= base_url('formedittipebarang/' . $o->id_tipe_barang . '') ?>">
-              <i class="glyphicon glyphicon-edit icon-white"></i>
-              Edit
-            </a>
-            <a class="btn btn-danger" href="<?= base_url('deleteTipebarang/' . $o->id_tipe_barang . '') ?>">
-              <i class="glyphicon glyphicon-trash icon-white"></i>
-              Delete
-            </a></td>
-        </div>
-        <?php }?>
+        <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+          <div class="adge badge-dot mr-6">
+            <td class="center">
+              <a class="btn btn-info" href="<?= base_url('formedittipebarang/' . $o->id_tipe_barang . '') ?>">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+              </a>
+              <a class="btn btn-danger" href="<?= base_url('deleteTipebarang/' . $o->id_tipe_barang . '') ?>">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+              </a></td>
+          </div>
+        <?php } ?>
       </div>
       </tr>
     <?php
@@ -65,31 +65,6 @@
     </tbody>
     </table>
     </div>
-  </div>
-  <div class="card-footer py-4">
-    <nav aria-label="...">
-      <ul class="pagination justify-content-end mb-0">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1">
-            <i class="fas fa-angle-left"></i>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item active">
-          <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#">
-            <i class="fas fa-angle-right"></i>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
   </div>
 </div>
 </div>
