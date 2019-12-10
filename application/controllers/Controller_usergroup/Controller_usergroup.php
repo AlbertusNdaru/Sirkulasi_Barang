@@ -10,23 +10,27 @@ class Controller_usergroup extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_usergroup');
+        $this->load->model('Model_barang');
     }
 
     function get_usergroup()
     {
         $data['usergroup'] = $this->Model_usergroup->get_user_group();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_usergroup/Form_data_usergroup', $data);
     }
 
     function viewFormEditusergroup($id_level)
     {
         $data['editusergroup'] = $this->Model_usergroup->get_user_group_by_id($id_level);
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_usergroup/Form_edit_usergroup', $data);
     }
 
     function viewFormAddUsergroup()
     {
-        $this->template->load('Template/Template_admin', 'Form_usergroup/Form_add_usergroup');
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $this->template->load('Template/Template_admin', 'Form_usergroup/Form_add_usergroup',$data);
     }
 
     function addusergroup() // ini jangan dirubah 

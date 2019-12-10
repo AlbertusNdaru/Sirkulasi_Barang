@@ -7,11 +7,13 @@ class Controller_tipebarang extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_tipebarang');
+        $this->load->model('Model_barang');
     }
 
     function get_tipebarang()
     {
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_tipe_barang/Form_data_tipe_barang', $data);
     }
@@ -19,12 +21,14 @@ class Controller_tipebarang extends CI_Controller
     function viewFormEdittipebarang($id_tipebarang)
     {
         $data['edittipebarang'] = $this->Model_tipebarang->get_tipe_barang_by_id($id_tipebarang);
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_tipe_barang/Form_edit_tipe_barang', $data);
     }
 
     function viewFormAddTipebarang()
     {
-        $this->template->load('Template/Template_admin', 'Form_tipe_barang/Form_add_tipe_barang');
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $this->template->load('Template/Template_admin', 'Form_tipe_barang/Form_add_tipe_barang',$data);
     }
 
     function addtipebarang()

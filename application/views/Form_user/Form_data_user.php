@@ -15,7 +15,9 @@
                 <th scope="col">Level Id</th>
                 <th scope="col">Nama Operator</th>
                 <th scope="col">Status</th>
-                <th scope="col">Action</th>
+                <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                  <th scope="col">Action</th>
+                <?php } ?>
               </tr>
             </thead>
             <tbody>
@@ -45,9 +47,9 @@
                     <td class="center"><span class="badge badge-success <?php if ($o->Status == 'Aprove') echo 'label-default';
                                                                           else echo 'badge badge-danger'; ?>"><?= $o->Status ?></span></td>
                   </div>
-
-                  <div class="adge badge-dot mr-6">
-                    <td class="center"><?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                  <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                    <div class="adge badge-dot mr-6">
+                      <td class="center">
                         <?php if ($o->Status == "NotAprove") { ?>
                           <a class="btn badge-success" style="width: 94px;" href="<?= base_url('editstatususer/' . $o->id_user . '/Aprove') ?>">
                             <i class="glyphicon glyphicon-ok icon-white"></i>
@@ -58,16 +60,17 @@
                               NotAprove
                             <?php } ?>
                             </a>
-                          <?php } ?>
-                          <a class="btn btn-info" href="<?= base_url('formedituser/' . $o->id_user . '') ?>">
-                            <i class="glyphicon glyphicon-edit icon-white"></i>
-                            Edit
-                          </a>
-                          <a class="btn btn-danger" href="<?= base_url('deleteuser/' . $o->id_user . '') ?>">
-                            <i class="glyphicon glyphicon-trash icon-white"></i>
-                            Delete
-                          </a></td>
-                  </div>
+                            <a class="btn btn-info" href="<?= base_url('formedituser/' . $o->id_user . '') ?>">
+                              <i class="glyphicon glyphicon-edit icon-white"></i>
+                              Edit
+                            </a>
+                            <a class="btn btn-danger" href="<?= base_url('deleteuser/' . $o->id_user . '') ?>">
+                              <i class="glyphicon glyphicon-trash icon-white"></i>
+                              Delete
+                            </a>
+                      </td>
+                    </div>
+                  <?php } ?>
                 </tr>
               <?php
                 $i++;

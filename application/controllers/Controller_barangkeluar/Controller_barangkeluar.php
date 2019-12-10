@@ -16,6 +16,7 @@ class Controller_barangkeluar extends CI_Controller
     {
         $data['kategori'] = $this->Model_tipebarang->get_tipe_barang();
         $data['bagian'] = $this->Model_bagian->get_bagian();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_barang_keluar/Form_add_barang_keluar', $data);
     }
@@ -23,6 +24,7 @@ class Controller_barangkeluar extends CI_Controller
     function data_barang_keluar()
     {
         $data['barang'] = $this->Model_barang_keluar->get_barang_keluar();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_barang_keluar/Form_data_barangkeluar', $data);
     }
@@ -40,6 +42,7 @@ class Controller_barangkeluar extends CI_Controller
     {
         $data['barang'] = $this->Model_barang->get_barang_by_id($id_barang);
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_barang/Form_edit_barang', $data);
     }
 

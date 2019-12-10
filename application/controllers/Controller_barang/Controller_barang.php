@@ -12,7 +12,9 @@ class Controller_barang extends CI_Controller
 
     function get_Barang()
     {
+
         $data['barang'] = $this->Model_barang->get_barang();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
     }
@@ -38,12 +40,14 @@ class Controller_barang extends CI_Controller
     {
         $data['barang'] = $this->Model_barang->get_barang_by_id($id_barang);
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_barang/Form_edit_barang', $data);
     }
 
     function viewFormAddBarang()
     {
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang',$data);
     }
 

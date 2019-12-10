@@ -1,8 +1,10 @@
-<div class="col">
-  <a href="<?= base_url('formaddtipebarang'); ?>" class="btn addTipedata btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
-    <button type="button" class="btn btn-primary">Add Tipe Barang</button>
-  </a>
-</div>
+<?php if ($_SESSION['Admin']->id_level == 1) { ?>
+  <div class="col">
+    <a href="<?= base_url('formaddtipebarang'); ?>" class="btn addTipedata btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+      <button type="button" class="btn btn-primary">Add Tipe Barang</button>
+    </a>
+  </div>
+<?php } ?>
 <div class="row">
   <div class="col">
     <div class="card shadow">
@@ -18,7 +20,9 @@
                 <th scope="col">Nama</th>
                 <th scope="col">Creat at</th>
                 <th scope="col">Update at</th>
+                <?php if($_SESSION['Admin']->id_level == 1) {?>
                 <th scope="col">Action</th>
+                <?php }?>
               </tr>
             </thead>
             <tbody>
@@ -40,7 +44,7 @@
                     <td><?= $o->Update_at ?></td>
                   </div>
         </div>
-
+        <?php if($_SESSION['Admin']->id_level == 1) {?>
         <div class="adge badge-dot mr-6">
           <td class="center">
             <a class="btn btn-info" href="<?= base_url('formedittipebarang/' . $o->id_tipe_barang . '') ?>">
@@ -52,6 +56,7 @@
               Delete
             </a></td>
         </div>
+        <?php }?>
       </div>
       </tr>
     <?php

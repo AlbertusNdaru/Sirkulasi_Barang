@@ -7,11 +7,13 @@ class Controller_bagian extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_bagian');
+        $this->load->model('Model_barang');
     }
 
     function get_Bagian()
     {
         $data['bagian'] = $this->Model_bagian->get_bagian();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_bagian/Form_data_bagian', $data);
     }
@@ -19,12 +21,14 @@ class Controller_bagian extends CI_Controller
     function viewFormEditbagian($id_bagian)
     {
         $data['editbagian'] = $this->Model_bagian->get_bagian_by_id($id_bagian);
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_bagian/Form_edit_bagian', $data);
     }
 
     function viewFormAddBagian()
     {
-        $this->template->load('Template/Template_admin', 'Form_bagian/Form_add_bagian');
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $this->template->load('Template/Template_admin', 'Form_bagian/Form_add_bagian',$data);
     }
 
     function addbagian()

@@ -1,8 +1,10 @@
-<div class="col">
-  <a href="<?= base_url('formaddoperator'); ?>" class="btn addOperator btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
-    <button type="button" class="btn btn-primary">Add Operator</button>
-  </a>
-</div>
+<?php if ($_SESSION['Admin']->id_level == 1) { ?>
+  <div class="col">
+    <a href="<?= base_url('formaddoperator'); ?>" class="btn addOperator btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+      <button type="button" class="btn btn-primary">Add Operator</button>
+    </a>
+  </div>
+<?php } ?>
 <div class="row">
   <div class="col">
     <div class="card shadow">
@@ -20,8 +22,9 @@
                 <th scope="col">Address</th>
                 <th scope="col">Email</th>
                 <th scope="col">Status</th>
-                <th scope="col">Action</th>
-
+                <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                  <th scope="col">Action</th>
+                <?php } ?>
               </tr>
             </thead>
             <tbody>
@@ -52,8 +55,9 @@
                                                             else echo 'badge badge-danger'; ?>"><?= $o->Status ?></span></td>
     </div>
   </div>
-  <div class="adge badge-dot mr-6">
-    <td class="center"><?php if ($_SESSION['Admin']->id_level == 1) { ?>
+  <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+    <div class="adge badge-dot mr-6">
+      <td class="center">
         <?php if ($o->Status == "Off") { ?>
           <a class="btn badge-success" style="width: 64px;" href="<?= base_url('editstatusoperator/' . $o->id_operator . '/Aktif') ?>">
             <i class="glyphicon glyphicon-ok icon-white"></i>
@@ -64,16 +68,17 @@
               Off
             <?php } ?>
             </a>
-          <?php } ?>
-          <a class="btn btn-info" href="<?= base_url('formeditoperator/' . $o->id_operator . '') ?>">
-            <i class="glyphicon glyphicon-edit icon-white"></i>
-            Edit
-          </a>
-          <a class="btn btn-danger" href="<?= base_url('deleteoperator/' . $o->id_operator . '') ?>">
-            <i class="glyphicon glyphicon-trash icon-white"></i>
-            Delete
-          </a></td>
-  </div>
+            <a class="btn btn-info" href="<?= base_url('formeditoperator/' . $o->id_operator . '') ?>">
+              <i class="glyphicon glyphicon-edit icon-white"></i>
+              Edit
+            </a>
+            <a class="btn btn-danger" href="<?= base_url('deleteoperator/' . $o->id_operator . '') ?>">
+              <i class="glyphicon glyphicon-trash icon-white"></i>
+              Delete
+            </a>
+      </td>
+    </div>
+  <?php } ?>
 </div>
 </tr>
 <?php

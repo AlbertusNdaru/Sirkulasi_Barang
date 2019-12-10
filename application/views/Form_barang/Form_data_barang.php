@@ -1,7 +1,7 @@
 <div class="col">
 
-    <form action="<?= base_url('reportBarang')?>" target="blank" method="POST">
-        <a style="margin-top: -7px;" href="<?= base_url('formaddbarang'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+    <form action="<?= base_url('reportBarang') ?>" target="blank" method="POST">
+        <a style="margin-top: -7px;" <?php if ($_SESSION['Admin']->id_level == 1) { ?> href="<?= base_url('formaddbarang'); ?>" <?php } ?> class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
             <button type="button" class="btn btn-primary">Add Barang</button>
         </a>
 
@@ -31,7 +31,9 @@
                                     <th scope="col">Satuan</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Total Harga</th>
-                                    <th scope="col">Action</th>
+                                    <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                                        <th scope="col">Action</th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,17 +73,19 @@
                                                     echo $total ?></td>
 
                                         </div>
-                                        <div class="adge badge-dot mr-6">
-                                            <td class="center">
-                                                <a class="btn btn-info" href="<?= base_url('formeditbarang/' . $o->id_barang . '') ?>">
-                                                    <i class="glyphicon glyphicon-edit icon-white"></i>
-                                                    Edit
-                                                </a>
-                                                <a class="btn btn-danger" href="<?= base_url('deleteBarang/' . $o->id_barang . '') ?>">
-                                                    <i class="glyphicon glyphicon-trash icon-white"></i>
-                                                    Delete
-                                                </a></td>
-                                        </div>
+                                        <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                                            <div class="adge badge-dot mr-6">
+                                                <td class="center">
+                                                    <a class="btn btn-info" href="<?= base_url('formeditbarang/' . $o->id_barang . '') ?>">
+                                                        <i class="glyphicon glyphicon-edit icon-white"></i>
+                                                        Edit
+                                                    </a>
+                                                    <a class="btn btn-danger" href="<?= base_url('deleteBarang/' . $o->id_barang . '') ?>">
+                                                        <i class="glyphicon glyphicon-trash icon-white"></i>
+                                                        Delete
+                                                    </a></td>
+                                            </div>
+                                        <?php } ?>
                     </div>
                     </tr>
                 <?php
@@ -154,20 +158,18 @@
 
     }
 
-    document.getElementById('tanggal1').value="";
-    document.getElementById('tanggal2').value="";
+    document.getElementById('tanggal1').value = "";
+    document.getElementById('tanggal2').value = "";
 
-    function datevalidation()
-    {
+    function datevalidation() {
         var x = document.getElementById("tanggal1").value;
-        document.getElementById('tanggal2').min= x;
+        document.getElementById('tanggal2').min = x;
         $('#tanggal2').removeAttr('disabled');
         console.log(x);
-        if (x=="")
-        {
+        if (x == "") {
 
-            $('#tanggal2').attr('disabled','true');
-            document.getElementById('tanggal2').value="";
+            $('#tanggal2').attr('disabled', 'true');
+            document.getElementById('tanggal2').value = "";
         }
     }
 </script>

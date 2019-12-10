@@ -2,8 +2,8 @@
     <!-- <a href="<?= base_url('viewaddbarangkeluar'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
         <button type="button" class="btn btn-primary">Add Barang Keluar</button>
     </a> -->
-    <form action="<?= base_url('reportBarangKeluar')?>" target="blank" method="POST">
-        <a style="margin-top: -7px;" href="<?= base_url('viewaddbarangkeluar'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+    <form action="<?= base_url('reportBarangKeluar') ?>" target="blank" method="POST">
+        <a style="margin-top: -7px;" <?php if ($_SESSION['Admin']->id_level == 1) { ?> href="<?= base_url('viewaddbarangkeluar'); ?>" <?php } ?> class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
             <button type="button" class="btn btn-primary">Add Barang Keluar</button>
         </a>
 
@@ -142,20 +142,18 @@
 
     }
 
-    document.getElementById('tanggal1').value="";
-    document.getElementById('tanggal2').value="";
+    document.getElementById('tanggal1').value = "";
+    document.getElementById('tanggal2').value = "";
 
-    function datevalidation()
-    {
+    function datevalidation() {
         var x = document.getElementById("tanggal1").value;
-        document.getElementById('tanggal2').min= x;
+        document.getElementById('tanggal2').min = x;
         $('#tanggal2').removeAttr('disabled');
         console.log(x);
-        if (x=="")
-        {
+        if (x == "") {
 
-            $('#tanggal2').attr('disabled','true');
-            document.getElementById('tanggal2').value="";
+            $('#tanggal2').attr('disabled', 'true');
+            document.getElementById('tanggal2').value = "";
         }
     }
 </script>

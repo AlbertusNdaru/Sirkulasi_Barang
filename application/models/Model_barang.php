@@ -12,6 +12,18 @@ class Model_barang extends CI_Model
         return $dataBarang;
     }
 
+    function getlimitstokbarang()
+    {
+        $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe');
+        $this->db->from('tb_barang as a');
+        $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
+        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
+        $this->db->where('deleted',0);
+        $this->db->where('Jumlah <',10);
+        $dataBarang = $this->db->get()->result();
+        return $dataBarang;
+    }
+
     function get_id_barang_max()
     {
         $this->db->select("max(id_barang) as maxKode");

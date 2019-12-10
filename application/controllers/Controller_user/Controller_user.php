@@ -8,11 +8,13 @@ class Controller_user extends CI_Controller{
         $this->load->model('Model_user');
         $this->load->model('Model_operator');
         $this->load->model('Model_usergroup');
+        $this->load->model('Model_barang');
     }
 
     function get_user()
     {
         $data['user']= $this->Model_user->get_user();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin','Form_user/Form_data_user',$data);
     }
 
@@ -20,6 +22,7 @@ class Controller_user extends CI_Controller{
     {
         $data['edituser'] = $this->Model_user->get_user_by_id($id_user);
         $data['usergroup'] = $this->Model_usergroup->get_user_group();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin','Form_user/Form_edit_user', $data);
     }
 

@@ -6,23 +6,27 @@ class Controller_operator extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Model_operator');
+        $this->load->model('Model_barang');
     }
 
     function get_operator()
     {
         $data['operator'] = $this->Model_operator->get_operator();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin','Form_operator/Form_data_operator', $data);
     }
 
     function viewFormEditOperator($id_operator)
     {
         $data['editoperator'] = $this->Model_operator->get_operator_by_id($id_operator);
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin','Form_operator/Form_edit_operator', $data);
     }
 
     function viewFormAddOperator()
     {
-        $this->template->load('Template/Template_admin','Form_operator/Form_add_operator');
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $this->template->load('Template/Template_admin','Form_operator/Form_add_operator',$data);
     }
 
     function addoperator()
