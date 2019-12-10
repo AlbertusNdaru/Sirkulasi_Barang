@@ -1,7 +1,7 @@
 <div class="col">
 
     <form action="<?= base_url('reportBarang') ?>" target="blank" method="POST">
-        <a style="margin-top: -7px;" <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2 ) { ?> href="<?= base_url('formaddbarang'); ?>" <?php } ?> class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+        <a style="margin-top: -7px;" <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 3 ) { ?> href="<?= base_url('formaddbarang'); ?>" <?php } ?> class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
             <button type="button" class="btn btn-primary">Add Barang</button>
         </a>
 
@@ -31,7 +31,7 @@
                                     <th scope="col">Satuan</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Total Harga</th>
-                                    <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2 ) { ?>
+                                    <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 3 ) { ?>
                                         <th scope="col">Action</th>
                                     <?php } ?>
                                 </tr>
@@ -73,7 +73,7 @@
                                                     echo $total ?></td>
 
                                         </div>
-                                        <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2 ) { ?>
+                                        <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 3 ) { ?>
                                             <div class="adge badge-dot mr-6">
                                                 <td class="center">
                                                     <a class="btn btn-info" href="<?= base_url('formeditbarang/' . $o->id_barang . '') ?>">

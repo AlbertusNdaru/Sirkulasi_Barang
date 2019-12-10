@@ -3,7 +3,7 @@
         <button type="button" class="btn btn-primary">Add Barang Keluar</button>
     </a> -->
     <form action="<?= base_url('reportBarangKeluar') ?>" target="blank" method="POST">
-        <a style="margin-top: -7px;" <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2 ) { ?> href="<?= base_url('viewaddbarangkeluar'); ?>" <?php } ?> class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+        <a style="margin-top: -7px;" <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 3 ) { ?> href="<?= base_url('viewaddbarangkeluar'); ?>" <?php } ?> class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
             <button type="button" class="btn btn-primary">Add Barang Keluar</button>
         </a>
 
