@@ -23,7 +23,7 @@ class Controller_usergroup extends CI_Controller
     function viewFormEditusergroup($id_level)
     {
         $data['editusergroup'] = $this->Model_usergroup->get_user_group_by_id($id_level);
-        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $data['stoklimit']     = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_usergroup/Form_edit_usergroup', $data);
     }
 
@@ -37,7 +37,7 @@ class Controller_usergroup extends CI_Controller
     {
         $usergroup = array(
             'Description' => $this->input->post('hakakses'),
-            'Create_at' => get_current_date()
+            'Create_at'   => get_current_date()
         );
         $addusergroup = $this->Model_usergroup->add_usergroup($usergroup); // yg ini yg dicek 
         if ($addusergroup) {
@@ -54,7 +54,7 @@ class Controller_usergroup extends CI_Controller
         $id_level = $this->input->post('submitid');
         $usergroup = array(
             'Description' => $this->input->post('hakakses'),
-            'Update_at' => get_current_date()
+            'Update_at'   => get_current_date()
         );
         $editusergroup = $this->Model_usergroup->update_user_group($id_level, $usergroup);
         if ($editusergroup) {

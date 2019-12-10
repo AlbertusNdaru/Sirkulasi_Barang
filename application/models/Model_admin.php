@@ -19,7 +19,7 @@ class Model_admin extends CI_Model
     {
         $this->db->select('tb_user.*,tb_operator.Status as StatusOperator, tb_operator.Name as NamaOperator');
         $this->db->from('tb_user');
-        $this->db->join('tb_operator', 'tb_operator.id_operator=tb_user.id_operator');
+        $this->db->join('tb_operator', 'tb_operator.id_operator = tb_user.id_operator');
         $this->db->where("tb_user.username", $username);
         $this->db->where("tb_user.password like BINARY", $password);
         $this->db->where("tb_operator.Status", 'Aktif');
