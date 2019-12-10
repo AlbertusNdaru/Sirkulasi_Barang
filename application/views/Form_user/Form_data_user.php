@@ -32,7 +32,7 @@
                     <td><?= $o->username ?></td>
                   </div>
                   <div class="adge badge-dot mr-4">
-                    <td><?= $o->password ?></td>
+                    <td><?php if($_SESSION['Admin']->id_level ==1) {echo $o->password;} else {echo "**************";} ?></td>
                   </div>
 
                   <div class="adge badge-dot mr-4">
