@@ -31,7 +31,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Jumlah Keluar</label>
-                <input required id="jmlkeluar" min="1" id="jumlahid" class="form-control form-control-alternative" name="jumlah" type="number">
+                <input required  min="1" id="jumlahid" class="form-control form-control-alternative" name="jumlah" type="number">
               </div>
             </div>
           </div>
@@ -79,7 +79,7 @@
           $('#barangbykat').append('<option value="' + dataalat[i]['id_barang'] + '">' + dataalat[i]['Name'] + '</option>')
         }
         $('#barangbykat').selectpicker('refresh');
-        $('#jmlkeluar').val("");
+        $('#jumlahid').val("");
         $('#hargaid').val("");
 
 
