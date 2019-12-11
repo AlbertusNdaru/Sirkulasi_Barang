@@ -14,7 +14,7 @@ class Controller_barang extends CI_Controller
     {
 
         $data['barang'] = $this->Model_barang->get_barang();
-        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang(); // in yg panggil data stok kurang dari 10 trs di lempar di view
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
     }

@@ -2,7 +2,7 @@
   <div class="card shadow">
     <div class="card-header border-0">
       <form name="fromaddusergroup" action="<?= base_url('Controller_usergroup/Controller_usergroup/editusergroup') ?>" method="post">
-        <h6 class="heading-small text-muted mb-4">Add Operator</h6>
+        <h6 class="heading-small text-muted mb-4">Edite Usergroup</h6>
         <hr class="my-4" />
         <div class="pl-lg-4">
           <div class="row">
