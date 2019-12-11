@@ -11,7 +11,7 @@ class Controller_operator extends CI_Controller
 
     function get_operator()
     {
-        $data['operator'] = $this->Model_operator->get_operator();
+        $data['operator']  = $this->Model_operator->get_operator();
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin','Form_operator/Form_data_operator', $data);
     }
@@ -19,7 +19,7 @@ class Controller_operator extends CI_Controller
     function viewFormEditOperator($id_operator)
     {
         $data['editoperator'] = $this->Model_operator->get_operator_by_id($id_operator);
-        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $data['stoklimit']    = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin','Form_operator/Form_edit_operator', $data);
     }
 
@@ -32,11 +32,11 @@ class Controller_operator extends CI_Controller
     function addoperator()
     {
         $operator =array(
-        'Name' => $this->input->post('name'),
-        'Gender' => $this->input->post('gender'),
-        'Address' => $this->input->post('address'),
-        'email_operator'=> $this->input->post('email_operator'),
-        'Create_at'=> get_current_date()
+        'Name'           => $this->input->post('name'),
+        'Gender'         => $this->input->post('gender'),
+        'Address'        => $this->input->post('address'),
+        'email_operator' => $this->input->post('email_operator'),
+        'Create_at'      => get_current_date()
         );
         $addoperator = $this->Model_operator->add_operator($operator);
         if ($addoperator){
@@ -52,11 +52,11 @@ class Controller_operator extends CI_Controller
     {
         $id_operator = $this->input->post('idoperator');
         $operator = array(
-        'Name' => $this->input->post('name'),
-        'Gender' => $this->input->post('gender'),
-        'Address' => $this->input->post('address'),
-        'email_operator'=> $this->input->post('email_operator'),
-        'Update_at'=> get_current_date()
+        'Name'           => $this->input->post('name'),
+        'Gender'         => $this->input->post('gender'),
+        'Address'        => $this->input->post('address'),
+        'email_operator' => $this->input->post('email_operator'),
+        'Update_at'      => get_current_date()
         );
         // echo json_encode($id_operator);
         $editoperator = $this->Model_operator->update_operator($id_operator,$operator);

@@ -18,10 +18,10 @@ class Reg_admin extends CI_Controller
 
     function add_admin()
     {
-        $username  = $this->input->post('Username');
-        $password     = $this->input->post('Password');
-        $id_level     = $this->input->post('level');
-        $Email        = $this->input->post('email');
+        $username = $this->input->post('Username');
+        $password = $this->input->post('Password');
+        $id_level = $this->input->post('level');
+        $Email    = $this->input->post('email');
         $dataoperator = $this->Model_operator->get_operator_by_email($Email);
         if ($dataoperator) {
             if ($this->Model_admin->get_admin_by_id_operator($dataoperator->id_operator)) {
@@ -29,9 +29,9 @@ class Reg_admin extends CI_Controller
                 redirect('regadmin');
             } else {
                 $dataAdmin = array(
-                    'username' => $username,
-                    'password' => $password,
-                    'id_level' => $id_level,
+                    'username'    => $username,
+                    'password'    => $password,
+                    'id_level'    => $id_level,
                     'id_operator' => $dataoperator->id_operator
                 );
                 $reg_admin = $this->Model_admin->add_admin($dataAdmin);

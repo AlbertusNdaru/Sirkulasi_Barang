@@ -13,7 +13,7 @@ class Controller_tipebarang extends CI_Controller
     function get_tipebarang()
     {
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
-        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_tipe_barang/Form_data_tipe_barang', $data);
     }
@@ -21,7 +21,7 @@ class Controller_tipebarang extends CI_Controller
     function viewFormEdittipebarang($id_tipebarang)
     {
         $data['edittipebarang'] = $this->Model_tipebarang->get_tipe_barang_by_id($id_tipebarang);
-        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $data['stoklimit']      = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_tipe_barang/Form_edit_tipe_barang', $data);
     }
 
@@ -33,12 +33,12 @@ class Controller_tipebarang extends CI_Controller
 
     function addtipebarang()
     {
-        $data =$this->Model_tipebarang->get_id_tipe_max();
-		$id_barang = $data->maxKode;
-		$noUrut = (int) substr($id_barang,4,3);
+        $data        = $this->Model_tipebarang->get_id_tipe_max();
+		$id_barang   = $data->maxKode;
+		$noUrut      = (int) substr($id_barang,4,3);
 		$noUrut++;
-		$char = "TIPE";
-        $newID = $char. sprintf("%03s",$noUrut);
+		$char        = "TIPE";
+        $newID       = $char. sprintf("%03s",$noUrut);
         
         $id_tipe = $newID;
         $tipebarang = array(
@@ -60,7 +60,7 @@ class Controller_tipebarang extends CI_Controller
     {
         $id_tipebarang = $this->input->post('submitid');
         $tipebarang = array(
-            'Name' => $this->input->post('name'),
+            'Name'      => $this->input->post('name'),
             'update_at' => get_current_date()
         );
         $edittipebarang = $this->Model_tipebarang->update_tipe_barang($id_tipebarang, $tipebarang);
