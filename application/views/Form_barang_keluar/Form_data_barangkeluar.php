@@ -1,17 +1,22 @@
-<div class="col">
-    <!-- <a href="<?= base_url('viewaddbarangkeluar'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+<div class="row">
+    <div class="col">
+        <!-- <a href="<?= base_url('viewaddbarangkeluar'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
         <button type="button" class="btn btn-primary">Add Barang Keluar</button>
     </a> -->
-    <form action="<?= base_url('reportBarangKeluar') ?>" target="blank" method="POST">
-        <a style="margin-top: -7px;" <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 3 ) { ?> href="<?= base_url('viewaddbarangkeluar'); ?>" <?php } ?> class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
-            <button type="button" class="btn btn-primary">Add Barang Keluar</button>
-        </a>
+        <form action="<?= base_url('reportBarangKeluar') ?>" target="blank" method="POST">
+            <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
+                <a style="margin-top: -7px;" href="<?= base_url('viewaddbarangkeluar'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+                    <button type="button" style="float: left" class="btn btn-primary">Add Barang Keluar</button>
+                </a>
+            <?php } ?>
 
-        <button type="submit" style="float: right" type="button" class="btn btn-primary">Cetak Barang Keluar</button>
-        <input id="tanggal2" required disabled name="tanggal2" style="float: right; margin-top: 4px;  margin-right: 5px; margin-left: 5px" type="date"><label style="float: right;  margin-top: 5px;"> - </label>
-        <input id="tanggal1" required name="tanggal1" onchange="datevalidation()" style="float: right; margin-top: 4px;  margin-right: 5px;" type="date">
-    </form>
+            <button type="submit" style="float: right" type="button" class="btn btn-primary">Cetak Barang Keluar</button>
+            <input id="tanggal2" required disabled name="tanggal2" style="float: right; margin-top: 4px;  margin-right: 5px; margin-left: 5px" type="date"><label style="float: right;  margin-top: 5px;"> - </label>
+            <input id="tanggal1" required name="tanggal1" onchange="datevalidation()" style="float: right; margin-top: 4px;  margin-right: 5px;" type="date">
+        </form>
+    </div>
 </div>
+<br>
 <div class="row">
     <div class="col">
         <div class="card shadow">
@@ -83,6 +88,8 @@
     </div>
 </div>
 </div>
+
+
 
 <script>
     <?php if (!empty($this->session->flashdata('Status'))) { ?>

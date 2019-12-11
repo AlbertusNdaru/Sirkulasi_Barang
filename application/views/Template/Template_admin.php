@@ -119,7 +119,8 @@
                 <h6 class="dropdown-header">
                   Alerts Center
                 </h6>
-                <?php foreach ($stoklimit as $s) { ?> <!--ini perulangan untuk cetak datanya apa aja yg kurang dari 10 tadi -->
+                <?php foreach ($stoklimit as $s) { ?>
+                  <!--ini perulangan untuk cetak datanya apa aja yg kurang dari 10 tadi -->
                   <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="mr-3">
                       <div class="icon-circle bg-primary">
@@ -166,20 +167,21 @@
         <!-- /.container-fluid -->
 
       </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Sirkulasi Barang</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright &copy; Sirkulasi Barang</span>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
+
+  </div>
+  <!-- End of Content Wrapper -->
 
   </div>
   <!-- End of Page Wrapper -->

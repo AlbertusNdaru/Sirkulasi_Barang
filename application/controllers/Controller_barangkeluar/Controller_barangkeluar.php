@@ -29,7 +29,7 @@ class Controller_barangkeluar extends CI_Controller
         $this->template->load('Template/Template_admin', 'Form_barang_keluar/Form_data_barangkeluar', $data);
     }
 
-    
+
     function get_Barang_by_id()
     {
         $kategori       = $this->input->post('id');
@@ -49,7 +49,7 @@ class Controller_barangkeluar extends CI_Controller
     function viewFormAddBarang()
     {
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
-        $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang',$data);
+        $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang', $data);
     }
 
     function addbarangKeluar()
@@ -63,8 +63,8 @@ class Controller_barangkeluar extends CI_Controller
         );
         $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
         $barangedit = array(
-                'Jumlah' =>  $databarang->Jumlah - $this->input->post('jumlah'),
-                'Harga' => $this->input->post('harga')
+            'Jumlah' =>  $databarang->Jumlah - $this->input->post('jumlah'),
+            'Harga' => $this->input->post('harga')
         );
         $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);
         $add_barang = $this->Model_barang_keluar->add_barang_keluar($barang);

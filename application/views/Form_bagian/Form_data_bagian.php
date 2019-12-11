@@ -1,4 +1,4 @@
-<?php if ($_SESSION['Admin']->id_level == 1) { ?>
+<?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
     <div class="col">
         <a href="<?= base_url('formaddbagian'); ?>" class="btn addBagian btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
             <button type="button" class="btn btn-primary">Add Bagian</button>
@@ -18,7 +18,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Bagian</th>
-                                <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                                <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
                                     <th scope="col">Action</th>
                                 <?php } ?>
                             </tr>
@@ -36,7 +36,7 @@
                                     </div>
 
                 </div>
-                <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
                     <div class="adge badge-dot mr-6">
                         <td class="center">
                             <a class="btn btn-info" href="<?= base_url('formeditbagian/' . $o->id_bagian . '') ?>">
@@ -61,7 +61,7 @@
 
 </div>
 </div>
-</div>
+
 
 <script>
     <?php if (!empty($this->session->flashdata('Status'))) { ?>
