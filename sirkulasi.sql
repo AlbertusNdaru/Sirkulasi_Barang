@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2019 at 03:42 AM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Dec 12, 2019 at 05:25 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,12 +52,12 @@ CREATE TABLE `tb_barang` (
   `id_operator` varchar(10) NOT NULL,
   `id_tipe_barang` varchar(10) NOT NULL,
   `Name` varchar(20) DEFAULT NULL,
-  `Jumlah` int(11) DEFAULT '0',
+  `Jumlah` int(11) DEFAULT 0,
   `Satuan` varchar(10) DEFAULT NULL,
-  `Harga` int(11) DEFAULT '0',
+  `Harga` int(11) DEFAULT 0,
   `Create_at` datetime DEFAULT NULL,
   `Update_at` datetime DEFAULT NULL,
-  `deleted` int(11) DEFAULT '0'
+  `deleted` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -157,7 +157,7 @@ CREATE TABLE `tb_kepala_cabang` (
   `Gender` varchar(2) DEFAULT NULL,
   `Address` varchar(40) DEFAULT NULL,
   `Email_kepala_cabang` varchar(30) DEFAULT NULL,
-  `Creat_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Creat_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Update_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -175,7 +175,7 @@ CREATE TABLE `tb_operator` (
   `email_operator` varchar(30) DEFAULT NULL,
   `Status` varchar(10) NOT NULL DEFAULT 'Off',
   `Create_at` datetime DEFAULT NULL,
-  `Update_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+  `Update_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -207,7 +207,7 @@ CREATE TABLE `tb_tipe_barang` (
 
 INSERT INTO `tb_tipe_barang` (`id_tipe_barang`, `Name`, `Creat_at`, `Update_at`) VALUES
 ('TIPE001', 'Cetak', '2019-12-09 10:26:14', NULL),
-('TIPE002', 'ENUMxxx', '2019-12-09 15:31:56', NULL);
+('TIPE002', 'ENUMxxxs', '2019-12-09 15:31:56', '2019-12-12 11:23:00');
 
 -- --------------------------------------------------------
 
@@ -222,7 +222,7 @@ CREATE TABLE `tb_user` (
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(20) DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
-  `creat_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creat_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `update_at` datetime DEFAULT NULL,
   `Status` varchar(10) DEFAULT 'NotAprove'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -346,6 +346,12 @@ ALTER TABLE `tb_user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `tb_barang`
+--
+ALTER TABLE `tb_barang`
+  ADD CONSTRAINT `tb_barang_ibfk_1` FOREIGN KEY (`id_tipe_barang`) REFERENCES `tb_tipe_barang` (`id_tipe_barang`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_barang_keluar`
