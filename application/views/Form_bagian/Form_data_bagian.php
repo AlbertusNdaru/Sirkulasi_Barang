@@ -4,7 +4,7 @@
         <button type="button" class="btn btn-primary">Add Bagian</button>
     </a>
 </div>
-<?php?>
+<?php } ?>
 <div class="row">
     <div class="col">
         <div class="card shadow">
