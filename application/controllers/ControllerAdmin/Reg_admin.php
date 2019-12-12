@@ -21,7 +21,6 @@ class Reg_admin extends CI_Controller
     {
         $username = $this->input->post('Username');
         $password = $this->input->post('Password');
-        $id_level = $this->input->post('level');
         $Email    = $this->input->post('email');
         $Name     = $this->input->post('Name');
         $Gender   = $this->input->post('Gender');
@@ -49,7 +48,7 @@ class Reg_admin extends CI_Controller
                     {
                         $userarray= array (
                                         'id_operator' => $operator->id_operator,
-                                        'id_level' => $id_level,
+                                        'id_level' => 2,
                                         'username' => $username,
                                         'password' => $password
                         );
