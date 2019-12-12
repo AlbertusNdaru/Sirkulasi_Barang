@@ -9,6 +9,7 @@ class Controller_barangmasuk extends CI_Controller
         $this->load->model('Model_barang');
         $this->load->model('Model_tipebarang');
         $this->load->model('Model_barang_masuk');
+        checksession();
     }
 
     function get_Barang_masuk()

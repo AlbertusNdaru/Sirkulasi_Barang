@@ -10,6 +10,7 @@ class Controller_report extends CI_Controller{
         $this->load->model('Model_report');
         $this->load->model('Model_tipebarang');
         $this->load->model('Model_bagian');
+        checksession();
     }
 
     function cetakBarangAll()

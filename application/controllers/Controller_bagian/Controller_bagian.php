@@ -8,6 +8,7 @@ class Controller_bagian extends CI_Controller
         parent::__construct();
         $this->load->model('Model_bagian');
         $this->load->model('Model_barang');
+        checksession();
     }
 
     function get_Bagian()

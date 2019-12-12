@@ -8,6 +8,7 @@ class Controller_barang extends CI_Controller
         parent::__construct();
         $this->load->model('Model_barang');
         $this->load->model('Model_tipebarang');
+        checksession();
     }
 
     function get_Barang()

@@ -11,6 +11,7 @@ class Controller_usergroup extends CI_Controller
         parent::__construct();
         $this->load->model('Model_usergroup');
         $this->load->model('Model_barang');
+        checksession();
     }
 
     function get_usergroup()

@@ -9,6 +9,7 @@ class Controller_user extends CI_Controller{
         $this->load->model('Model_operator');
         $this->load->model('Model_usergroup');
         $this->load->model('Model_barang');
+        checksession();
     }
 
     function get_user()
