@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2019 at 03:43 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Generation Time: Dec 12, 2019 at 03:42 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -67,7 +67,8 @@ CREATE TABLE `tb_barang` (
 INSERT INTO `tb_barang` (`id_barang`, `id_operator`, `id_tipe_barang`, `Name`, `Jumlah`, `Satuan`, `Harga`, `Create_at`, `Update_at`, `deleted`) VALUES
 ('BRG001', '1', 'TIPE001', 'sadsadasdasdsadsadas', 14, 'RIM', 300000, '2019-12-09 10:26:25', NULL, 0),
 ('BRG002', '1', 'TIPE002', 'dsdsdsd', 20, 'RIM', 120000, '2019-12-09 10:46:52', '2019-12-09 15:32:06', 0),
-('BRG003', '1', 'TIPE001', 'sdasdadasd', 12, 'RIM', 30000, '2019-12-09 15:42:35', '2019-12-09 15:43:38', 0);
+('BRG003', '1', 'TIPE001', 'sdasdadasd', 11, 'RIM', 20000, '2019-12-09 15:42:35', '2019-12-09 15:43:38', 0),
+('BRG004', '4', 'TIPE001', 'wwwwwww', 0, 'RIM', 0, '2019-12-11 21:12:55', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,8 @@ CREATE TABLE `tb_barang_keluar` (
 
 INSERT INTO `tb_barang_keluar` (`id_barang_keluar`, `id_barang`, `id_bagian`, `Jumlah`, `Harga`, `Create_at`, `Update_at`) VALUES
 (3, 'BRG001', 'BGN002', 12, 120000, '2019-12-09', NULL),
-(4, 'BRG002', 'BGN002', 4, 120000, '2019-12-09', NULL);
+(4, 'BRG002', 'BGN002', 4, 120000, '2019-12-09', NULL),
+(5, 'BRG003', 'BGN001', 7, 30000, '2019-12-10', NULL);
 
 -- --------------------------------------------------------
 
@@ -117,7 +119,8 @@ INSERT INTO `tb_barang_masuk` (`id_barang_masuk`, `id_barang`, `Jumlah`, `Harga`
 (2, 'BRG002', 12, 120000, '2019-12-09', NULL),
 (3, 'BRG001', 2, 120000, '2019-12-09', NULL),
 (4, 'BRG001', 12, 300000, '2019-12-09', NULL),
-(5, 'BRG003', 12, 1212122121, '2019-12-09', NULL);
+(5, 'BRG003', 12, 1212122121, '2019-12-09', NULL),
+(6, 'BRG003', 6, 20000, '2019-12-10', NULL);
 
 -- --------------------------------------------------------
 
@@ -138,8 +141,8 @@ CREATE TABLE `tb_hak_akses` (
 
 INSERT INTO `tb_hak_akses` (`id_level`, `Description`, `Create_at`, `Update_at`) VALUES
 (1, 'Super Admin', '2019-12-09 10:17:11', NULL),
-(2, 'Kepala Cabang', '2019-12-09 21:14:32', NULL),
-(3, 'Admin', '2019-12-09 21:14:41', NULL);
+(2, 'Operator', '2019-12-09 21:14:32', NULL),
+(3, 'Kepala cabang', '2019-12-09 21:14:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -182,7 +185,8 @@ CREATE TABLE `tb_operator` (
 INSERT INTO `tb_operator` (`id_operator`, `Name`, `Gender`, `Address`, `email_operator`, `Status`, `Create_at`, `Update_at`) VALUES
 (1, 'Admin', 'L', 'Yogyakarta', 'ndarualbert21@gmail.com', 'Aktif', '2019-12-09 10:20:35', '2019-12-09 21:15:17'),
 (2, 'Kepala Cabang', 'L', 'Berbah', 'kepala@gmail.com', 'Aktif', '2019-12-09 21:16:26', '2019-12-09 21:16:28'),
-(3, 'Admin 2', 'P', 'Berbah', 'Admin@gmail.com', 'Aktif', '2019-12-09 21:20:22', '2019-12-09 21:20:24');
+(3, 'Admin 2', 'P', 'Berbah', 'Admin@gmail.com', 'Aktif', '2019-12-09 21:20:22', '2019-12-09 21:20:24'),
+(4, 'Faris', 'L', 'Gunung kidul', 'ikhsan@gmail.com', 'Aktif', '2019-12-10 22:12:19', '2019-12-10 22:12:29');
 
 -- --------------------------------------------------------
 
@@ -230,7 +234,8 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_user`, `id_operator`, `id_level`, `username`, `password`, `email`, `creat_at`, `update_at`, `Status`) VALUES
 (2, 1, 1, 'Ndaru', '12345', NULL, '2019-12-09 03:22:47', NULL, 'Aprove'),
 (3, 2, 2, 'Ajeng', '12345', NULL, '2019-12-09 14:17:07', NULL, 'Aprove'),
-(4, 3, 3, 'Ajeng123', '12345', NULL, '2019-12-09 14:20:54', NULL, 'Aprove');
+(4, 3, 3, 'Ajeng123', '12345', NULL, '2019-12-09 14:20:54', NULL, 'Aprove'),
+(5, 4, 1, 'faris', '12345', NULL, '2019-12-10 15:13:30', NULL, 'Aprove');
 
 --
 -- Indexes for dumped tables
@@ -306,13 +311,13 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_keluar`
-  MODIFY `id_barang_keluar` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_barang_keluar` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_barang_masuk`
 --
 ALTER TABLE `tb_barang_masuk`
-  MODIFY `id_barang_masuk` smallint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_barang_masuk` smallint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_hak_akses`
@@ -330,13 +335,13 @@ ALTER TABLE `tb_kepala_cabang`
 -- AUTO_INCREMENT for table `tb_operator`
 --
 ALTER TABLE `tb_operator`
-  MODIFY `id_operator` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_operator` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
