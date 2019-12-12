@@ -13,13 +13,17 @@ class Controller_barang extends CI_Controller
     function get_Barang()
     {
 
+
+        $data['barang'] = $this->Model_barang->get_barang();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang(); // in yg panggil data stok kurang dari 10 trs di lempar di view
         $data['barang']    = $this->Model_barang->get_barang();
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
     }
 
-    
+
     function get_Barang_by_kategori()
     {
         $kategori = $this->input->post('id');
@@ -48,18 +52,18 @@ class Controller_barang extends CI_Controller
     {
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
         $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
-        $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang',$data);
+        $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang', $data);
     }
 
     function addbarangg()
     {
-        $data =$this->Model_barang->get_id_barang_max();
-		$id_barang = $data->maxKode;
-		$noUrut = (int) substr($id_barang,3,3);
-		$noUrut++;
-		$char = "BRG";
-        $newID = $char. sprintf("%03s",$noUrut);
-        
+        $data = $this->Model_barang->get_id_barang_max();
+        $id_barang = $data->maxKode;
+        $noUrut = (int) substr($id_barang, 3, 3);
+        $noUrut++;
+        $char = "BRG";
+        $newID = $char . sprintf("%03s", $noUrut);
+
         $id_barang = $newID;
         $barang = array(
             'id_barang'      => $newID,

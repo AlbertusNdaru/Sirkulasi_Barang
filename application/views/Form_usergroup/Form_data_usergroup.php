@@ -1,8 +1,10 @@
-<div class="col">
-  <a href="<?= base_url('formaddusergroup'); ?>" class="btn addUsergroup btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
-    <button type="button" class="btn btn-primary">Add UserGroup</button>
-  </a>
-</div>
+<?php if ($_SESSION['Admin']->id_level == 1) { ?>
+  <div class="col">
+    <a style="margin-top: -7px;" href="<?= base_url('formaddusergroup'); ?>" class="btn addUsergroup btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+      <button type="button" class="btn btn-primary">Add UserGroup</button>
+    </a>
+  </div>
+<?php } ?>
 <div class="row">
   <div class="col">
     <div class="card shadow">
@@ -16,7 +18,9 @@
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Name Hak akses</th>
-                <th scope="col">Action</th>
+                <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                  <th scope="col">Action</th>
+                <?php } ?>
               </tr>
             </thead>
             <tbody>
@@ -30,17 +34,19 @@
                   <div class="adge badge-dot mr-4">
                     <td><?= $o->Description ?></td>
                   </div>
-                  <div class="adge badge-dot mr-6">
-                    <td class="center">
-                      <a class="btn btn-info" href="<?= base_url('formeditusergroup/' . $o->id_level . '') ?>">
-                        <i class="glyphicon glyphicon-edit icon-white"></i>
-                        Edit
-                      </a>
-                      <a class="btn btn-danger" href="<?= base_url('deleteusergroup/' . $o->id_level . '') ?>">
-                        <i class="glyphicon glyphicon-trash icon-white"></i>
-                        Delete
-                      </a></td>
-                  </div>
+                  <?php if ($_SESSION['Admin']->id_level == 1) { ?>
+                    <div class="adge badge-dot mr-6">
+                      <td class="center">
+                        <a class="btn btn-info" href="<?= base_url('formeditusergroup/' . $o->id_level . '') ?>">
+                          <i class="glyphicon glyphicon-edit icon-white"></i>
+                          Edit
+                        </a>
+                        <a class="btn btn-danger" href="<?= base_url('deleteusergroup/' . $o->id_level . '') ?>">
+                          <i class="glyphicon glyphicon-trash icon-white"></i>
+                          Delete
+                        </a></td>
+                    </div>
+                  <?php } ?>
         </div>
         </tr>
       <?php
@@ -52,7 +58,7 @@
     </div>
   </div>
 </div>
-</div>
+
 
 <script>
   function setnotifstatus(err) {

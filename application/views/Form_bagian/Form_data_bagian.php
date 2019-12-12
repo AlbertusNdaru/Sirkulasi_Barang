@@ -1,9 +1,9 @@
-<?php if($_SESSION['Admin']->id_level == 1) {?>
-<div class="col">
-    <a href="<?= base_url('formaddbagian'); ?>" class="btn addBagian btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
-        <button type="button" class="btn btn-primary">Add Bagian</button>
-    </a>
-</div>
+<?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
+    <div class="col">
+        <a href="<?= base_url('formaddbagian'); ?>" class="btn addBagian btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+            <button type="button" class="btn btn-primary">Add Bagian</button>
+        </a>
+    </div>
 <?php } ?>
 <div class="row">
     <div class="col">
@@ -18,9 +18,9 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Bagian</th>
-                                <?php if($_SESSION['Admin']->id_level == 1) {?>
-                                <th scope="col">Action</th>
-                                <?php }?>
+                                <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
+                                    <th scope="col">Action</th>
+                                <?php } ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,19 +36,19 @@
                                     </div>
 
                 </div>
-                <?php if($_SESSION['Admin']->id_level == 1) {?>
-                <div class="adge badge-dot mr-6">
-                    <td class="center">
-                        <a class="btn btn-info" href="<?= base_url('formeditbagian/' . $o->id_bagian . '') ?>">
-                            <i class="glyphicon glyphicon-edit icon-white"></i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger" href="<?= base_url('deletebagian/' . $o->id_bagian . '') ?>">
-                            <i class="glyphicon glyphicon-trash icon-white"></i>
-                            Delete
-                        </a></td>
-                </div>
-                <?php }?>
+                <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
+                    <div class="adge badge-dot mr-6">
+                        <td class="center">
+                            <a class="btn btn-info" href="<?= base_url('formeditbagian/' . $o->id_bagian . '') ?>">
+                                <i class="glyphicon glyphicon-edit icon-white"></i>
+                                Edit
+                            </a>
+                            <a class="btn btn-danger" href="<?= base_url('deletebagian/' . $o->id_bagian . '') ?>">
+                                <i class="glyphicon glyphicon-trash icon-white"></i>
+                                Delete
+                            </a></td>
+                    </div>
+                <?php } ?>
             </div>
             </tr>
         <?php
@@ -61,7 +61,7 @@
 
 </div>
 </div>
-</div>
+
 
 <script>
     <?php if (!empty($this->session->flashdata('Status'))) { ?>
