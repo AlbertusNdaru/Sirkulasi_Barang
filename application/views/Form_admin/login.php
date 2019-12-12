@@ -22,30 +22,14 @@
   <div class="main-content">
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
-      <div class="container px-4">
+      <div class="container"  style=" margin-top: 17px; margin: auto;  width: auto;">
         <a class="navbar-brand" href="../index.html">
-          <img src="<?php echo base_url('') ?>assets/img/brand/white.png" />
+          <img style="margin-top: 15px;width: 170px; height: auto !important;"  src="<?php echo base_url() ?>assets/img/logo.png" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar-collapse-main">
-          <!-- Collapse header -->
-          <div class="navbar-collapse-header d-md-none">
-            <div class="row">
-              <div class="col-6 collapse-brand">
-                <a href="../index.html">
-                  <img src="<?php echo base_url('') ?>assets/img/brand/blue.png">
-                </a>
-              </div>
-              <div class="col-6 collapse-close">
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
-                  <span></span>
-                  <span></span>
-                </button>
-              </div>
-            </div>
-          </div>
           <!-- Navbar items -->
         </div>
       </div>
@@ -65,7 +49,7 @@
       </div>
     </div>
     <!-- Page content -->
-    <div class="container mt--8 pb-5">
+    <div class="container" style="margin-top: -12rem !important;">
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
           <div class="card bg-secondary shadow border-0">
@@ -103,14 +87,14 @@
   </div>
   <!-- Footer -->
   <footer class="py-5">
-    <div class="container">
-      <div class="row align-items-center justify-content-xl-between">
-        <div class="col-xl-6">
-          <div class="copyright text-center text-xl-left text-muted">
+    <div class="container" style=" margin: auto;  width: auto;">
+
+        <div class="col-xl-12">
+          <div class="copyright text-center text-xl-center text-muted">
             &copy; 2019 Sirkulasi Barang PT. Gapura Angkasa
           </div>
         </div>
-      </div>
+
     </div>
   </footer>
   <!-- Argon Scripts -->
