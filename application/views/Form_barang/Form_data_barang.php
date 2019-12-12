@@ -67,13 +67,13 @@
 
                                         </div>
                                         <div class="adge badge-dot mr-4">
-                                            <td><?= $o->Harga ?></td>
+                                            <td><?= rupiah($o->Harga) ?></td>
                                         </div>
 
 
                                         <div class="adge badge-dot mr-4">
                                             <td><?php $total = $o->Jumlah * $o->Harga;
-                                                    echo $total ?></td>
+                                                    echo rupiah($total) ?></td>
 
                                         </div>
                                         <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>

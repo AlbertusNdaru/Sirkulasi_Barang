@@ -47,7 +47,7 @@ class Controller_bagian extends CI_Controller
         );
         $add_bagian = $this->Model_bagian->add_bagian($bagian);
         if ($add_bagian) {
-            $this->session->set_flashdata('Status', 'Input Succes');
+            $this->session->set_flashdata('Status', 'Input Success');
             redirect('bagian');
         } else {
             $this->session->set_flashdata('Status', 'Input Failed');
@@ -61,12 +61,12 @@ class Controller_bagian extends CI_Controller
         $bagian = array(
             'Name' => $this->input->post('name')
         );
-        $editbagian = $this->Model_barang->update_barang($id_bagian, $bagian);
+        $editbagian = $this->Model_bagian->update_bagian($id_bagian, $bagian);
         if ($editbagian) {
-            $this->session->set_flashdata('Status', 'Input Succes');
+            $this->session->set_flashdata('Status', 'Update Success');
             redirect('bagian');
         } else {
-            $this->session->set_flashdata('Status', 'Input Failed');
+            $this->session->set_flashdata('Status', 'Update Failed');
             redirect('bagian');
         }
     }

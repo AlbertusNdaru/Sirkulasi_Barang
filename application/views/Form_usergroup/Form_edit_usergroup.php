@@ -13,7 +13,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" value="<?= $editusergroup->id_level ?>">Update Data</button>
+          <button type="submit" name="submitid" class="btn btn-primary" value="<?= $editusergroup->id_level ?>">Update Data</button>
       </form>
     </div>
   </div>

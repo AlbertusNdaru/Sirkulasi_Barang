@@ -21,7 +21,7 @@ class Controller_report extends CI_Controller{
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
         $data['tanggal1']   = $tanggal1;
         $data['tanggal2']   = $tanggal2;
-        $config             = array('format' => 'Folio');
+        $config             = array('format' => 'Folio', 'orientation' => 'L');
         $mpdf               = new \Mpdf\Mpdf($config);
         $html               = $this->load->view('Form_report/Form_report_barang',$data,true);
         $mpdf->WriteHTML($html);
@@ -36,7 +36,7 @@ class Controller_report extends CI_Controller{
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
         $data['tanggal1']   = $tanggal1;
         $data['tanggal2']   = $tanggal2;
-        $config             = array('format' => 'Folio');
+        $config             = array('format' => 'Folio', 'orientation' => 'L');
         $mpdf               = new \Mpdf\Mpdf($config);
         $html               = $this->load->view('Form_report/Form_report_barangmasuk',$data,true);
         $mpdf->WriteHTML($html);
@@ -51,7 +51,7 @@ class Controller_report extends CI_Controller{
         $data['bagian']   = $this->Model_bagian->get_bagian();
         $data['tanggal1'] = $tanggal1;
         $data['tanggal2'] = $tanggal2;
-        $config           = array('format' => 'Folio');
+        $config           = array('format' => 'Folio', 'orientation' => 'L');
         $mpdf             = new \Mpdf\Mpdf($config);
         $html             = $this->load->view('Form_report/Form_report_barangkeluar',$data,true);
         $mpdf->WriteHTML($html);

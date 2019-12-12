@@ -106,7 +106,7 @@
                     <input class="form-control" placeholder="Password" type="password" name="Password" id="Password" require onclick='validasi("Password","password")' required>
                   </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
                       <select style="width:100%" name="level" class="form-control selectpicker">
@@ -117,7 +117,7 @@
                       </select>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary my-4">Register</button>
                 </div>

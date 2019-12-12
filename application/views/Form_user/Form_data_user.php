@@ -88,6 +88,10 @@
 
 
   <script>
+    <?php if (!empty($this->session->flashdata('Status'))) { ?>
+      setnotifstatus('<?php echo $this->session->flashdata('Status') ?>');
+    <?php } ?>
+
     function setnotifstatus(err) {
       if (err == 'Input Success' || err == 'Update Success' || err == 'Delete Succes') {
         ttp = 'success';

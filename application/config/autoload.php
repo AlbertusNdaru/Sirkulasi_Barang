@@ -64,7 +64,7 @@ $autoload['libraries'] = array('session','database','template','pagination');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','form','date','ceksession');
+$autoload['helper'] = array('url','form','date','ceksession','formatacounting');
 
 
 /*

@@ -44,9 +44,9 @@ foreach ($bagian as $t) {
                                     <td align="left"><?php echo $r->NamaBarang ?></td>
                                     <td align="center"><?php echo $r->Jumlah ?></td>
                                     <td align="center"><?php echo $r->Satuan ?></td>
-                                    <td align="center"><?php echo "Rp " . $r->Harga ?></td>
+                                    <td align="center"><?php echo rupiah($r->Harga) ?></td>
                                     <td align="right"><?php $total = $r->Jumlah * $r->Harga;
-                                                            echo "Rp " . $total ?></td>
+                                                            echo rupiah($total) ?></td>
                                     <td align="center"><?php echo $r->NamaBagian ?></td>
                                 </tr>
                             <?php $no++;
@@ -61,12 +61,12 @@ foreach ($bagian as $t) {
                             <?php foreach ($totalbagian as $key => $a) { ?>
                                 <tr>
                                     <td align="right" style="background-color: yellow; color: black" colspan="5">Total Barang Bagian <?= $tipename[$key]; ?></td>
-                                    <td align="right" style="background-color: yellow; color: black ;" colspan="2"><?php echo "Rp " . json_encode($totalbagian[$key]) ?></td>
+                                    <td align="right" style="background-color: yellow; color: black ;" colspan="2"><?php echo rupiah(json_encode($totalbagian[$key]))?></td>
                                 </tr>
                             <?php } ?>
                             <tr>
                                 <td align="right" style="background-color: burlywood; color: black ; font-weight: bold" colspan="5">Total Keseluruhan</td>
-                                <td align="right" style="background-color: burlywood; color: black ; font-weight: bold" colspan="2"><?php echo "Rp " . $totalsemua ?></td>
+                                <td align="right" style="background-color: burlywood; color: black ; font-weight: bold" colspan="2"><?php echo rupiah($totalsemua) ?></td>
                             </tr>
                         </tbody>
                     </table>

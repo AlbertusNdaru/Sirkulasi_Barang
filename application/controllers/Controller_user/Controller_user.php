@@ -30,10 +30,10 @@ class Controller_user extends CI_Controller{
     function edituser()
     {
         $id_user = $this->input->post('submitid');
-        $user = array('id_user' =>$this->input->post('hak_akses') ,'update_at'=>get_current_date() );
+        $user = array('id_level' =>$this->input->post('hak_akses') ,'update_at'=>get_current_date() );
         $edituser = $this->Model_user->update_user($id_user,$user);
         if ($edituser) {
-            $this->session->set_flashdata('Status','Update Sucess');
+            $this->session->set_flashdata('Status','Update Success');
             redirect('user');
         }else{
             $this->session->set_flashdata('Status','Update Failed');

@@ -57,7 +57,7 @@
 
                                     </div>
                                     <div class="adge badge-dot mr-4">
-                                        <td><?= $o->Harga ?></td>
+                                        <td><?= rupiah($o->Harga) ?></td>
 
                                     </div>
                                     <div class="adge badge-dot mr-4">
