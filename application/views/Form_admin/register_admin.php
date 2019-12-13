@@ -21,7 +21,7 @@
 </head>
 
 <body class="bg-default" style="overflow:hidden">
-  <div class="main-content" >
+  <div class="main-content">
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
       <div class="container" style=" margin-top: 17px; margin: auto;  width: auto;">
@@ -32,7 +32,7 @@
       </div>
     </nav>
     <!-- Header -->
-    <div class="header bg-gradient-primary py-7 py-lg-8">
+    <div class="header py-7 py-lg-8" style="background-color: honeydew">
       <div class="container">
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
@@ -132,11 +132,11 @@
   <footer class="py-5">
     <div class="container" style=" margin: auto;  width: auto;">
 
-        <div class="col-xl-12">
-          <div class="copyright text-center text-xl-center text-muted">
-            &copy; 2019 Sirkulasi Barang PT. Gapura Angkasa
-          </div>
+      <div class="col-xl-12">
+        <div class="copyright text-center text-xl-center text-muted">
+          &copy; 2019 Sirkulasi Barang PT. Gapura Angkasa
         </div>
+      </div>
 
     </div>
   </footer>

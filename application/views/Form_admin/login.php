@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+  <title>Sirkulasi Barang</title>
   <!-- Favicon -->
   <link href="<?php echo base_url('') ?>assets/img/brand/favicon.png" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -22,9 +22,9 @@
   <div class="main-content">
     <!-- Navbar -->
     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
-      <div class="container"  style=" margin-top: 17px; margin: auto;  width: auto;">
+      <div class="container" style=" margin-top: 17px; margin: auto;  width: auto;">
         <a class="navbar-brand" href="../index.html">
-          <img style="margin-top: 15px;width: 170px; height: auto !important;"  src="<?php echo base_url() ?>assets/img/logo.png" />
+          <img style="margin-top: 15px;width: 170px; height: auto !important;" src="<?php echo base_url() ?>assets/img/logo.png" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
       </div>
     </nav>
     <!-- Header -->
-    <div class="header bg-gradient-primary py-7 py-lg-8">
+    <div class="header py-7 py-lg-8" style="background-color: honeydew">
       <div class="container">
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
@@ -89,11 +89,11 @@
   <footer class="py-5">
     <div class="container" style=" margin: auto;  width: auto;">
 
-        <div class="col-xl-12">
-          <div class="copyright text-center text-xl-center text-muted">
-            &copy; 2019 Sirkulasi Barang PT. Gapura Angkasa
-          </div>
+      <div class="col-xl-12">
+        <div class="copyright text-center text-xl-center text-muted">
+          &copy; 2019 Sirkulasi Barang PT. Gapura Angkasa
         </div>
+      </div>
 
     </div>
   </footer>
