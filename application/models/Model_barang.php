@@ -12,6 +12,14 @@ class Model_barang extends CI_Model
         return $dataBarang;
     }
 
+    function totalBarang()
+    {
+        $this->db->select('count(a.id_barang) as B');
+        $this->db->from('tb_barang as a');
+        $this->db->where('deleted',0);
+        return $this->db->get()->row();
+    }
+
     function getlimitstokbarang()
     {
         $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe');

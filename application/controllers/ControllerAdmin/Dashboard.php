@@ -11,12 +11,17 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->model('Model_admin');
         $this->load->model('Model_barang');
+        $this->load->model('Model_barang_masuk');
+        $this->load->model('Model_barang_keluar');
         checksession();
     }
 
     function index()
     {
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $data['barang'] = $this->Model_barang->totalBarang();
+        $data['barangmasuk'] = $this->Model_barang_masuk->totalBarangMasuk();
+        $data['barangkeluar'] = $this->Model_barang_keluar->totalBarangKeluar();
         $this->template->load('Template/Template_admin.php', 'Form_admin/dashboard', $data);
     }
 }

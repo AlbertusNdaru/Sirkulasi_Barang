@@ -12,6 +12,13 @@ class Model_barang_keluar extends CI_Model
         return $dataBarang;
     }
 
+    function totalBarangKeluar()
+    {
+        $this->db->select('count(a.id_barang_masuk) as BK');
+        $this->db->from('tb_barang_masuk as a');
+        return $this->db->get()->row();
+    }
+
     function get_barang_by_id($id_barang)
     {
         $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe');
