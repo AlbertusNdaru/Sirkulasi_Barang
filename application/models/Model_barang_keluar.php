@@ -5,9 +5,10 @@ class Model_barang_keluar extends CI_Model
     {
         $this->db->select('a.*, b.Name as NamaBarang, c.Name as NamaBagian');
         $this->db->from('tb_barang_keluar as a');
+        $this->db->order_by('a.Create_at', 'DESC');
         $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
         $this->db->join('tb_bagian as c', 'c.id_bagian=a.id_bagian');
-        $this->db->where('deleted',0);
+        $this->db->where('deleted', 0);
         $dataBarang = $this->db->get()->result();
         return $dataBarang;
     }
@@ -25,7 +26,7 @@ class Model_barang_keluar extends CI_Model
         $this->db->from('tb_barang as a');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
         $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
-        $this->db->where('deleted',0);
+        $this->db->where('deleted', 0);
         $this->db->where("id_barang", $id_barang);
         $getbarangById = $this->db->get()->row();
         return $getbarangById;
@@ -37,7 +38,7 @@ class Model_barang_keluar extends CI_Model
         $this->db->from('tb_barang as a');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
         $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=b.id_tipe_barang');
-        $this->db->where('deleted',0);
+        $this->db->where('deleted', 0);
         $this->db->where("a.id_tipe_barang", $kategori);
         $getbarangById = $this->db->get()->result();
         return $getbarangById;

@@ -41,10 +41,7 @@
                           <i class="glyphicon glyphicon-edit icon-white"></i>
                           Edit
                         </a>
-                        <a class="btn btn-danger" href="<?= base_url('deleteusergroup/' . $o->id_level . '') ?>">
-                          <i class="glyphicon glyphicon-trash icon-white"></i>
-                          Delete
-                        </a></td>
+                      </td>
                     </div>
                   <?php } ?>
         </div>

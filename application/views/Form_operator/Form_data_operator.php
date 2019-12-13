@@ -1,10 +1,3 @@
-<?php if ($_SESSION['Admin']->id_level == 1) { ?>
-  <div class="col">
-    <a href="<?= base_url('formaddoperator'); ?>" class="btn addOperator btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
-      <button type="button" class="btn btn-primary">Add Operator</button>
-    </a>
-  </div>
-<?php } ?>
 <div class="row">
   <div class="col">
     <div class="card shadow">
