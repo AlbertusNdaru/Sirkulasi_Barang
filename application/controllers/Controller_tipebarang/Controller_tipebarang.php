@@ -34,26 +34,35 @@ class Controller_tipebarang extends CI_Controller
 
     function addtipebarang()
     {
-        $data        = $this->Model_tipebarang->get_id_tipe_max();
-		$id_barang   = $data->maxKode;
-		$noUrut      = (int) substr($id_barang,4,3);
-		$noUrut++;
-		$char        = "TIPE";
-        $newID       = $char. sprintf("%03s",$noUrut);
-        
-        $id_tipe = $newID;
-        $tipebarang = array(
-            'id_tipe_barang' => $id_tipe,
-            'Name'           => $this->input->post('name'),
-            'Creat_at'       => get_current_date()
-        );
-        $addtipe_barang = $this->Model_tipebarang->add_tipebarang($tipebarang);
-        if ($addtipe_barang) {
-            $this->session->set_flashdata('Status', 'Input Succes');
-            redirect('tipebarang');
-        } else {
-            $this->session->set_flashdata('Status', 'Input Failed');
-            redirect('tipebarang');
+        $validate = $this->Model_tipebarang->get_tipe_barang_by_name($this->input->post('name'));
+        if($validate)
+        {
+            $this->session->set_flashdata('Status', 'Input Failed -> Nama Sudah ada');
+            redirect('formaddtipebarang');
+        }
+        else
+        {
+            $data        = $this->Model_tipebarang->get_id_tipe_max();
+            $id_barang   = $data->maxKode;
+            $noUrut      = (int) substr($id_barang,4,3);
+            $noUrut++;
+            $char        = "TIPE";
+            $newID       = $char. sprintf("%03s",$noUrut);
+            
+            $id_tipe = $newID;
+            $tipebarang = array(
+                'id_tipe_barang' => $id_tipe,
+                'Name'           => $this->input->post('name'),
+                'Creat_at'       => get_current_date()
+            );
+            $addtipe_barang = $this->Model_tipebarang->add_tipebarang($tipebarang);
+            if ($addtipe_barang) {
+                $this->session->set_flashdata('Status', 'Input Succes');
+                redirect('tipebarang');
+            } else {
+                $this->session->set_flashdata('Status', 'Input Failed');
+                redirect('tipebarang');
+            }
         }
     }
 
