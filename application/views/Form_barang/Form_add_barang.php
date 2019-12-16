@@ -32,6 +32,11 @@
                                 <select name="satuan" class="form-control selectpicker">
                                     <option value="RIM">RIM</option>
                                     <option value="Buah">Buah</option>
+                                    <option value="DUS">Dus</option>
+                                    <option value="PACK">Pack</option>
+                                    <option value="BOX">Box</option>
+                                    <option value="PCS">Pcs</option>
+                                    <option value="BIJI">Biji</option>
                                 </select>
                             </div>
                         </div>
