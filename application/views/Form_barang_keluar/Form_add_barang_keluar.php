@@ -8,7 +8,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="form-control-label" for="input-address">Kategori Alat</label>
+                <label class="form-control-label" for="input-address">Kategori Barang</label>
                 <select name="kategori" id="idkategori" class="form-control selectpicker" onchange="setBarangbykategori()">
                   <option value="" selected>Silahkan Pilih Kategori</option>
                   <?php foreach ($kategori as $k) { ?>
@@ -21,7 +21,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="form-control-label" for="input-address">Nama Alat</label>
+                <label class="form-control-label" for="input-address">Nama Barang</label>
                 <select required name="barang" id="barangbykat" class="form-control selectpicker" onchange="setMaxValue()" data-live-search="true">
                 </select>
               </div>
@@ -31,7 +31,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Jumlah Keluar</label>
-                <input required  min="1" id="jumlahid" class="form-control form-control-alternative" name="jumlah" type="number">
+                <input required min="1" id="jumlahid" class="form-control form-control-alternative" name="jumlah" type="number">
               </div>
             </div>
           </div>
@@ -98,8 +98,8 @@
       success: function(data) {
         var dataalat = JSON.parse(data);
         console.log(dataalat)
-          $('#jumlahid').attr('MAX',dataalat['Jumlah'])
-          $('#hargaid').val(dataalat['Harga'])
+        $('#jumlahid').attr('MAX', dataalat['Jumlah'])
+        $('#hargaid').val(dataalat['Harga'])
 
       }
     });

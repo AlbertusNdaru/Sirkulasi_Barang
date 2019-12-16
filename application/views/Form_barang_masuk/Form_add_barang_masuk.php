@@ -8,7 +8,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="form-control-label" for="input-address">Kategori Alat</label>
+                <label class="form-control-label" for="input-address">Kategori Barang</label>
                 <select required name="kategori" id="idkategori" class="form-control selectpicker" onchange="setBarangbykategori()">
                   <option value="" selected>Silahkan Pilih Kategori</option>
                   <?php foreach ($kategori as $k) { ?>
@@ -21,7 +21,7 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="form-control-label" for="input-address">Nama Alat</label>
+                <label class="form-control-label" for="input-address">Nama Barang</label>
                 <select required name="barang" id="barangbykat" class="form-control selectpicker" data-live-search="true">
 
                 </select>
