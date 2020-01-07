@@ -42,6 +42,18 @@ class Model_report extends CI_Model
         return $dataBarang;
     }
 
+    function get_barang_rusak($tanggal1,$tanggal2)
+    {
+        $this->db->select('a.*, b.Name as NamaBarang, b.id_tipe_barang, b.Satuan');
+        $this->db->from('tb_barang_rusak as a');
+        $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
+        $this->db->where('date(a.Create_at) >=',$tanggal1);
+        $this->db->where('date(a.Create_at) <=',$tanggal2);
+        $this->db->where('deleted',0);
+        $dataBarang = $this->db->get()->result();
+        return $dataBarang;
+    }
+
     function getDataKerusakan()
     {
         $this->db->select("a.*, b.Name");

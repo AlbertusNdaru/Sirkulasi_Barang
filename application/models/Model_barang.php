@@ -82,4 +82,5 @@ class Model_barang extends CI_Model
         $delete_barang = $this->db->delete('tb_barang');
         return $delete_barang;
     }
+
 }

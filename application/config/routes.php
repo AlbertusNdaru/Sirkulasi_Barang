@@ -103,6 +103,7 @@ $route['deletebagian/(:any)'] = 'Controller_bagian/Controller_bagian/deleteBagia
 $route['reportBarang'] = 'Controller_report/Controller_report/cetakBarangAll';
 $route['reportBarangMasuk'] = 'Controller_report/Controller_report/cetakBarangmasukAll';
 $route['reportBarangKeluar'] = 'Controller_report/Controller_report/cetakBarangKeluarAll';
+$route['reportBarangRusak'] = 'Controller_report/Controller_report/cetakBarangRusakAll';
 
 //Route Barang Masuk
 $route['barangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/data_barang_masuk';
@@ -113,6 +114,11 @@ $route['addbarangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/addbar
 $route['barangkeluar'] = 'Controller_barangkeluar/Controller_barangkeluar/data_barang_keluar';
 $route['viewaddbarangkeluar'] = 'Controller_barangkeluar/Controller_barangkeluar/get_Barang_keluar';
 $route['addbarangkeluar'] = 'Controller_barangkeluar/Controller_barangkeluar/addbarangKeluar';
+
+//Route Barang Rusak
+$route['barangrusak'] = 'Controller_barangrusak/Controller_barangrusak/data_barang_rusak';
+$route['viewaddbarangrusak'] = 'Controller_barangrusak/Controller_barangrusak/get_Barang_rusak';
+$route['addbarangrusak'] = 'Controller_barangrusak/Controller_barangrusak/addbarangRusak';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

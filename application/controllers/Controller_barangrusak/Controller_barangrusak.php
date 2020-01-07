@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Controller_barang extends CI_Controller
+class Controller_barangrusak extends CI_Controller
 {
 
     function __construct()
@@ -8,36 +8,32 @@ class Controller_barang extends CI_Controller
         parent::__construct();
         $this->load->model('Model_barang');
         $this->load->model('Model_tipebarang');
+        $this->load->model('Model_barang_rusak');
         checksession();
     }
 
-    function get_Barang()
+    function get_Barang_rusak()
     {
-
-
-        $data['barang'] = $this->Model_barang->get_barang();
-        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang(); // in yg panggil data stok kurang dari 10 trs di lempar di view
-        $data['barang']    = $this->Model_barang->get_barang();
+        $data['kategori']  = $this->Model_tipebarang->get_tipe_barang();
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
-
         // echo json_encode($data);
-        $this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
+        $this->template->load('Template/Template_admin', 'Form_barang_rusak/Form_add_barang_rusak', $data);
     }
 
-
-    function get_Barang_by_kategori()
+    function data_barang_rusak()
     {
-        $kategori = $this->input->post('id');
-        $barang   = $this->Model_barang->get_barang_by_kategori($kategori);
-        echo json_encode($barang);
-        //$this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
+        $data['barang']    = $this->Model_barang_rusak->get_barang_rusak();
+        $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        // echo json_encode($data);
+        $this->template->load('Template/Template_admin', 'Form_barang_rusak/Form_data_barangrusak', $data);
     }
+
 
     function get_Barang_by_id()
     {
-        $id     = $this->input->post('id');
-        $barang = $this->Model_barang->get_barang_by_id($id);
-        echo json_encode($barang);
+        $kategori       = $this->input->post('id');
+        $data['barang'] = $this->Model_barang->get_barang_by_kategori($kategori);
+        echo json_encode($data);
         //$this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
     }
 
@@ -52,35 +48,30 @@ class Controller_barang extends CI_Controller
     function viewFormAddBarang()
     {
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
-        $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang', $data);
     }
 
-    function addbarangg()
+    function addbarangRusak()
     {
-        $data = $this->Model_barang->get_id_barang_max();
-        $id_barang = $data->maxKode;
-        $noUrut = (int) substr($id_barang, 3, 3);
-        $noUrut++;
-        $char = "BRG";
-        $newID = $char . sprintf("%03s", $noUrut);
-
-        $id_barang = $newID;
         $barang = array(
-            'id_barang'      => $newID,
-            'Name'           => $this->input->post('namabarang'),
-            'id_operator'    => $_SESSION['Admin']->id_operator,
-            'id_tipe_barang' => $this->input->post('tipe'),
-            'Satuan'         => $this->input->post('satuan'),
-            'Create_at'      => get_current_date()
+            'id_barang' => $this->input->post('barang'),
+            'Jumlah'    => $this->input->post('jumlah'),
+            'Harga'     => $this->input->post('harga'),
+            'create_at' => get_current_date()
         );
-        $add_barang = $this->Model_barang->add_barang($barang);
+        $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
+        $barangedit = array(
+            'Jumlah' =>  $databarang->Jumlah - $this->input->post('jumlah'),
+            'Harga' => $this->input->post('harga')
+        );
+        $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);
+        $add_barang = $this->Model_barang_rusak->add_barang_rusak($barang);
         if ($add_barang) {
             $this->session->set_flashdata('Status', 'Input Success');
-            redirect('barang');
+            redirect('barangrusak');
         } else {
             $this->session->set_flashdata('Status', 'Input Failed');
-            redirect('barang');
+            redirect('barangrusak');
         }
     }
 
@@ -104,7 +95,6 @@ class Controller_barang extends CI_Controller
             redirect('barang');
         }
     }
-    
     function deleteBarang($id_barang)
     {
         $barang = array(

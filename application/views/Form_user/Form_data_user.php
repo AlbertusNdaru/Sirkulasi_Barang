@@ -66,7 +66,7 @@
                             </a>
                             <a class="btn btn-info" href="<?= base_url('formedituser/' . $o->id_user . '') ?>">
                               <i class="glyphicon glyphicon-edit icon-white"></i>
-                              Edit
+                              Edit Hak Akses
                             </a>
                            
                       </td>

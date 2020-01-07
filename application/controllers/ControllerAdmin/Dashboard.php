@@ -13,6 +13,7 @@ class Dashboard extends CI_Controller
         $this->load->model('Model_barang');
         $this->load->model('Model_barang_masuk');
         $this->load->model('Model_barang_keluar');
+        $this->load->model('Model_barang_rusak');
         checksession();
     }
 
@@ -22,6 +23,7 @@ class Dashboard extends CI_Controller
         $data['barang'] = $this->Model_barang->totalBarang();
         $data['barangmasuk'] = $this->Model_barang_masuk->totalBarangMasuk();
         $data['barangkeluar'] = $this->Model_barang_keluar->totalBarangKeluar();
+        $data['barangrusak'] = $this->Model_barang_rusak->totalBarangRusak();
         $this->template->load('Template/Template_admin.php', 'Form_admin/dashboard', $data);
     }
 }

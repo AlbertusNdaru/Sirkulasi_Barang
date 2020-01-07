@@ -15,8 +15,8 @@ class Model_barang_masuk extends CI_Model
 
     function totalBarangMasuk()
     {
-        $this->db->select('count(a.id_barang_keluar) as BM');
-        $this->db->from('tb_barang_keluar as a');
+        $this->db->select('count(a.id_barang_masuk) as BM');
+        $this->db->from('tb_barang_masuk as a');
         return $this->db->get()->row();
     }
 
