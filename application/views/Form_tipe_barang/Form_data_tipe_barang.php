@@ -51,10 +51,7 @@
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
               </a>
-              <a class="btn btn-danger" href="<?= base_url('deleteTipebarang/' . $o->id_tipe_barang . '') ?>">
-                <i class="glyphicon glyphicon-trash icon-white"></i>
-                Delete
-              </a></td>
+              </td>
           </div>
         <?php } ?>
       </div>
