@@ -2,8 +2,9 @@
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard') ?>">
-    <div class="sidebar-brand-text mx-3"><img style="filter: saturate() ;display: block;margin-left: auto;margin-right: auto;width: 80%;" src="<?php echo base_url() ?>assets/img/logo.png"></div>
-  </a>
+  <!--  <div class="sidebar-brand-text mx-3"><img style="filter: saturate() ;display: block;margin-left: auto;margin-right: auto;width: 80%;" src="<?php echo base_url() ?>assets/img/logo.png"></div>
+  --->
+  <div class="sidebar-brand-text mx-2">Sirkulasi Barang</div></a>
 
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
@@ -38,30 +39,31 @@
       </div>
     </li>
   <?php } ?>
+  <hr class="sidebar-divider d-none d-md-block">
   <!-- Barang-->
   <li class="nav-item">
-    <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-folder"></i>
-      <span>Form Master Barang</span>
-    </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
-        <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2 || $_SESSION['Admin']->id_level == 3) { ?>
-          <a class="collapse-item" href="<?= base_url('barang') ?>">Barang</a>
-          <a class="collapse-item" href="<?= base_url('barangmasuk') ?>">Barang Masuk</a>
-          <a class="collapse-item" href="<?= base_url('barangkeluar ') ?>">Barang Keluar</a>
-          <a class="collapse-item" href="<?= base_url('barangrusak ') ?>">Barang Rusak</a>
-        <?php } ?>
-        <!--
-        
-          <a class = "collapse-item" href = "<?= base_url('barang') ?>">Barang</a>
-          <a class = "collapse-item" href = "<?= base_url('barangmasuk') ?>">Barang Masuk</a>
-          <a class = "collapse-item" href = "<?= base_url('barangkeluar ') ?>">Barang Keluar</a>
--->
-      </div>
-    </div>
+    <a class="nav-link" href="<?= base_url('barang') ?>">
+      <i class="fa fa-minus"></i>
+      <span>Barang</span></a>
   </li>
-
+  <hr class="sidebar-divider d-none d-md-block">
+  <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('barangmasuk') ?>">
+      <i class="fa fa-minus"></i>
+      <span>Barang Masuk</span></a>
+  </li>
+  <hr class="sidebar-divider d-none d-md-block">
+  <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('barangkeluar') ?>">
+      <i class="fa fa-minus"></i>
+      <span>Barang Keluar</span></a>
+  </li>
+  <hr class="sidebar-divider d-none d-md-block">
+  <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('barangrusak') ?>">
+      <i class="fa fa-minus"></i>
+      <span>Barang Rusak</span></a>
+  </li>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">

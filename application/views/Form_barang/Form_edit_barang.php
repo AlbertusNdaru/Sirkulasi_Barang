@@ -25,14 +25,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Jumlah</label>
                                 <input required type="number" min="1" class="form-control form-control-alternative" value="<?= $barang->Jumlah?>" name="jumlah">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -48,7 +48,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Harga</label>
-                                <input required type="number" min="1" class="form-control form-control-alternative" value="<?= $barang->Harga?>" name="harga">
+                                <input type="number" min="0" class="form-control form-control-alternative" value="<?= $barang->Harga?>" name="harga">
                             </div>
                         </div>
                     </div>

@@ -62,7 +62,9 @@ class Controller_barangmasuk extends CI_Controller
         $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
         $barangedit = array(
                 'Jumlah' => $databarang->Jumlah + $this->input->post('jumlah'),
-                'Harga'  => $this->input->post('harga')
+                'Harga'  => $this->input->post('harga'),
+                'Update_at'=> get_current_date()
+
         );
         $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);
         $add_barang = $this->Model_barang_masuk->add_barang_masuk($barang);

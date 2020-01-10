@@ -71,12 +71,12 @@
         id: id
       },
       success: function(data) {
-        var dataalat = JSON.parse(data);
-        console.log(dataalat)
+        var databarang = JSON.parse(data);
+        console.log(databarang)
         $('#barangbykat').empty();
-        $('#barangbykat').append('<option value="">Silahkan Pilih Alat</option>')
-        for (var i = 0; i < dataalat.length; i++) {
-          $('#barangbykat').append('<option value="' + dataalat[i]['id_barang'] + '">' + dataalat[i]['Name'] + '</option>')
+        $('#barangbykat').append('<option value="">Silahkan Pilih Nama</option>')
+        for (var i = 0; i < databarang.length; i++) {
+          $('#barangbykat').append('<option value="' + databarang[i]['id_barang'] + '">' + databarang[i]['Name'] + '</option>')
         }
         $('#barangbykat').selectpicker('refresh');
         $('#jumlahid').val("");
@@ -96,10 +96,10 @@
         id: id
       },
       success: function(data) {
-        var dataalat = JSON.parse(data);
-        console.log(dataalat)
-        $('#jumlahid').attr('MAX', dataalat['Jumlah'])
-        $('#hargaid').val(dataalat['Harga'])
+        var databarang = JSON.parse(data);
+        console.log(databarang)
+        $('#jumlahid').attr('MAX', databarang['Jumlah'])
+        $('#hargaid').val(databarang['Harga'])
 
       }
     });

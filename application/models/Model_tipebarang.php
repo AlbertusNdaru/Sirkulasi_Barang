@@ -41,10 +41,4 @@ class Model_tipebarang extends CI_Model
         return $updatetipe_barang;
     }
 
-    function delete_tipe_barang($id_tipebarang)
-    {
-        $this->db->where('id_tipe_barang', $id_tipebarang);
-        $deletetipe_barang = $this->db->delete('tb_tipe_barang');
-        return $deletetipe_barang;
-    }
 }

@@ -6,10 +6,17 @@
                 <a style="margin-top: -7px;" href="<?= base_url('formaddbarang'); ?>" class="btn addBarang btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
                     <button type="button" style="float: left" class="btn btn-primary">Add Barang</button>
                 </a>
-            <?php } ?>
+            <?php } ?>       
+
             <button type="submit" style="float: right" type="button" class="btn btn-primary">Cetak Barang</button>
             <input id="tanggal2" required disabled name="tanggal2" style="float: right; margin-top: 4px;  margin-right: 5px; margin-left: 5px" type="date"><label style="float: right;  margin-top: 5px;"> - </label>
             <input id="tanggal1" required name="tanggal1" onchange="datevalidation()" style="float: right; margin-top: 4px;  margin-right: 5px;" type="date">
+            <select class="col-md-1" name="tipe" style="float: right; margin-top: 4px;  margin-right: 5px; margin-left: 5px">
+            <option value="" selected>Silahkan Tipe</option>                        
+            <?php foreach ($tipebarang as $t) { ?>
+                                        <option value="<?= $t->id_tipe_barang ?>"><?= $t->Name ?></option>
+                                    <?php } ?>
+                                </select>
         </form>
     </div>
 </div>

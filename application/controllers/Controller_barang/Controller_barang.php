@@ -19,6 +19,7 @@ class Controller_barang extends CI_Controller
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang(); // in yg panggil data stok kurang dari 10 trs di lempar di view
         $data['barang']    = $this->Model_barang->get_barang();
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $data['tipebarang']= $this->Model_tipebarang->get_tipe_barang();
 
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
@@ -58,29 +59,45 @@ class Controller_barang extends CI_Controller
 
     function addbarangg()
     {
-        $data = $this->Model_barang->get_id_barang_max();
-        $id_barang = $data->maxKode;
-        $noUrut = (int) substr($id_barang, 3, 3);
-        $noUrut++;
-        $char = "BRG";
-        $newID = $char . sprintf("%03s", $noUrut);
+        $validate = $this->Model_barang->get_barang_by_name($this->input->post('namabarang'));
+        if($validate)
+        {
+            $this->session->set_flashdata('Status','Input Failed -> Nama sudah Ada');
+            redirect('formaddbarang');
+        }
+        else
+            {
+                $data = $this->Model_barang->get_id_barang_max();
+                $id_barang = $data->maxKode;
+                //$noUrut = (int) substr($id_barang, 3, 3);
+                $noUrut=rand(0,10000);
+                $acak = substr($noUrut,1,3);
+                $kategori = $this->input->post('tipe');
+                $nama = $this->Model_barang->kategori($kategori)->row_array();
+                //$noUrut ++;
+                //$nama_kategori = 
+                $char = substr($nama['Name'], 0, 3);
+                //$newID = $char . sprintf("%03s", $noUrut);
+                $newID= $char.$acak;
 
-        $id_barang = $newID;
-        $barang = array(
-            'id_barang'      => $newID,
-            'Name'           => $this->input->post('namabarang'),
-            'id_operator'    => $_SESSION['Admin']->id_operator,
-            'id_tipe_barang' => $this->input->post('tipe'),
-            'Satuan'         => $this->input->post('satuan'),
-            'Create_at'      => get_current_date()
-        );
-        $add_barang = $this->Model_barang->add_barang($barang);
-        if ($add_barang) {
-            $this->session->set_flashdata('Status', 'Input Success');
-            redirect('barang');
-        } else {
-            $this->session->set_flashdata('Status', 'Input Failed');
-            redirect('barang');
+                $id_barang = $newID;
+                $barang = array(
+                    'id_barang'      => $newID,
+                    'Name'           => $this->input->post('namabarang'),
+                    'id_operator'    => $_SESSION['Admin']->id_operator,
+                    'id_tipe_barang' => $this->input->post('tipe'),
+                    'Satuan'         => $this->input->post('satuan'),
+                    'Create_at'      => get_current_date(),
+                    'Update_at'      => get_current_date()
+                );
+                $add_barang = $this->Model_barang->add_barang($barang);
+                if ($add_barang) {
+                    $this->session->set_flashdata('Status', 'Input Success');
+                    redirect('barang');
+                } else {
+                    $this->session->set_flashdata('Status', 'Input Failed');
+                    redirect('barang');
+                }
         }
     }
 
