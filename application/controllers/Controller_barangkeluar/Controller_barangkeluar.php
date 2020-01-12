@@ -65,7 +65,9 @@ class Controller_barangkeluar extends CI_Controller
         $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
         $barangedit = array(
             'Jumlah' =>  $databarang->Jumlah - $this->input->post('jumlah'),
-            'Harga' => $this->input->post('harga')
+            'Harga' => $this->input->post('harga'),
+            'Create_at' => get_current_date()
+
         );
         $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);
         $add_barang = $this->Model_barang_keluar->add_barang_keluar($barang);

@@ -33,7 +33,7 @@ class Model_barang extends CI_Model
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
         $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
         $this->db->where('deleted',0);
-        $this->db->where('Jumlah <',10);
+        $this->db->where('Jumlah <',1);
         $dataBarang = $this->db->get()->result();
         return $dataBarang;
     }
