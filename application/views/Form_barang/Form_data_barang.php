@@ -7,9 +7,16 @@
                     <button type="button" style="float: left" class="btn btn-primary">Add Barang</button>
                 </a>
             <?php } ?>
+
             <button type="submit" style="float: right" type="button" class="btn btn-primary">Cetak Barang</button>
             <input id="tanggal2" required disabled name="tanggal2" style="float: right; margin-top: 4px;  margin-right: 5px; margin-left: 5px" type="date"><label style="float: right;  margin-top: 5px;"> - </label>
             <input id="tanggal1" required name="tanggal1" onchange="datevalidation()" style="float: right; margin-top: 4px;  margin-right: 5px;" type="date">
+            <select name="tipe" style="float: right; margin-top: 10px;   margin-right: 5px; margin-left: 5px">
+                <option value="" selected>Silahkan Pilih Tipe</option>
+                <?php foreach ($tipebarang as $t) { ?>
+                    <option value="<?= $t->id_tipe_barang ?>"><?= $t->Name ?></option>
+                <?php } ?>
+            </select>
         </form>
     </div>
 </div>
@@ -41,8 +48,8 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $i = 1;
-                                foreach ($barang as $o) { ?>
+                                                            $i = 1;
+                                                            foreach ($barang as $o) { ?>
                                     <tr>
                                         <div class="adge badge-dot mr-4">
                                             <td><?= $i ?> </td>
@@ -63,7 +70,7 @@
 
                                         </div>
                                         <div class="adge badge-dot mr-4">
-                                            <td><?= $o->Satuan ?></td>
+                                            <td><?= $o->NamaSatuan ?></td>
 
                                         </div>
                                         <div class="adge badge-dot mr-4">
@@ -73,7 +80,7 @@
 
                                         <div class="adge badge-dot mr-4">
                                             <td><?php $total = $o->Jumlah * $o->Harga;
-                                                    echo rupiah($total) ?></td>
+                                                                echo rupiah($total) ?></td>
 
                                         </div>
                                         <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
@@ -92,8 +99,8 @@
                     </div>
                     </tr>
                 <?php
-                    $i++;
-                } ?>
+                                                                                $i++;
+                                                                            } ?>
                 </tbody>
                 </table>
                 </div>

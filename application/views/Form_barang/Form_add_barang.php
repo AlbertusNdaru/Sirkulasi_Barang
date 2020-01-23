@@ -28,15 +28,35 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-address">Satuan</label>
+                                <label class="form-control-label" for="input-address">Satuan Terkecil</label>
                                 <select name="satuan" class="form-control selectpicker">
-                                    <option value="RIM">RIM</option>
-                                    <option value="Buah">Buah</option>
-                                    <option value="DUS">Dus</option>
-                                    <option value="PACK">Pack</option>
-                                    <option value="BOX">Box</option>
-                                    <option value="PCS">Pcs</option>
-                                    <option value="BIJI">Biji</option>
+                                    <?php foreach ($satuanbarang as $s) { ?>
+                                        <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-address">Satuan Terbesar 1</label>
+                                <select name="satuan1" class="form-control selectpicker">
+                                    <?php foreach ($satuanbarang as $s) { ?>
+                                        <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-address">Satuan Terbesar 2</label>
+                                <select name="satuan2" class="form-control selectpicker">
+                                    <?php foreach ($satuanbarang as $s) { ?>
+                                        <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -47,3 +67,59 @@
         </div>
     </div>
 </div>
+<script>
+  <?php if (!empty($this->session->flashdata('Status'))) { ?>
+        setnotifstatus('<?php echo $this->session->flashdata('Status') ?>');
+    <?php } ?>
+  function setnotifstatus(err) {
+    if (err == 'Input Success' || err == 'Update Success' || err == 'Delete Succes') {
+      ttp = 'success';
+    } else {
+      ttp = 'danger';
+    }
+
+    $.notify({
+      // options
+      message: err,
+    }, {
+      // settings
+      element: 'body',
+      position: null,
+      type: ttp,
+      allow_dismiss: true,
+      newest_on_top: false,
+      showProgressbar: false,
+      placement: {
+        from: "top",
+        align: "center"
+      },
+      offset: 20,
+      spacing: 10,
+      z_index: 1031,
+      delay: 2000,
+      timer: 500,
+      url_target: '_blank',
+      mouse_over: null,
+      animate: {
+        enter: 'animated bounceIn',
+        exit: 'animated bounceOut'
+      },
+      onShow: null,
+      onShown: null,
+      onClose: null,
+      onClosed: null,
+      icon_type: 'class',
+      template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+        '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+        '<span data-notify="icon"></span> ' +
+        '<span data-notify="title">{1}</span> ' +
+        '<span data-notify="message">{2}</span>' +
+        '<div class="progress" data-notify="progressbar">' +
+        '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+        '</div>' +
+        '<a href="{3}" target="{4}" data-notify="url"></a>' +
+        '</div>'
+    });
+
+  }
+</script>

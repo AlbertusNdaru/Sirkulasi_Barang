@@ -8,9 +8,11 @@ class Controller_barang extends CI_Controller
         parent::__construct();
         $this->load->model('Model_barang');
         $this->load->model('Model_tipebarang');
+        $this->load->model('Model_satuanbarang');
         checksession();
     }
 
+    
     function get_Barang()
     {
 
@@ -19,6 +21,8 @@ class Controller_barang extends CI_Controller
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang(); // in yg panggil data stok kurang dari 10 trs di lempar di view
         $data['barang']    = $this->Model_barang->get_barang();
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
+        $data['tipebarang']= $this->Model_tipebarang->get_tipe_barang();
+        $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
 
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
@@ -45,6 +49,7 @@ class Controller_barang extends CI_Controller
     {
         $data['barang']     = $this->Model_barang->get_barang_by_id($id_barang);
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
+        $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
         $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_barang/Form_edit_barang', $data);
     }
@@ -52,35 +57,64 @@ class Controller_barang extends CI_Controller
     function viewFormAddBarang()
     {
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
+        $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
         $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang', $data);
     }
 
     function addbarangg()
     {
-        $data = $this->Model_barang->get_id_barang_max();
-        $id_barang = $data->maxKode;
-        $noUrut = (int) substr($id_barang, 3, 3);
-        $noUrut++;
-        $char = "BRG";
-        $newID = $char . sprintf("%03s", $noUrut);
+        $validate = $this->Model_barang->get_barang_by_name($this->input->post('namabarang'));
+        if($validate)
+        {
+            $this->session->set_flashdata('Status','Input Failed -> Nama sudah Ada');
+            redirect('formaddbarang');
+        }
+        else
+            {
+                $data = $this->Model_barang->get_id_barang_max();
+                $id_barang = $data->maxKode;
+                $noUrut = (int) substr($id_barang, 3, 3);
+                $kategori = $this->input->post('tipe');
+                $nama = $this->Model_barang->kategori($kategori)->row_array();
+                $noUrut ++;             
+                $char = substr($nama['Name'], 0, 3);
+                $newID = $char . sprintf("%03s", $noUrut);
+               
+                //var inputan
+                $id_barang = $newID;
+                $varName = $this->input->post('namabarang');
+                $id_satuan=$this->input->post('satuan');
+                $id_satuan1=$this->input->post('satuan1');
+                $id_satuan2=$this->input->post('satuan2');
+                $barang = array(
+                    'id_barang'      => $id_barang,
+                    'Name'           => $this->input->post('namabarang'),
+                    'id_operator'    => $_SESSION['Admin']->id_operator,
+                    'id_tipe_barang' => $this->input->post('tipe'),
+                    'id_satuan'         => $id_satuan,
+                    'Create_at'      => get_current_date(),
+                    'Update_at'      => get_current_date()
+                );
+                $add_barang = $this->Model_barang->add_barang($barang);
 
-        $id_barang = $newID;
-        $barang = array(
-            'id_barang'      => $newID,
-            'Name'           => $this->input->post('namabarang'),
-            'id_operator'    => $_SESSION['Admin']->id_operator,
-            'id_tipe_barang' => $this->input->post('tipe'),
-            'Satuan'         => $this->input->post('satuan'),
-            'Create_at'      => get_current_date()
-        );
-        $add_barang = $this->Model_barang->add_barang($barang);
-        if ($add_barang) {
-            $this->session->set_flashdata('Status', 'Input Success');
-            redirect('barang');
-        } else {
-            $this->session->set_flashdata('Status', 'Input Failed');
-            redirect('barang');
+                
+                $konversi = array(
+                    'id_barang'=>$id_barang,
+                    'id_satuan'=>$id_satuan,
+                    'id_barang'=>$id_barang,
+                    'id_satuan'=>$id_satuan1,
+                    'id_barang'=>$id_satuan2
+                
+                );
+                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi);
+                if ($add_barang) {
+                    $this->session->set_flashdata('Status', 'Input Success');
+                    redirect('barang');
+                } else {
+                    $this->session->set_flashdata('Status', 'Input Failed');
+                    redirect('barang');
+                }
         }
     }
 
@@ -90,7 +124,7 @@ class Controller_barang extends CI_Controller
         $barang = array(
             'Name'           => $this->input->post('namabarang'),
             'id_tipe_barang' => $this->input->post('tipe'),
-            'Jumlah'         => $this->input->post('jumlah'),
+            // 'Jumlah'         => $this->input->post('jumlah'),
             'Satuan'         => $this->input->post('satuan'),
             'Harga'          => $this->input->post('harga'),
             'Update_at'      => get_current_date()
@@ -104,6 +138,7 @@ class Controller_barang extends CI_Controller
             redirect('barang');
         }
     }
+    
     function deleteBarang($id_barang)
     {
         $barang = array(

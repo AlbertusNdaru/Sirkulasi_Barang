@@ -1,8 +1,8 @@
 <div class="col">
   <div class="card shadow">
     <div class="card-header border-0">
-      <form name="fromaddoperator" action="<?= base_url('addbarangkeluar') ?>" method="post">
-        <h6 class="heading-small text-muted mb-4">Add Barang Keluar </h6>
+      <form name="fromaddoperator" action="<?= base_url('addbarangrusak') ?>" method="post">
+        <h6 class="heading-small text-muted mb-4">Add Barang Rusak </h6>
         <hr class="my-4" />
         <div class="pl-lg-4">
           <div class="row">
@@ -30,30 +30,28 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="form-control-label" for="input-address">Jumlah Keluar</label>
+                <label class="form-control-label" for="input-address">Jumlah Barang Rusak</label>
                 <input required min="1" id="jumlahid" class="form-control form-control-alternative" name="jumlah" type="number">
               </div>
             </div>
           </div>
-          
+          <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-address">Satuan</label>
+                                <select name="satuan" class="form-control selectpicker">
+                                    <?php foreach ($satuanbarang as $s) { ?>
+                                        <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Harga</label>
                 <input required readonly id="hargaid" class="form-control form-control-alternative" name="harga" type="number">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="form-control-label" for="input-address">Bagian</label>
-                <select required name="bagian" id="idbagian" class="form-control selectpicker">
-                  <option value="" selected>Silahkan Pilih Bagian</option>
-                  <?php foreach ($bagian as $k) { ?>
-                    <option value="<?= $k->id_bagian ?>"><?= $k->Name ?></option>
-                  <?php } ?>
-                </select>
               </div>
             </div>
           </div>
@@ -75,7 +73,7 @@
         var databarang = JSON.parse(data);
         console.log(databarang)
         $('#barangbykat').empty();
-        $('#barangbykat').append('<option value="">Silahkan Pilih Nama</option>')
+        $('#barangbykat').append('<option value="">Silahkan Pilih Nama Barang</option>')
         for (var i = 0; i < databarang.length; i++) {
           $('#barangbykat').append('<option value="' + databarang[i]['id_barang'] + '">' + databarang[i]['Name'] + '</option>')
         }

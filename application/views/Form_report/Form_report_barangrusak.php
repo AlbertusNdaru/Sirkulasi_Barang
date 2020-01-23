@@ -1,9 +1,5 @@
 <?php
 include APPPATH . 'views/Form_report/laporan.php';
-foreach ($bagian as $t) {
-    $totalbagian[$t->id_bagian] = 0;
-    $tipename[$t->id_bagian] = $t->Name;
-}
 ?>
 <div>
     <div align="center">
@@ -11,7 +7,7 @@ foreach ($bagian as $t) {
         <div>
             <h2 align="center">
                 PT. GAPURA ANGKASA CABANG YOGYAKARTA <br>
-                Daftar Barang Keluar <br>
+                Daftar Barang Rusak <br>
                 <small><?php echo $tanggal1 . " - " . $tanggal2 ?></small>
             </h2>
         </div>
@@ -32,7 +28,6 @@ foreach ($bagian as $t) {
                                 <th>Satuan</th>
                                 <th>Harga</th>
                                 <th>Total</th>
-                                <th>Bagian</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,26 +42,18 @@ foreach ($bagian as $t) {
                                     <td align="center"><?php echo rupiah($r->Harga) ?></td>
                                     <td align="right"><?php $total = $r->Jumlah * $r->Harga;
                                                             echo rupiah($total) ?></td>
-                                    <td align="center"><?php echo $r->NamaBagian ?></td>
                                 </tr>
                             <?php $no++;
                                 $totalsemua = $totalsemua + $total;
-                                $totalbagian[$r->id_bagian] =   $totalbagian[$r->id_bagian] + $total;
                             } ?>
                             <tr>
-                                <td colspan="7">
+                                <td colspan="6">
                                     <hr>
                                 </td>
-                            </tr>>
-                            <?php foreach ($totalbagian as $key => $a) { ?>
-                                <tr>
-                                    <td align="right" style="background-color: yellow; color: black" colspan="5">Total Barang Bagian <?= $tipename[$key]; ?></td>
-                                    <td align="right" style="background-color: yellow; color: black ;" colspan="2"><?php echo rupiah(json_encode($totalbagian[$key]))?></td>
-                                </tr>
-                            <?php } ?>
+                            </tr>
                             <tr>
                                 <td align="right" style="background-color: burlywood; color: black ; font-weight: bold" colspan="5">Total Keseluruhan</td>
-                                <td align="right" style="background-color: burlywood; color: black ; font-weight: bold" colspan="2"><?php echo rupiah($totalsemua) ?></td>
+                                <td align="right" style="background-color: burlywood; color: black ; font-weight: bold" ><?php echo rupiah($totalsemua) ?></td>
                             </tr>
                         </tbody>
                     </table>

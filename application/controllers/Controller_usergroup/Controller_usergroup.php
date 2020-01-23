@@ -34,13 +34,13 @@ class Controller_usergroup extends CI_Controller
         $this->template->load('Template/Template_admin', 'Form_usergroup/Form_add_usergroup',$data);
     }
 
-    function addusergroup() // ini jangan dirubah 
+    function addusergroup() 
     {
         $usergroup = array(
             'Description' => $this->input->post('hakakses'),
             'Create_at'   => get_current_date()
         );
-        $addusergroup = $this->Model_usergroup->add_usergroup($usergroup); // yg ini yg dicek 
+        $addusergroup = $this->Model_usergroup->add_usergroup($usergroup); 
         if ($addusergroup) {
             $this->session->set_flashdata('Status', 'Input Succes');
             redirect('usergroup');

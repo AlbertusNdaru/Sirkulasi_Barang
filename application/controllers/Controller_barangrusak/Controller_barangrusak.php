@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Controller_barangkeluar extends CI_Controller
+class Controller_barangrusak extends CI_Controller
 {
 
     function __construct()
@@ -8,28 +8,26 @@ class Controller_barangkeluar extends CI_Controller
         parent::__construct();
         $this->load->model('Model_barang');
         $this->load->model('Model_tipebarang');
+        $this->load->model('Model_barang_rusak');
         $this->load->model('Model_satuanbarang');
-        $this->load->model('Model_bagian');
-        $this->load->model('Model_barang_keluar');
         checksession();
     }
 
-    function get_Barang_keluar()
+    function get_Barang_rusak()
     {
         $data['kategori']  = $this->Model_tipebarang->get_tipe_barang();
         $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
-        $data['bagian']    = $this->Model_bagian->get_bagian();
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         // echo json_encode($data);
-        $this->template->load('Template/Template_admin', 'Form_barang_keluar/Form_add_barang_keluar', $data);
+        $this->template->load('Template/Template_admin', 'Form_barang_rusak/Form_add_barang_rusak', $data);
     }
 
-    function data_barang_keluar()
+    function data_barang_rusak()
     {
-        $data['barang']    = $this->Model_barang_keluar->get_barang_keluar();
+        $data['barang']    = $this->Model_barang_rusak->get_barang_rusak();
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         // echo json_encode($data);
-        $this->template->load('Template/Template_admin', 'Form_barang_keluar/Form_data_barangkeluar', $data);
+        $this->template->load('Template/Template_admin', 'Form_barang_rusak/Form_data_barangrusak', $data);
     }
 
 
@@ -57,36 +55,35 @@ class Controller_barangkeluar extends CI_Controller
         $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang', $data);
     }
 
-    function addbarangKeluar()
+    function addbarangRusak()
     {
         $barang = array(
             'id_barang' => $this->input->post('barang'),
-            'id_bagian' => $this->input->post('bagian'),
             'Jumlah'    => $this->input->post('jumlah'),
             'id_satuan'    => $this->input->post('satuan'),
             'Harga'     => $this->input->post('harga'),
-            'Create_at' => get_current_date()
+            'create_at' => get_current_date()
         );
         $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
-        $datasatuan = $this->Model_barang_keluar->get_satuan($this->input->post('satuan'));
+        $datasatuan = $this->Model_barang_rusak->get_satuan($this->input->post('satuan'));
 
         $nilai_satuan = $datasatuan->nilai_satuan;
-        $jumlah_barang_keluar = $this->input->post('jumlah')*$nilai_satuan;
+        $jumlah_barang_rusak = $this->input->post('jumlah')*$nilai_satuan;
 
         $barangedit = array(
-            'Jumlah' =>  $databarang->Jumlah - $jumlah_barang_keluar,
+            'Jumlah' =>  $databarang->Jumlah - $jumlah_barang_rusak,
             'Harga' => $this->input->post('harga'),
             'Create_at' => get_current_date()
-
         );
+        
         $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);
-        $add_barang = $this->Model_barang_keluar->add_barang_keluar($barang);
+        $add_barang = $this->Model_barang_rusak->add_barang_rusak($barang);
         if ($add_barang) {
             $this->session->set_flashdata('Status', 'Input Success');
-            redirect('barangkeluar');
+            redirect('barangrusak');
         } else {
             $this->session->set_flashdata('Status', 'Input Failed');
-            redirect('barangkeluar');
+            redirect('barangrusak');
         }
     }
 

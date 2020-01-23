@@ -43,7 +43,7 @@ foreach ($tipebarang as $t) {
                                     <td align="center"><?php echo $no ?></td>
                                     <td align="left"><?php echo $r->Name ?></td>
                                     <td align="center"><?php echo $r->Jumlah ?></td>
-                                    <td align="center"><?php echo $r->Satuan ?></td>
+                                    <td align="center"><?php echo $r->NamaSatuan ?></td>
                                     <td align="center"><?php echo $r->NamaTipe ?></td>
                                     <td align="center"><?php echo  rupiah($r->Harga) ?></td>
                                     <td align="right"><?php $total = $r->Jumlah * $r->Harga;

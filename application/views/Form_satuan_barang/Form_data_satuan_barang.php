@@ -1,7 +1,7 @@
 <?php if ($_SESSION['Admin']->id_level == 1  || $_SESSION['Admin']->id_level == 2) { ?>
   <div class="col">
-    <a href="<?= base_url('formaddtipebarang'); ?>" class="btn addTipedata btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
-      <button type="button" class="btn btn-primary">Add Tipe Barang</button>
+    <a href="<?= base_url('formaddsatuanbarang'); ?>" class="btn addSatuandata btn-round btn-default"><i class="glyphicon glyphicon-plus-sign"></i>
+      <button type="button" class="btn btn-primary">Add Satuan</button>
     </a>
   </div>
 <?php } ?>
@@ -9,7 +9,7 @@
   <div class="col">
     <div class="card shadow">
       <div class="card-header border-0">
-        <h3 class="mb-0">Data Tipe Barang</h3>
+        <h3 class="mb-0">Data Satuan</h3>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -18,8 +18,9 @@
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
-                <th scope="col">Creat at</th>
-                <th scope="col">Update at</th>
+                <th scope="col">Nama Satuan</th>
+                <th scope="col">Nilai Satuan</th>
+                
                 <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
                   <th scope="col">Action</th>
                 <?php } ?>
@@ -28,7 +29,7 @@
             <tbody>
               <?php
               $i = 1;
-              foreach ($tipebarang as $o) { ?>
+              foreach ($satuanbarang as $o) { ?>
                 <tr>
                   <div class="adge badge-dot mr-4">
                     <td><?= $i ?> </td>
@@ -37,17 +38,16 @@
                     <td><?= $o->Name ?></td>
                   </div>
                   <div class="adge badge-dot mr-4">
-                    <td><?= $o->Creat_at ?></td>
+                    <td><?= $o->Name_satuan ?></td>
                   </div>
-
                   <div class="adge badge-dot mr-4">
-                    <td><?= $o->Update_at ?></td>
+                    <td><?= $o->nilai_satuan ?></td>
                   </div>
         </div>
         <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
           <div class="adge badge-dot mr-6">
             <td class="center">
-              <a class="btn btn-info" href="<?= base_url('formedittipebarang/' . $o->id_tipe_barang . '') ?>">
+              <a class="btn btn-info" href="<?= base_url('formeditsatuanbarang/' . $o->id_satuan . '') ?>">
                 <i class="glyphicon glyphicon-edit icon-white"></i>
                 Edit
               </a>

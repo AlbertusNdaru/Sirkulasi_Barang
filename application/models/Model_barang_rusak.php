@@ -1,14 +1,13 @@
 <?php
-class Model_barang_masuk extends CI_Model
+class Model_barang_rusak extends CI_Model
 {
-    function get_barang_masuk()
+    function get_barang_rusak()
     {
-        $this->db->select('a.*, b.Name as NamaBarang, c.Name as NamaTipe, d.Name as NamaSatuan');
-        $this->db->from('tb_barang_masuk as a');
+        $this->db->select('a.*, b.Name as NamaBarang, c.Name as NamaSatuan');
+        $this->db->from('tb_barang_rusak as a');
         $this->db->order_by('a.Create_at', 'DESC');
         $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
-        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=b.id_tipe_barang');
-        $this->db->join('tb_satuan as d', 'd.id_satuan=a.id_satuan');
+        $this->db->join('tb_satuan as c', 'c.id_satuan=a.id_satuan');
         $this->db->where('deleted', 0);
         $dataBarang = $this->db->get()->result();
         return $dataBarang;
@@ -21,11 +20,11 @@ class Model_barang_masuk extends CI_Model
         $dataSatuan = $this->db->get()->row();
         return $dataSatuan;  
     }
-
-    function totalBarangMasuk()
+    
+    function totalBarangRusak()
     {
-        $this->db->select('count(a.id_barang_masuk) as BM');
-        $this->db->from('tb_barang_masuk as a');
+        $this->db->select('count(a.id_barang_rusak) as BR');
+        $this->db->from('tb_barang_rusak as a');
         return $this->db->get()->row();
     }
 
@@ -34,7 +33,7 @@ class Model_barang_masuk extends CI_Model
         $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe, d.Name as NamaSatuan');
         $this->db->from('tb_barang as a');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
-        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=b.id_tipe_barang');
+        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
         $this->db->join('tb_satuan as d', 'd.id_satuan=a.id_satuan');
         $this->db->where('deleted', 0);
         $this->db->where("id_barang", $id_barang);
@@ -55,9 +54,9 @@ class Model_barang_masuk extends CI_Model
         return $getbarangById;
     }
 
-    function add_barang_masuk($dataBarang)
+    function add_barang_rusak($dataBarang)
     {
-        $add_barang = $this->db->insert('tb_barang_masuk', $dataBarang);
+        $add_barang = $this->db->insert('tb_barang_rusak', $dataBarang);
         return $add_barang;
     }
 

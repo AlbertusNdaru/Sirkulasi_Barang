@@ -109,6 +109,7 @@
             </li>
 
             <!-- Nav Item - Alerts -->
+            <?php if ($_SESSION['Admin']->id_level == 1 || $_SESSION['Admin']->id_level == 2) { ?>
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
@@ -129,7 +130,7 @@
                       </div>
                     </div>
                     <div>
-                      <div class="small text-gray-500"><?= $s->Create_at ?></div>
+                      <div class="small text-gray-500"><?= $s->Update_at ?></div>
                       <span class="font-weight-bold"><?= $s->Name ?></span><br>
                       <span class="font-weight-bold">Stok : <?= $s->Jumlah ?></span>
                     </div>
@@ -138,6 +139,7 @@
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
               </div>
             </li>
+                <?php }?>
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->

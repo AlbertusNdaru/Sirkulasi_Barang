@@ -31,6 +31,7 @@
                                 <th scope="col">Name Barang</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Jumlah</th>
+                                <th scope="col">Satuan</th>
                                 <th scope="col">Harga</th>
                                 <th scope="col">Tanggal Masuk</th>
                                 <!-- <th scope="col">Action</th> -->
@@ -55,6 +56,9 @@
                                         <td><?= $o->Jumlah ?></td>
 
                                     </div>
+                                    <div class="adge badge-dot mr-4">
+                                            <td><?= $o->NamaSatuan ?></td>
+                                        </div>
                                     <div class="adge badge-dot mr-4">
                                         <td><?= rupiah($o->Harga) ?></td>
 

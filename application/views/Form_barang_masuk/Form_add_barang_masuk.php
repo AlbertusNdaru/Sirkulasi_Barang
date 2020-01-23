@@ -37,6 +37,18 @@
             </div>
           </div>
           <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-address">Satuan</label>
+                                <select name="satuan" class="form-control selectpicker">
+                                    <?php foreach ($satuanbarang as $s) { ?>
+                                        <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+          <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Harga</label>
@@ -59,11 +71,12 @@
         id: id
       },
       success: function(data) {
-        var dataalat = JSON.parse(data);
-        console.log(dataalat)
+        var databarang = JSON.parse(data);
+        console.log(databarang)
         $('#barangbykat').empty();
-        for (var i = 0; i < dataalat.length; i++) {
-          $('#barangbykat').append('<option value="' + dataalat[i]['id_barang'] + '">' + dataalat[i]['Name'] + '</option>')
+        $('#barangbykat').append('<option value="">Silahkan Pilih Nama Barang</option>')
+        for (var i = 0; i < databarang.length; i++) {
+          $('#barangbykat').append('<option value="' + databarang[i]['id_barang'] + '">' + databarang[i]['Name'] + '</option>')
         }
         $('#barangbykat').selectpicker('refresh');
         $('#jmlid').val('');
