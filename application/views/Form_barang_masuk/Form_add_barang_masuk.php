@@ -22,7 +22,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Nama Barang</label>
-                <select required name="barang" id="barangbykat" class="form-control selectpicker" data-live-search="true">
+                <select required name="barang" id="barangbykat" class="form-control selectpicker" data-live-search="true" onchange="setkonveksi()">
 
                 </select>
               </div>
@@ -40,10 +40,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Satuan</label>
-                                <select name="satuan" class="form-control selectpicker">
-                                    <?php foreach ($satuanbarang as $s) { ?>
-                                        <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
-                                    <?php } ?>
+                                <select name="satuan" id="konveksibybrg" class="form-control selectpicker">
+                                    
                                 </select>
                             </div>
                         </div>
@@ -78,11 +76,36 @@
         for (var i = 0; i < databarang.length; i++) {
           $('#barangbykat').append('<option value="' + databarang[i]['id_barang'] + '">' + databarang[i]['Name'] + '</option>')
         }
+        
         $('#barangbykat').selectpicker('refresh');
         $('#jmlid').val('');
         $('#hargaid').val('');
 
       }
     });
+    
+  }
+  function setkonveksi() {
+    var id_barang = document.getElementById('barangbykat').value;
+    $.ajax({
+      url: "<?php echo base_url('konveksibarang'); ?>",
+      type: "POST",
+      data: {
+        id_barang: id_barang
+      },
+      success: function(data) {
+        var datakonveksi = JSON.parse(data);
+        console.log(datakonveksi)
+        $('#konveksibybrg').empty();
+        $('#konveksibybrg').append('<option value="">Silahkan Pilih Satuan</option>')
+        for (var i = 0; i < datakonveksi.length; i++) {
+          $('#konveksibybrg').append('<option value="' + datakonveksi[i]['id_satuan'] + '">' + datakonveksi[i]['NameSatuan'] + '</option>')
+        }
+        
+        $('#konveksibybrg').selectpicker('refresh');
+
+      }
+    });
+    
   }
 </script>

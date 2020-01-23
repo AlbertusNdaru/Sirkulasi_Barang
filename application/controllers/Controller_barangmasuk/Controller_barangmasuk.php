@@ -41,6 +41,8 @@ class Controller_barangmasuk extends CI_Controller
         //$this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
     }
 
+   
+
     function viewFormEditbarang($id_barang)
     {
         $data['barang']     = $this->Model_barang->get_barang_by_id($id_barang);
@@ -73,14 +75,12 @@ class Controller_barangmasuk extends CI_Controller
         $jumlah_barang_masuk = $this->input->post('jumlah')*$nilai_satuan;
 
         $barangedit = array(
-<<<<<<< HEAD
+
                 'Jumlah' => $databarang->Jumlah + $jumlah_barang_masuk,
                 'Harga'  => $this->input->post('harga')/ $jumlah_barang_masuk,
-=======
                 'Jumlah' => $databarang->Jumlah + $this->input->post('jumlah'),
                 'Harga'  => $this->input->post('harga'),
->>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
-                'Update_at'=> get_current_date()
+             'Update_at'=> get_current_date()
 
         );
         $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);

@@ -14,11 +14,6 @@ class Model_barang extends CI_Model
         return $dataBarang;
     }
 
-    function kategori($kategori)
-    {
-        return $this->db->get_where('tb_tipe_barang', ['id_tipe_barang' => $kategori]);
-    }
-
     function totalBarang()
     {
         $this->db->select('count(a.id_barang) as B');
@@ -62,7 +57,7 @@ class Model_barang extends CI_Model
 
     function get_barang_by_kategori($kategori)
     {
-        $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe, d.Name as NameSatuan');
+        $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe, d.Name_satuan as NameSatuan');
         $this->db->from('tb_barang as a');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
         $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
@@ -73,14 +68,40 @@ class Model_barang extends CI_Model
         return $getbarangById;
     }
 
+    function get_konversi($barang){
+        $this->db->select('a.*,b.Name_satuan as NameSatuan');
+        $this->db->from('tb_konversi as a');
+        $this->db->join('tb_satuan as b', 'b.id_satuan=a.id_satuan');
+        $this->db->where('a.id_barang',$barang);
+        $getkonveksi = $this->db->get()->result();
+        return $getkonveksi;
+    }
+
+    //konversi
+    function get_konversi_edit(){
+        $this->db->join('tb_satuan','tb_satuan.id_satuan=tb_konversi.id_satuan');
+        $datasatuan_barang = $this->db->get("tb_konversi")->result();
+        return $datasatuan_barang;
+    }
+
+    function get_konversi_by_id($id_barang){
+        $this->db->select('b.Name_satuan as NameSatuan');
+        $this->db->from('tb_konversi as a');
+        $this->db->join('tb_satuan as b', 'b.id_satuan=a.id_satuan');
+        $this->db->where("id_barang", $id_barang);
+        $getkonversiById = $this->db->get()->row();
+        return $getkonversiById;
+    }
+
+
+
     function get_barang_by_name($name)
     {
         $this->db->where("Name", $name);
-<<<<<<< HEAD
+
         $this->db->where("deleted", 0);
-=======
->>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
-        $get_barangById = $this->db->get('tb_barang')->row();
+
+       $get_barangById = $this->db->get('tb_barang')->row();
         return $get_barangById;
     }
 

@@ -38,11 +38,11 @@ include APPPATH . 'views/Form_report/laporan.php';
                                     <td align="center"><?php echo $no ?></td>
                                     <td align="left"><?php echo $r->NamaBarang ?></td>
                                     <td align="center"><?php echo $r->Jumlah ?></td>
-<<<<<<< HEAD
+
                                     <td align="center"><?php echo $r->NamaSatuan ?></td>
-=======
+
                                     <td align="center"><?php echo $r->Satuan ?></td>
->>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
+
                                     <td align="center"><?php echo rupiah($r->Harga) ?></td>
                                     <td align="right"><?php $total = $r->Jumlah * $r->Harga;
                                                             echo rupiah($total) ?></td>

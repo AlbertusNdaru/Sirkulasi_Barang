@@ -9,10 +9,9 @@ class Model_report extends CI_Model
         $this->db->from('tb_barang as a');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
         $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
-<<<<<<< HEAD
+
         $this->db->join('tb_satuan as d', 'd.id_satuan=a.id_satuan');
-=======
->>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
+
         $this->db->where('a.id_tipe_barang',$tipe_barang);
         // $this->db->where('date(a.Create_at) >=',$tanggal1);
         // $this->db->where('date(a.Create_at) <=',$tanggal2);
@@ -51,16 +50,13 @@ class Model_report extends CI_Model
 
     function get_barang_rusak($tanggal1,$tanggal2)
     {
-<<<<<<< HEAD
         $this->db->select('a.*, b.Name as NamaBarang, b.id_tipe_barang, c.Name as NameSatuan ');
         $this->db->from('tb_barang_rusak as a');
         $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
         $this->db->join('tb_satuan as c', 'c.id_satuan=a.id_satuan');
-=======
         $this->db->select('a.*, b.Name as NamaBarang, b.id_tipe_barang, b.Satuan');
         $this->db->from('tb_barang_rusak as a');
         $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
->>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
         $this->db->where('date(a.Create_at) >=',$tanggal1);
         $this->db->where('date(a.Create_at) <=',$tanggal2);
         $this->db->where('deleted',0);

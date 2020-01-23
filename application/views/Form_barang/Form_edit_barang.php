@@ -25,22 +25,15 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-address">Jumlah</label>
-                                <input required type="number" min="1" class="form-control form-control-alternative" value="<?= $barang->Jumlah ?>" name="jumlah">
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-address">Satuan</label>
+                                <label class="form-control-label" for="input-address">Satuan Terkecil</label>
                                 <select name="satuan" class="form-control selectpicker">
-                                    <option <?php if ($barang->id_satuan == '1') {echo 'Selected';} ?> value="1">PCS</option>
-                                    <option <?php if ($barang->id_satuan == '2') {echo 'Selected';} ?> value="2">BOTOL</option>
-                                    <option <?php if ($barang->id_satuan == '3') {echo 'Selected';} ?> value="3">RIM</option>
+                                <?php foreach ($konversi_satuan as $s) { ?>
+                                        <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
+                                    <?php } ?>
+                                    
                                 </select>
                             </div>
                         </div>
@@ -48,15 +41,36 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-address">Harga</label>
-<<<<<<< HEAD
-                                <input type="number" min="0" class="form-control form-control-alternative" value="<?= $barang->Harga ?>" name="harga">
-=======
-                                <input type="number" min="0" class="form-control form-control-alternative" value="<?= $barang->Harga?>" name="harga">
->>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
+                                <label class="form-control-label" for="input-address">Satuan Terbesar 1</label>
+                                <select name="satuan1" class="form-control selectpicker">
+                                    <?php foreach ($satuanbarang as $s) { ?>
+                                        <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-address">Satuan Terbesar 2</label>
+                                <select name="satuan2" class="form-control selectpicker">
+                                    <?php foreach ($satuanbarang as $s) { ?>
+                                        <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-address">Harga</label>
+                                <input type="number" min="0" class="form-control form-control-alternative" value="<?= $barang->Harga?>" name="harga">
+
+                            </div>
+                        </div>
+                    </div> -->
                     <button type="submit" name="submitid" value="<?= $barang->id_barang ?>" class="btn btn-primary">Edit Data</button>
             </form>
         </div>

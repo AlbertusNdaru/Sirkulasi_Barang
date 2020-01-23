@@ -92,6 +92,7 @@ $route['formeditsatuanbarang/(:any)'] = 'Controller_satuanbarang/Controller_satu
 //Route Barang
 $route['barang'] = 'Controller_barang/Controller_barang/get_Barang';
 $route['barangkategori'] = 'Controller_barang/Controller_barang/get_Barang_by_kategori';
+$route['konveksibarang'] = 'Controller_barang/Controller_barang/get_konveksi_by_barang';
 $route['barangid'] = 'Controller_barang/Controller_barang/get_Barang_by_id';
 $route['formaddbarang'] = 'Controller_barang/Controller_barang/viewFormAddBarang';
 $route['formeditbarang/(:any)'] = 'Controller_barang/Controller_barang/viewFormEditbarang/$1';

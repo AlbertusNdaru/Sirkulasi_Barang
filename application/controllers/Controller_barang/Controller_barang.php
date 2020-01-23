@@ -15,17 +15,13 @@ class Controller_barang extends CI_Controller
     
     function get_Barang()
     {
-
-
         $data['barang'] = $this->Model_barang->get_barang();
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang(); // in yg panggil data stok kurang dari 10 trs di lempar di view
         $data['barang']    = $this->Model_barang->get_barang();
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         $data['tipebarang']= $this->Model_tipebarang->get_tipe_barang();
-<<<<<<< HEAD
+
         $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
-=======
->>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
 
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
@@ -38,6 +34,11 @@ class Controller_barang extends CI_Controller
         $barang   = $this->Model_barang->get_barang_by_kategori($kategori);
         echo json_encode($barang);
         //$this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
+    }
+    function get_konveksi_by_barang(){
+        $barang = $this->input->post('id_barang');
+        $konveksi = $this->Model_barang->get_konversi($barang);
+        echo json_encode($konveksi);
     }
 
     function get_Barang_by_id()
@@ -53,6 +54,8 @@ class Controller_barang extends CI_Controller
         $data['barang']     = $this->Model_barang->get_barang_by_id($id_barang);
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
         $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
+        $data['konversi']     = $this->Model_barang->get_konversi_by_id($id_barang);
+        $data['konversi_satuan']= $this->Model_barang->get_konversi_edit();
         $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_barang/Form_edit_barang', $data);
     }
@@ -77,17 +80,16 @@ class Controller_barang extends CI_Controller
             {
                 $data = $this->Model_barang->get_id_barang_max();
                 $id_barang = $data->maxKode;
-<<<<<<< HEAD
+
                 $noUrut = (int) substr($id_barang, 3, 3);
                 $kategori = $this->input->post('tipe');
-                $nama = $this->Model_barang->kategori($kategori)->row_array();
+                
                 $noUrut ++;             
-                $char = substr($nama['Name'], 0, 3);
+                $char = 'BRG';
                 $newID = $char . sprintf("%03s", $noUrut);
                
                 //var inputan
                 $id_barang = $newID;
-                $varName = $this->input->post('namabarang');
                 $id_satuan=$this->input->post('satuan');
                 $id_satuan1=$this->input->post('satuan1');
                 $id_satuan2=$this->input->post('satuan2');
@@ -101,41 +103,24 @@ class Controller_barang extends CI_Controller
                     'Update_at'      => get_current_date()
                 );
                 $add_barang = $this->Model_barang->add_barang($barang);
-
+                $id_barang_konversi = $this->db->insert_id();
                 
                 $konversi = array(
                     'id_barang'=>$id_barang,
-                    'id_satuan'=>$id_satuan,
+                    'id_satuan'=>$id_satuan                
+                );
+                $konversi1 = array(
                     'id_barang'=>$id_barang,
-                    'id_satuan'=>$id_satuan1,
-                    'id_barang'=>$id_satuan2
-                
+                    'id_satuan'=>$id_satuan1                
+                );
+                $konversi2 = array(
+                    'id_barang'=>$id_barang,
+                    'id_satuan'=>$id_satuan2                
                 );
                 $add_konversi = $this->Model_satuanbarang->add_konversi($konversi);
-=======
-                //$noUrut = (int) substr($id_barang, 3, 3);
-                $noUrut=rand(0,10000);
-                $acak = substr($noUrut,1,3);
-                $kategori = $this->input->post('tipe');
-                $nama = $this->Model_barang->kategori($kategori)->row_array();
-                //$noUrut ++;
-                //$nama_kategori = 
-                $char = substr($nama['Name'], 0, 3);
-                //$newID = $char . sprintf("%03s", $noUrut);
-                $newID= $char.$acak;
+                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi1);
+                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi2);
 
-                $id_barang = $newID;
-                $barang = array(
-                    'id_barang'      => $newID,
-                    'Name'           => $this->input->post('namabarang'),
-                    'id_operator'    => $_SESSION['Admin']->id_operator,
-                    'id_tipe_barang' => $this->input->post('tipe'),
-                    'Satuan'         => $this->input->post('satuan'),
-                    'Create_at'      => get_current_date(),
-                    'Update_at'      => get_current_date()
-                );
-                $add_barang = $this->Model_barang->add_barang($barang);
->>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
                 if ($add_barang) {
                     $this->session->set_flashdata('Status', 'Input Success');
                     redirect('barang');
@@ -148,15 +133,37 @@ class Controller_barang extends CI_Controller
 
     function editbarang()
     {
+        $varName = $this->input->post('namabarang');
+        $id_satuan=$this->input->post('satuan');
+        $id_satuan1=$this->input->post('satuan1');
+        $id_satuan2=$this->input->post('satuan2');
         $id_barang = $this->input->post('submitid');
         $barang = array(
             'Name'           => $this->input->post('namabarang'),
             'id_tipe_barang' => $this->input->post('tipe'),
             // 'Jumlah'         => $this->input->post('jumlah'),
-            'Satuan'         => $this->input->post('satuan'),
-            'Harga'          => $this->input->post('harga'),
+            'id_satuan'         => $id_satuan,
+            // 'Harga'          => $this->input->post('harga'),
             'Update_at'      => get_current_date()
         );
+        $add_barang = $this->Model_barang->add_barang($barang);
+                $id_barang_konversi = $this->db->insert_id(); 
+                $konversi = array(
+                    'id_barang'=>$id_barang,
+                    'id_satuan'=>$id_satuan                
+                );
+                $konversi1 = array(
+                    'id_barang'=>$id_barang,
+                    'id_satuan'=>$id_satuan1                
+                );
+                $konversi2 = array(
+                    'id_barang'=>$id_barang,
+                    'id_satuan'=>$id_satuan2                
+                );
+                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi);
+                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi1);
+                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi2);
+
         $editbarang = $this->Model_barang->update_barang($id_barang, $barang);
         if ($editbarang) {
             $this->session->set_flashdata('Status', 'Edit Success');

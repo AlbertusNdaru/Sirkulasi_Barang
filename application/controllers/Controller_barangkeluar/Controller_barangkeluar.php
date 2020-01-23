@@ -74,11 +74,11 @@ class Controller_barangkeluar extends CI_Controller
         $jumlah_barang_keluar = $this->input->post('jumlah')*$nilai_satuan;
 
         $barangedit = array(
-<<<<<<< HEAD
+
             'Jumlah' =>  $databarang->Jumlah - $jumlah_barang_keluar,
-=======
+
             'Jumlah' =>  $databarang->Jumlah - $this->input->post('jumlah'),
->>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
+
             'Harga' => $this->input->post('harga'),
             'Create_at' => get_current_date()
 
