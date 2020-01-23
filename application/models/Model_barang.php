@@ -76,7 +76,10 @@ class Model_barang extends CI_Model
     function get_barang_by_name($name)
     {
         $this->db->where("Name", $name);
+<<<<<<< HEAD
         $this->db->where("deleted", 0);
+=======
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
         $get_barangById = $this->db->get('tb_barang')->row();
         return $get_barangById;
     }

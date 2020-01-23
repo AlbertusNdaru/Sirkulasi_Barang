@@ -73,8 +73,13 @@ class Controller_barangmasuk extends CI_Controller
         $jumlah_barang_masuk = $this->input->post('jumlah')*$nilai_satuan;
 
         $barangedit = array(
+<<<<<<< HEAD
                 'Jumlah' => $databarang->Jumlah + $jumlah_barang_masuk,
                 'Harga'  => $this->input->post('harga')/ $jumlah_barang_masuk,
+=======
+                'Jumlah' => $databarang->Jumlah + $this->input->post('jumlah'),
+                'Harga'  => $this->input->post('harga'),
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
                 'Update_at'=> get_current_date()
 
         );

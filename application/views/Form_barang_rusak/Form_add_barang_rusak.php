@@ -30,12 +30,17 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
+<<<<<<< HEAD
                 <label class="form-control-label" for="input-address">Jumlah Barang Rusak</label>
+=======
+                <label class="form-control-label" for="input-address">Jumlah Keluar</label>
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
                 <input required min="1" id="jumlahid" class="form-control form-control-alternative" name="jumlah" type="number">
               </div>
             </div>
           </div>
           <div class="row">
+<<<<<<< HEAD
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Satuan</label>
@@ -48,6 +53,8 @@
                         </div>
                     </div>
           <div class="row">
+=======
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Harga</label>

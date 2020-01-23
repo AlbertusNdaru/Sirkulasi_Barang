@@ -31,7 +31,10 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Name Barang</th>
                                 <th scope="col">Jumlah</th>
+<<<<<<< HEAD
                                 <th scope="col">Satuan</th>
+=======
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
                                 <th scope="col">Harga</th>
                                 <th scope="col">Tanggal Keluar</th>
                                 <!-- <th scope="col">Action</th> -->
@@ -54,10 +57,13 @@
 
                                     </div>
                                     <div class="adge badge-dot mr-4">
+<<<<<<< HEAD
                                             <td><?= $o->NamaSatuan ?></td>
 
                                         </div>
                                     <div class="adge badge-dot mr-4">
+=======
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
                                         <td><?= rupiah($o->Harga) ?></td>
 
                                     </div>

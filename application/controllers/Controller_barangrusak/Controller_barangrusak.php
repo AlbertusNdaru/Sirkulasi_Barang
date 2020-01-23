@@ -9,14 +9,20 @@ class Controller_barangrusak extends CI_Controller
         $this->load->model('Model_barang');
         $this->load->model('Model_tipebarang');
         $this->load->model('Model_barang_rusak');
+<<<<<<< HEAD
         $this->load->model('Model_satuanbarang');
+=======
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
         checksession();
     }
 
     function get_Barang_rusak()
     {
         $data['kategori']  = $this->Model_tipebarang->get_tipe_barang();
+<<<<<<< HEAD
         $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
+=======
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_barang_rusak/Form_add_barang_rusak', $data);
@@ -43,7 +49,10 @@ class Controller_barangrusak extends CI_Controller
     {
         $data['barang']     = $this->Model_barang->get_barang_by_id($id_barang);
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
+<<<<<<< HEAD
         $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
+=======
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
         $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_barang/Form_edit_barang', $data);
     }
@@ -51,7 +60,10 @@ class Controller_barangrusak extends CI_Controller
     function viewFormAddBarang()
     {
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
+<<<<<<< HEAD
         $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
+=======
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
         $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang', $data);
     }
 
@@ -60,11 +72,15 @@ class Controller_barangrusak extends CI_Controller
         $barang = array(
             'id_barang' => $this->input->post('barang'),
             'Jumlah'    => $this->input->post('jumlah'),
+<<<<<<< HEAD
             'id_satuan'    => $this->input->post('satuan'),
+=======
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
             'Harga'     => $this->input->post('harga'),
             'create_at' => get_current_date()
         );
         $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
+<<<<<<< HEAD
         $datasatuan = $this->Model_barang_rusak->get_satuan($this->input->post('satuan'));
 
         $nilai_satuan = $datasatuan->nilai_satuan;
@@ -76,6 +92,13 @@ class Controller_barangrusak extends CI_Controller
             'Create_at' => get_current_date()
         );
         
+=======
+        $barangedit = array(
+            'Jumlah' =>  $databarang->Jumlah - $this->input->post('jumlah'),
+            'Harga' => $this->input->post('harga'),
+            'Create_at' => get_current_date()
+        );
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
         $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);
         $add_barang = $this->Model_barang_rusak->add_barang_rusak($barang);
         if ($add_barang) {

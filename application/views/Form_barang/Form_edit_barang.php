@@ -49,7 +49,11 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Harga</label>
+<<<<<<< HEAD
                                 <input type="number" min="0" class="form-control form-control-alternative" value="<?= $barang->Harga ?>" name="harga">
+=======
+                                <input type="number" min="0" class="form-control form-control-alternative" value="<?= $barang->Harga?>" name="harga">
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
                             </div>
                         </div>
                     </div>

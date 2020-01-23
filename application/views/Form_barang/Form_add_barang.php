@@ -30,6 +30,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Satuan Terkecil</label>
                                 <select name="satuan" class="form-control selectpicker">
+<<<<<<< HEAD
                                     <?php foreach ($satuanbarang as $s) { ?>
                                         <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
                                     <?php } ?>
@@ -57,6 +58,20 @@
                                     <?php foreach ($satuanbarang as $s) { ?>
                                         <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
                                     <?php } ?>
+=======
+                                    <option value="RIM">RIM</option>
+                                    <option value="DUS">DUS</option>
+                                    <option value="PACK">PACK</option>
+                                    <option value="BOX">BOX</option>
+                                    <option value="PCS">PCS</option>
+                                    <option value="KOTAK">KOTAK</option> 
+                                    <option value="ROL">ROL</option>
+                                    <option value="BOTOL">BOTOL</option>
+                                    <option value="BUKU">BUKU</option>
+
+
+
+>>>>>>> 3da9470d77cdeabdbce5fc05b4489f679bbc2755
                                 </select>
                             </div>
                         </div>
