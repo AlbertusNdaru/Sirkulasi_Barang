@@ -3,7 +3,7 @@ class Model_barang extends CI_Model
 {
     function get_barang()
     {
-        $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe, d.Name as NamaSatuan');
+        $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe, d.Name_satuan as NamaSatuan');
         $this->db->from('tb_barang as a');
         $this->db->order_by('a.Create_at', 'DESC');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
@@ -24,7 +24,7 @@ class Model_barang extends CI_Model
 
     function getlimitstokbarang()
     {
-        $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe, d.Name as NameSatuan');
+        $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe, d.Name_satuan as NameSatuan');
         $this->db->from('tb_barang as a');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
         $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
@@ -44,7 +44,7 @@ class Model_barang extends CI_Model
 
     function get_barang_by_id($id_barang)
     {
-        $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe, d.Name as NameSatuan');
+        $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe, d.Name_satuan as NameSatuan');
         $this->db->from('tb_barang as a');
         $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
         $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
