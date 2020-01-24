@@ -76,9 +76,6 @@ class Controller_barangkeluar extends CI_Controller
         $barangedit = array(
 
             'Jumlah' =>  $databarang->Jumlah - $jumlah_barang_keluar,
-
-            'Jumlah' =>  $databarang->Jumlah - $this->input->post('jumlah'),
-
             'Harga' => $this->input->post('harga'),
             'Create_at' => get_current_date()
 
