@@ -18,6 +18,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Tipe Barang</label>
                                 <select name="tipe" class="form-control selectpicker">
+                                <option value="" selected>Silahkan Pilih Tipe Barang</option>
                                     <?php foreach ($tipebarang as $t) { ?>
                                         <option value="<?= $t->id_tipe_barang ?>"><?= $t->Name ?></option>
                                     <?php } ?>
@@ -30,7 +31,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Satuan Terkecil</label>
                                 <select name="satuan" class="form-control selectpicker">
-
+                                <option value="" selected>Silahkan Pilih Satuan</option>    
                                     <?php foreach ($satuanbarang as $s) { ?>
                                         <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
                                     <?php } ?>
@@ -43,6 +44,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Satuan Terbesar 1</label>
                                 <select name="satuan1" class="form-control selectpicker">
+                                <option value="" selected>Silahkan Pilih Satuan</option>
                                     <?php foreach ($satuanbarang as $s) { ?>
                                         <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
                                     <?php } ?>
@@ -55,6 +57,7 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Satuan Terbesar 2</label>
                                 <select name="satuan2" class="form-control selectpicker">
+                                <option value="" selected>Silahkan Pilih Satuan</option>
                                     <?php foreach ($satuanbarang as $s) { ?>
                                         <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
                                     <?php } ?>
