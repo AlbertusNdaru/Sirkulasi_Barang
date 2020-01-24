@@ -37,7 +37,7 @@ class Model_barang_masuk extends CI_Model
         $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=b.id_tipe_barang');
         $this->db->join('tb_satuan as d', 'd.id_satuan=a.id_satuan');
         $this->db->where('deleted', 0);
-        $this->db->where("id_barang", $id_barang);
+        $this->db->where("a.id_barang", $id_barang);
         $getbarangById = $this->db->get()->row();
         return $getbarangById;
     }
