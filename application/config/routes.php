@@ -94,6 +94,7 @@ $route['barang'] = 'Controller_barang/Controller_barang/get_Barang';
 $route['barangkategori'] = 'Controller_barang/Controller_barang/get_Barang_by_kategori';
 $route['konveksibarang'] = 'Controller_barang/Controller_barang/get_konveksi_by_barang';
 $route['barangid'] = 'Controller_barang/Controller_barang/get_Barang_by_id';
+$route['barangkonversi'] = 'Controller_barang/Controller_barang/get_Barang_by_id_konversi';
 $route['formaddbarang'] = 'Controller_barang/Controller_barang/viewFormAddBarang';
 $route['formeditbarang/(:any)'] = 'Controller_barang/Controller_barang/viewFormEditbarang/$1';
 $route['deleteBarang/(:any)'] = 'Controller_barang/Controller_barang/deleteBarang/$1';

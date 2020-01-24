@@ -49,6 +49,14 @@ class Controller_barang extends CI_Controller
         //$this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
     }
 
+    function get_Barang_by_id_konversi()
+    {
+        $id     = $this->input->post('id');
+        $barang = $this->Model_barang->get_barang_by_idkonversi($id);
+        echo json_encode($barang);
+        //$this->template->load('Template/Template_admin', 'Form_barang/Form_data_barang', $data);
+    }
+
     function viewFormEditbarang($id_barang)
     {
         $data['barang']     = $this->Model_barang->get_barang_by_id($id_barang);

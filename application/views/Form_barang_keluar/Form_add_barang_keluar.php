@@ -22,7 +22,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Nama Barang</label>
-                <select required name="barang" id="barangbykat" class="form-control selectpicker" onchange="setkonveksi()" onchange="setMaxValue()" data-live-search="true">
+                <select required name="barang" id="barangbykat" class="form-control selectpicker" onchange="setkonveksi()" data-live-search="true">
                 </select>
               </div>
             </div>
@@ -31,7 +31,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Satuan</label>
-                                <select name="satuan" id="konveksibybrg" class="form-control selectpicker">
+                                <select name="satuan" id="konveksibybrg" onchange="setMaxValue()" class="form-control selectpicker">
                                     
                                 </select>
                             </div>
@@ -100,16 +100,18 @@
 
   function setMaxValue() {
     var id = document.getElementById('barangbykat').value;
+    var idkonversi = document.getElementById('konveksibybrg').value;
+    console.log(idkonversi);
     $.ajax({
-      url: "<?php echo base_url('barangid'); ?>",
+      url: "<?php echo base_url('barangkonversi'); ?>",
       type: "POST",
       data: {
-        id: id
+        id:idkonversi
       },
       success: function(data) {
         var databarang = JSON.parse(data);
         console.log(databarang)
-        $('#jumlahid').attr('MAX', databarang['Jumlah'])
+        $('#jumlahid').attr('MAX', databarang['JumlahLimit'])
         $('#hargaid').val(databarang['Harga'])
 
       }
@@ -129,7 +131,7 @@
         $('#konveksibybrg').empty();
         $('#konveksibybrg').append('<option value="">Silahkan Pilih Satuan</option>')
         for (var i = 0; i < datakonveksi.length; i++) {
-          $('#konveksibybrg').append('<option value="' + datakonveksi[i]['id_satuan'] + '">' + datakonveksi[i]['NameSatuan'] + '</option>')
+          $('#konveksibybrg').append('<option value="' + datakonveksi[i]['id_konversi'] + '">' + datakonveksi[i]['NameSatuan'] + '</option>')
         }
         
         $('#konveksibybrg').selectpicker('refresh');
