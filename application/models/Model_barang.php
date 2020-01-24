@@ -58,7 +58,7 @@ class Model_barang extends CI_Model
 
     function get_barang_by_idkonversi($id_konversi)
     {
-        $this->db->select('a.*, b.Name as NamaTipe, c.Name as NameSatuan , FLOOR(b.Jumlah/c.nilai_satuan) as JumlahLimit, c.nilai_satuan as nilai');
+        $this->db->select('a.*, b.Name as NamaTipe, c.Name as NameSatuan , FLOOR(b.Jumlah/c.nilai_satuan) as JumlahLimit, b.Harga as Harga');
         $this->db->from('tb_konversi as a');
         $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
         $this->db->join('tb_satuan as c', 'c.id_satuan=a.id_satuan');
