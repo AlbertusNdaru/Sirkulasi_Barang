@@ -5,7 +5,7 @@
         <h6 class="heading-small text-muted mb-4">Add Barang Rusak </h6>
         <hr class="my-4" />
         <div class="pl-lg-4">
-          <div class="row">
+        <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Kategori Barang</label>
@@ -22,7 +22,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Nama Barang</label>
-                <select required name="barang" id="barangbykat" class="form-control selectpicker"  onchange="setMaxValue()" data-live-search="true" onchange="setkonveksi()">
+                <select required name="barang" id="barangbykat" class="form-control selectpicker" onchange="setkonveksi()" data-live-search="true">
                 </select>
               </div>
             </div>
@@ -31,7 +31,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-address">Satuan</label>
-                                <select name="satuan" id="konveksibybrg" class="form-control selectpicker">
+                                <select name="satuan" id="konveksibybrg" onchange="setMaxValue()" class="form-control selectpicker">
                                     
                                 </select>
                             </div>
@@ -40,25 +40,13 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label class="form-control-label" for="input-address">Jumlah Barang Rusak</label>
+                <label class="form-control-label" for="input-address">Jumlah Keluar</label>
                 <input required min="1" id="jumlahid" class="form-control form-control-alternative" name="jumlah" type="number">
               </div>
             </div>
           </div>
+          
           <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-address">Satuan</label>
-                                <select name="satuan" class="form-control selectpicker">
-                                    <?php foreach ($satuanbarang as $s) { ?>
-                                        <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-          <div class="row">
-
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-address">Harga</label>
@@ -84,7 +72,7 @@
         var databarang = JSON.parse(data);
         console.log(databarang)
         $('#barangbykat').empty();
-        $('#barangbykat').append('<option value="">Silahkan Pilih Nama Barang</option>')
+        $('#barangbykat').append('<option value="">Silahkan Pilih Nama</option>')
         for (var i = 0; i < databarang.length; i++) {
           $('#barangbykat').append('<option value="' + databarang[i]['id_barang'] + '">' + databarang[i]['Name'] + '</option>')
         }
@@ -99,22 +87,23 @@
 
   function setMaxValue() {
     var id = document.getElementById('barangbykat').value;
+    var idkonversi = document.getElementById('konveksibybrg').value;
+    console.log(idkonversi);
     $.ajax({
-      url: "<?php echo base_url('barangid'); ?>",
+      url: "<?php echo base_url('barangkonversi'); ?>",
       type: "POST",
       data: {
-        id: id
+        id:idkonversi
       },
       success: function(data) {
         var databarang = JSON.parse(data);
         console.log(databarang)
-        $('#jumlahid').attr('MAX', databarang['Jumlah'])
+        $('#jumlahid').attr('MAX', databarang['JumlahLimit'])
         $('#hargaid').val(databarang['Harga'])
 
       }
     });
   }
-
   function setkonveksi() {
     var id_barang = document.getElementById('barangbykat').value;
     $.ajax({
@@ -129,7 +118,7 @@
         $('#konveksibybrg').empty();
         $('#konveksibybrg').append('<option value="">Silahkan Pilih Satuan</option>')
         for (var i = 0; i < datakonveksi.length; i++) {
-          $('#konveksibybrg').append('<option value="' + datakonveksi[i]['id_satuan'] + '">' + datakonveksi[i]['NameSatuan'] + '</option>')
+          $('#konveksibybrg').append('<option value="' + datakonveksi[i]['id_konversi'] + '">' + datakonveksi[i]['NameSatuan'] + '</option>')
         }
         
         $('#konveksibybrg').selectpicker('refresh');

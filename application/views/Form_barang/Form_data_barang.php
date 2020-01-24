@@ -16,7 +16,7 @@
             <select name="tipe" style="float: right; margin-top: 10px;   margin-right: 5px; margin-left: 5px">
                 <option value="" selected>Silahkan Pilih Tipe</option>
                 <?php foreach ($tipebarang as $t) { ?>
-                    <option value="<?= $t->id_tipe_barang ?>"><?= $t->Name ?></option>
+                    <option value="<?= $t->id_tipe_barang ?>"><?= $t->Name_satuan ?></option>
                 <?php } ?>
             </select>
         </form>

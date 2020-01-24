@@ -64,40 +64,35 @@ class Controller_barangrusak extends CI_Controller
 
     function addbarangRusak()
     {
+        $datasatuan = $this->Model_barang_keluar->get_satuan($this->input->post('satuan'));
         $barang = array(
             'id_barang' => $this->input->post('barang'),
             'Jumlah'    => $this->input->post('jumlah'),
-            'id_satuan'    => $this->input->post('satuan'),
+            'id_satuan'    => $datasatuan->id_satuan,
             'Harga'     => $this->input->post('harga'),
-            'create_at' => get_current_date()
-        );
-        $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
-
-        $datasatuan = $this->Model_barang_rusak->get_satuan($this->input->post('satuan'));
-
-        $nilai_satuan = $datasatuan->nilai_satuan;
-        $jumlah_barang_rusak = $this->input->post('jumlah')*$nilai_satuan;
-
-        $barangedit = array(
-            'Jumlah' =>  $databarang->Jumlah - $jumlah_barang_rusak,
-            'Harga' => $this->input->post('harga'),
             'Create_at' => get_current_date()
         );
+
+        $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
         
 
+        $nilai_satuan = $datasatuan->nilai_satuan;
+        $jumlah_barang_keluar = $this->input->post('jumlah')*$nilai_satuan;
         $barangedit = array(
-            'Jumlah' =>  $databarang->Jumlah - $this->input->post('jumlah'),
+
+            'Jumlah' =>  $databarang->Jumlah - $jumlah_barang_keluar,
             'Harga' => $this->input->post('harga'),
             'Create_at' => get_current_date()
+
         );
+        $add_barang = $this->Model_barang_keluar->add_barang_keluar($barang);
         $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);
-        $add_barang = $this->Model_barang_rusak->add_barang_rusak($barang);
         if ($add_barang) {
             $this->session->set_flashdata('Status', 'Input Success');
-            redirect('barangrusak');
+            redirect('barangkeluar');
         } else {
             $this->session->set_flashdata('Status', 'Input Failed');
-            redirect('barangrusak');
+            redirect('barangkeluar');
         }
     }
 

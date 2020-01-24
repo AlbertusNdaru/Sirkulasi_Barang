@@ -3,7 +3,7 @@ class Model_barang_keluar extends CI_Model
 {
     function get_barang_keluar()
     {
-        $this->db->select('a.*, b.Name as NamaBarang, c.Name as NamaBagian, d.Name as NamaSatuan');
+        $this->db->select('a.*, b.Name as NamaBarang, c.Name as NamaBagian, d.Name_satuan as NamaSatuan');
         $this->db->from('tb_barang_keluar as a');
         $this->db->order_by('a.Create_at', 'DESC');
         $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');

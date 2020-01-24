@@ -3,12 +3,11 @@ class Model_barang_rusak extends CI_Model
 {
     function get_barang_rusak()
     {
-
-        $this->db->select('a.*, b.Name as NamaBarang, c.Name as NamaSatuan');
+        $this->db->select('a.*, b.Name as NamaBarang, d.Name_satuan as NamaSatuan');
         $this->db->from('tb_barang_rusak as a');
         $this->db->order_by('a.Create_at', 'DESC');
         $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
-        $this->db->join('tb_satuan as c', 'c.id_satuan=a.id_satuan');
+        $this->db->join('tb_satuan as d', 'd.id_satuan=a.id_satuan');
         $this->db->where('deleted', 0);
         $dataBarang = $this->db->get()->result();
         return $dataBarang;
