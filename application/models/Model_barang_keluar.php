@@ -47,10 +47,11 @@ class Model_barang_keluar extends CI_Model
         return $getbarangById;
     }
 
-    function get_satuan($id_satuan){
-        $this->db->select('*');
-        $this->db->from('tb_satuan');
-        $this->db->where('id_satuan',$id_satuan);
+    function get_satuan($id_konversi){
+        $this->db->select('a.*');
+        $this->db->from('tb_satuan as a');
+        $this->db->join('tb_konversi as b','b.id_satuan=a.id_satuan');
+        $this->db->where('b.id_konversi',$id_konversi);
         $dataSatuan = $this->db->get()->row();
         return $dataSatuan;  
     }
