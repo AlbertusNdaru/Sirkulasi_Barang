@@ -78,14 +78,15 @@ class Model_barang extends CI_Model
     }
 
     //konversi
-    function get_konversi_edit(){
+    function get_konversi_edit($id_barang){
+        $this->db->where('id_barang',$id_barang);
         $this->db->join('tb_satuan','tb_satuan.id_satuan=tb_konversi.id_satuan');
         $datasatuan_barang = $this->db->get("tb_konversi")->result_array();
         return $datasatuan_barang;
     }
 
     function get_konversi_by_id($id_barang){
-        $this->db->select('b.Name_satuan as NameSatuan, a.id_satuan');
+        $this->db->select('b.Name_satuan as NameSatuan, b.id_satuan');
         $this->db->from('tb_konversi as a');
         $this->db->join('tb_satuan as b', 'b.id_satuan=a.id_satuan');
         $this->db->where("id_barang", $id_barang);
