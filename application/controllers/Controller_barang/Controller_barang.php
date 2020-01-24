@@ -57,6 +57,7 @@ class Controller_barang extends CI_Controller
         $data['konversi']     = $this->Model_barang->get_konversi_by_id($id_barang);
         $data['konversi_satuan']= $this->Model_barang->get_konversi_edit();
         $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
+        //echo json_encode($data['konversi_satuan'][0]);
         $this->template->load('Template/Template_admin', 'Form_barang/Form_edit_barang', $data);
     }
 
