@@ -58,14 +58,12 @@ class Model_barang extends CI_Model
 
     function get_barang_by_idkonversi($id_konversi)
     {
-        $this->db->select('a.*, b.Name as NameOperator, c.Name as NamaTipe, d.Name as NameSatuan , FLOOR(a.Jumlah/d.nilai_satuan) as JumlahLimit');
-        $this->db->from('tb_barang as a');
-        $this->db->join('tb_operator as b', 'b.id_operator=a.id_operator');
-        $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
-        $this->db->join('tb_satuan as d', 'd.id_satuan=a.id_satuan');
-        $this->db->join('tb_konversi as e', 'e.id_barang=a.id_barang');
+        $this->db->select('a.*, b.Name as NamaTipe, c.Name as NameSatuan , FLOOR(b.Jumlah/c.nilai_satuan) as JumlahLimit, c.nilai_satuan as nilai');
+        $this->db->from('tb_konversi as a');
+        $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
+        $this->db->join('tb_satuan as c', 'c.id_satuan=a.id_satuan');
         $this->db->where('deleted',0);
-        $this->db->where("e.id_konversi", $id_konversi);
+        $this->db->where("a.id_konversi", $id_konversi);
         $getbarangById = $this->db->get()->row();
         return $getbarangById;
     }
