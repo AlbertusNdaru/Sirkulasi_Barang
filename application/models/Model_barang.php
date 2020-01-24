@@ -51,7 +51,7 @@ class Model_barang extends CI_Model
         $this->db->join('tb_satuan as d', 'd.id_satuan=a.id_satuan');
         $this->db->join('tb_konversi as e', 'e.id_barang=a.id_barang');
         $this->db->where('deleted',0);
-        $this->db->where("id_barang", $id_barang);
+        $this->db->where("a.id_barang", $id_barang);
         $getbarangById = $this->db->get()->row();
         return $getbarangById;
     }
