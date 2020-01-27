@@ -113,12 +113,12 @@ class Controller_barang extends CI_Controller
                 );
                 $add_barang = $this->Model_barang->add_barang($barang);
                 $id_barang_konversi = $this->db->insert_id();
-                
+                echo $id_satuan;
                 $konversi = array(
                     'id_barang'=>$id_barang,
                     'id_satuan'=>$id_satuan                
                 );
-                if (isset($id_satuan1))
+                if ($id_satuan1!=null)
                 {
                     $konversi1 = array(
                         'id_barang'=>$id_barang,
@@ -126,7 +126,7 @@ class Controller_barang extends CI_Controller
                     );
                     $add_konversi = $this->Model_satuanbarang->add_konversi($konversi1);
                 }
-                if (isset($id_satuan2))
+                if ($id_satuan2!=null)
                 {
                     $konversi2 = array(
                         'id_barang'=>$id_barang,
