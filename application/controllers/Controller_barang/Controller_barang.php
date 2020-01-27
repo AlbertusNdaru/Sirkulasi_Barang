@@ -118,18 +118,24 @@ class Controller_barang extends CI_Controller
                     'id_barang'=>$id_barang,
                     'id_satuan'=>$id_satuan                
                 );
-                $konversi1 = array(
-                    'id_barang'=>$id_barang,
-                    'id_satuan'=>$id_satuan1                
-                );
-                $konversi2 = array(
-                    'id_barang'=>$id_barang,
-                    'id_satuan'=>$id_satuan2                
-                );
+                if (isset($id_satuan1))
+                {
+                    $konversi1 = array(
+                        'id_barang'=>$id_barang,
+                        'id_satuan'=>$id_satuan1                
+                    );
+                    $add_konversi = $this->Model_satuanbarang->add_konversi($konversi1);
+                }
+                if (isset($id_satuan2))
+                {
+                    $konversi2 = array(
+                        'id_barang'=>$id_barang,
+                        'id_satuan'=>$id_satuan2                
+                    );
+                    $add_konversi = $this->Model_satuanbarang->add_konversi($konversi2);
+                }
                 $add_konversi = $this->Model_satuanbarang->add_konversi($konversi);
-                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi1);
-                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi2);
-
+              
                 if ($add_barang) {
                     $this->session->set_flashdata('Status', 'Input Success');
                     redirect('barang');
@@ -143,35 +149,35 @@ class Controller_barang extends CI_Controller
     function editbarang()
     {
         $varName = $this->input->post('namabarang');
-        $id_satuan=$this->input->post('satuan');
-        $id_satuan1=$this->input->post('satuan1');
-        $id_satuan2=$this->input->post('satuan2');
+        // $id_satuan=$this->input->post('satuan');
+        // $id_satuan1=$this->input->post('satuan1');
+        // $id_satuan2=$this->input->post('satuan2');
         $id_barang = $this->input->post('submitid');
         $barang = array(
             'Name'           => $this->input->post('namabarang'),
             'id_tipe_barang' => $this->input->post('tipe'),
             // 'Jumlah'         => $this->input->post('jumlah'),
-            'id_satuan'         => $id_satuan,
+            // 'id_satuan'         => $id_satuan,
             // 'Harga'          => $this->input->post('harga'),
             'Update_at'      => get_current_date()
         );
         $add_barang = $this->Model_barang->add_barang($barang);
                 $id_barang_konversi = $this->db->insert_id(); 
-                $konversi = array(
-                    'id_barang'=>$id_barang,
-                    'id_satuan'=>$id_satuan                
-                );
-                $konversi1 = array(
-                    'id_barang'=>$id_barang,
-                    'id_satuan'=>$id_satuan1                
-                );
-                $konversi2 = array(
-                    'id_barang'=>$id_barang,
-                    'id_satuan'=>$id_satuan2                
-                );
-                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi);
-                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi1);
-                $add_konversi = $this->Model_satuanbarang->add_konversi($konversi2);
+                // $konversi = array(
+                //     'id_barang'=>$id_barang,
+                //     'id_satuan'=>$id_satuan                
+                // );
+                // $konversi1 = array(
+                //     'id_barang'=>$id_barang,
+                //     'id_satuan'=>$id_satuan1                
+                // );
+                // $konversi2 = array(
+                //     'id_barang'=>$id_barang,
+                //     'id_satuan'=>$id_satuan2                
+                // );
+                // $add_konversi = $this->Model_satuanbarang->add_konversi($konversi);
+                // $add_konversi = $this->Model_satuanbarang->add_konversi($konversi1);
+                // $add_konversi = $this->Model_satuanbarang->add_konversi($konversi2);
 
         $editbarang = $this->Model_barang->update_barang($id_barang, $barang);
         if ($editbarang) {
