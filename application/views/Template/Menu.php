@@ -66,6 +66,12 @@
       <span>Barang Rusak</span></a>
   </li>
 
+  <hr class="sidebar-divider d-none d-md-block">
+  <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('viewreportall') ?>">
+      <i class="fa fa-minus"></i>
+      <span>Cetak</span></a>
+  </li>
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
 

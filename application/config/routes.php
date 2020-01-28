@@ -112,6 +112,8 @@ $route['reportBarang'] = 'Controller_report/Controller_report/cetakBarangAll';
 $route['reportBarangMasuk'] = 'Controller_report/Controller_report/cetakBarangmasukAll';
 $route['reportBarangKeluar'] = 'Controller_report/Controller_report/cetakBarangKeluarAll';
 $route['reportBarangRusak'] = 'Controller_report/Controller_report/cetakBarangRusakAll';
+$route['reportall'] = 'Controller_report/Controller_report/cetakAll';
+$route['viewreportall'] = 'Controller_report/Controller_report/viewCetakAll';
 
 //Route Barang Masuk
 $route['barangmasuk'] = 'Controller_barangmasuk/Controller_barangmasuk/data_barang_masuk';
