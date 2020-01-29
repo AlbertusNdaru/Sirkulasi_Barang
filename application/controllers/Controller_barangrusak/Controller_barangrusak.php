@@ -82,7 +82,7 @@ class Controller_barangrusak extends CI_Controller
 
             'Jumlah' =>  $databarang->Jumlah - $jumlah_barang_keluar,
             'Harga' => $this->input->post('harga'),
-            'Create_at' => get_current_date()
+            'Update_at' => get_current_date()
 
         );
         $add_barang = $this->Model_barang_keluar->add_barang_keluar($barang);
