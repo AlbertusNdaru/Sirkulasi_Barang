@@ -21,7 +21,22 @@
     </div>
   </div>
 </div>
+<script>
+document.getElementById('tanggal1').value = "";
+    document.getElementById('tanggal2').value = "";
 
+    function datevalidation() {
+        var x = document.getElementById("tanggal1").value;
+        document.getElementById('tanggal2').min = x;
+        $('#tanggal2').removeAttr('disabled');
+        console.log(x);
+        if (x == "") {
+
+            $('#tanggal2').attr('disabled', 'true');
+            document.getElementById('tanggal2').value = "";
+        }
+    }
+</script>
 
 
 
