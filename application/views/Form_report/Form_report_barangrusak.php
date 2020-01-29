@@ -33,7 +33,7 @@ include APPPATH . 'views/Form_report/laporan.php';
                         <tbody>
                             <?php $no = 1;
                             $totalsemua = 0;
-                            foreach ($record as $r) { ?>
+                            foreach ($barangrusak as $r) { ?>
                                 <tr class="gradeU">
                                     <td align="center"><?php echo $no ?></td>
                                     <td align="left"><?php echo $r->NamaBarang ?></td>

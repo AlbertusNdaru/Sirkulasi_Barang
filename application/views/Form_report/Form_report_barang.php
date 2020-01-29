@@ -38,7 +38,7 @@ foreach ($tipebarang as $t) {
                         <tbody>
                             <?php $no = 1;
                             $totalsemua = 0;
-                            foreach ($record as $r) { ?>
+                            foreach ($barang as $r) { ?>
                                 <tr class="gradeU">
                                     <td align="center"><?php echo $no ?></td>
                                     <td align="left"><?php echo $r->Name ?></td>

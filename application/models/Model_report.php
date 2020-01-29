@@ -28,7 +28,7 @@ class Model_report extends CI_Model
         $this->db->join('tb_tipe_barang as c', 'c.id_tipe_barang=a.id_tipe_barang');
         $this->db->join('tb_satuan as d', 'd.id_satuan=a.id_satuan');
         $this->db->where('date(a.Update_at) >=',$tanggal1);
-        $this->db->where('date(a.Upadate_at) <=',$tanggal2);
+        $this->db->where('date(a.Update_at) <=',$tanggal2);
         $this->db->where('deleted',0);
         $dataBarang = $this->db->get()->result();
         return $dataBarang;
@@ -68,9 +68,6 @@ class Model_report extends CI_Model
         $this->db->from('tb_barang_rusak as a');
         $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
         $this->db->join('tb_satuan as c', 'c.id_satuan=a.id_satuan');
-        $this->db->select('a.*, b.Name as NamaBarang, b.id_tipe_barang, b.Satuan');
-        $this->db->from('tb_barang_rusak as a');
-        $this->db->join('tb_barang as b', 'b.id_barang=a.id_barang');
         $this->db->where('date(a.Create_at) >=',$tanggal1);
         $this->db->where('date(a.Create_at) <=',$tanggal2);
         $this->db->where('deleted',0);
