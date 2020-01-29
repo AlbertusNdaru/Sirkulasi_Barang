@@ -1,5 +1,10 @@
+<!-- barang keluar -->
 <?php
 include APPPATH . 'views/Form_report/laporan.php';
+foreach ($bagian as $t) {
+    $totalbagian[$t->id_bagian] = 0;
+    $tipename[$t->id_bagian] = $t->Name;
+}
 ?>
 <div>
     <div align="center">
@@ -7,7 +12,7 @@ include APPPATH . 'views/Form_report/laporan.php';
         <div>
             <h2 align="center">
                 PT. GAPURA ANGKASA CABANG YOGYAKARTA <br>
-                Daftar Barang Rusak <br>
+                Daftar Barang Keluar <br>
                 <small><?php echo $tanggal1 . " - " . $tanggal2 ?></small>
             </h2>
         </div>
@@ -26,39 +31,22 @@ include APPPATH . 'views/Form_report/laporan.php';
                                 <th>Nama Barang</th>
                                 <th>Jumlah/Stok</th>
                                 <th>Satuan</th>
-                                <th>Harga</th>
-                                <th>Total</th>
+                                <th>Bagian</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $no = 1;
                             $totalsemua = 0;
-                            foreach ($barangrusak as $r) { ?>
+                            foreach ($barangkeluar as $r) { ?>
                                 <tr class="gradeU">
                                     <td align="center"><?php echo $no ?></td>
                                     <td align="left"><?php echo $r->NamaBarang ?></td>
                                     <td align="center"><?php echo $r->Jumlah ?></td>
-
                                     <td align="center"><?php echo $r->NamaSatuan ?></td>
-
-                                    <td align="center"><?php echo $r->Satuan ?></td>
-
-                                    <td align="center"><?php echo rupiah($r->Harga) ?></td>
-                                    <td align="right"><?php $total = $r->Jumlah * $r->Harga;
-                                                            echo rupiah($total) ?></td>
+                                    <td align="center"><?php echo $r->NamaBagian ?></td>
                                 </tr>
                             <?php $no++;
-                                $totalsemua = $totalsemua + $total;
-                            } ?>
-                            <tr>
-                                <td colspan="6">
-                                    <hr>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="right" style="background-color: burlywood; color: black ; font-weight: bold" colspan="5">Total Keseluruhan</td>
-                                <td align="right" style="background-color: burlywood; color: black ; font-weight: bold" ><?php echo rupiah($totalsemua) ?></td>
-                            </tr>
+                               } ?>
                         </tbody>
                     </table>
                     <br><br>

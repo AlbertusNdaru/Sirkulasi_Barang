@@ -27,7 +27,7 @@ foreach ($tipebarang as $t) {
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Nama Alat</th>
+                                <th>Nama Barang</th>
                                 <th>Jumlah/Stok</th>
                                 <th>Satuan</th>
                                 <th>Kategori</th>
