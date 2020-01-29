@@ -79,10 +79,10 @@ class Controller_report extends CI_Controller{
     {
         $tanggal1           = $this->input->post('tanggal1');
         $tanggal2           = $this->input->post('tanggal2');
-        $data['record']     = $this->Model_report->get_barang_masuk($tanggal1,$tanggal2);
-        $data['record']     = $this->Model_report->get_barang_keluar($tanggal1,$tanggal2);
-        $data['record']     = $this->Model_report->get_barang_rusak($tanggal1,$tanggal2);
-        $data['record']     = $this->Model_report->get_barangall($tanggal1,$tanggal2);
+        $data['barangmasuk']     = $this->Model_report->get_barang_masuk($tanggal1,$tanggal2);
+        $data['barangkeluar']     = $this->Model_report->get_barang_keluar($tanggal1,$tanggal2);
+        $data['barangrusak']     = $this->Model_report->get_barang_rusak($tanggal1,$tanggal2);
+        $data['semuabarang']     = $this->Model_report->get_barangall($tanggal1,$tanggal2);
         //$data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
         $data['tanggal1']   = $tanggal1;
         $data['tanggal2']   = $tanggal2;
