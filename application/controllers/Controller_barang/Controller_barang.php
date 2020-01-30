@@ -73,6 +73,7 @@ class Controller_barang extends CI_Controller
     {
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
         $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
+        $data['satuanbarang2']= $this->Model_satuanbarang->get_satuan_barang2();
         $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang', $data);
     }

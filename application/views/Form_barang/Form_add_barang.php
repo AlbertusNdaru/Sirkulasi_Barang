@@ -45,7 +45,7 @@
                                 <label class="form-control-label" for="input-address">Satuan Terbesar 1</label>
                                 <select name="satuan1" class="form-control selectpicker">
                                 <option value="" selected>Silahkan Pilih Satuan</option>
-                                    <?php foreach ($satuanbarang as $s) { ?>
+                                    <?php foreach ($satuanbarang2 as $s) { ?>
                                         <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
                                     <?php } ?>
                                 </select>
@@ -58,7 +58,7 @@
                                 <label class="form-control-label" for="input-address">Satuan Terbesar 2</label>
                                 <select name="satuan2" class="form-control selectpicker">
                                 <option value="" selected>Silahkan Pilih Satuan</option>
-                                    <?php foreach ($satuanbarang as $s) { ?>
+                                    <?php foreach ($satuanbarang2 as $s) { ?>
                                         <option value="<?= $s->id_satuan ?>"><?= $s->Name ?></option>
                                     <?php } ?>
                                 </select>

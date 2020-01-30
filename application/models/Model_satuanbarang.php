@@ -3,6 +3,13 @@ class Model_satuanbarang extends CI_Model
 {
     function get_satuan_barang()
     {
+        $this->db->where('nilai_satuan',1);
+        $datasatuan_barang = $this->db->get("tb_satuan")->result();
+        return $datasatuan_barang;
+    }
+    function get_satuan_barang2()
+    {
+        $this->db->where('nilai_satuan >','1');
         $datasatuan_barang = $this->db->get("tb_satuan")->result();
         return $datasatuan_barang;
     }
