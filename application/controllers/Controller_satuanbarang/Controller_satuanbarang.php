@@ -13,7 +13,7 @@ class Controller_satuanbarang extends CI_Controller
 
     function get_satuanbarang()
     {
-        $data['satuanbarang'] = $this->Model_satuanbarang->get_satuan_barang();
+        $data['satuanbarang'] = $this->Model_satuanbarang->get_satuan_barang_all();
         $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
         // echo json_encode($data);
         $this->template->load('Template/Template_admin', 'Form_satuan_barang/Form_data_satuan_barang', $data);
@@ -29,19 +29,16 @@ class Controller_satuanbarang extends CI_Controller
     function viewFormAddsatuanbarang()
     {
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
-        $this->template->load('Template/Template_admin', 'Form_satuan_barang/Form_add_satuan_barang',$data);
+        $this->template->load('Template/Template_admin', 'Form_satuan_barang/Form_add_satuan_barang', $data);
     }
 
     function addsatuanbarang()
     {
         $validate = $this->Model_satuanbarang->get_satuan_barang_by_name($this->input->post('name'));
-        if($validate)
-        {
+        if ($validate) {
             $this->session->set_flashdata('Status', 'Input Failed -> Nama Sudah ada');
             redirect('formaddsatuanbarang');
-        }
-        else
-        {
+        } else {
             $satuanbarang = array(
                 'Name'           => $this->input->post('name'),
                 'Name_satuan'           => $this->input->post('nameSatuan'),
@@ -65,7 +62,7 @@ class Controller_satuanbarang extends CI_Controller
             'Name'      => $this->input->post('name'),
             'Name_satuan'  => $this->input->post('nameSatuan'),
             'nilai_satuan' => $this->input->post('nilai')
-            
+
         );
         $editsatuanbarang = $this->Model_satuanbarang->update_satuan_barang($id_satuan, $satuanbarang);
         if ($editsatuanbarang) {
