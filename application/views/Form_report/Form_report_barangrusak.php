@@ -36,6 +36,8 @@ include APPPATH . 'views/Form_report/laporan.php';
                             foreach ($barangrusak as $r) { ?>
                                 <tr class="gradeU">
                                     <td align="center"><?php echo $no ?></td>
+                                    <td align="center"><?php echo $r->Create_at ?></td>
+                                    <td align="center"><?php echo $r->Kode ?></td>
                                     <td align="left"><?php echo $r->NamaBarang ?></td>
                                     <td align="center"><?php echo $r->Jumlah ?></td>
 

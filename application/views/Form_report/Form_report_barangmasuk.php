@@ -27,6 +27,8 @@ foreach ($tipebarang as $t) {
                         <thead>
                             <tr>
                                 <th>No.</th>
+                                <th>Tanggal Barang Masuk</th>
+                                <th>Kode Barang</th>
                                 <th>Nama Barang</th>
                                 <th>Jumlah/Stok</th>
                                 <th>Satuan</th>
@@ -41,6 +43,8 @@ foreach ($tipebarang as $t) {
                             foreach ($barangmasuk as $r) { ?>
                                 <tr class="gradeU">
                                     <td align="center"><?php echo $no ?></td>
+                                    <td align="center"><?php echo $r->Create_at ?></td>
+                                    <td align="center"><?php echo $r->Kode ?></td>
                                     <td align="left"><?php echo $r->NamaBarang ?></td>
                                     <td align="center"><?php echo $r->Jumlah ?></td>
                                     <td align="center"><?php echo $r->NamaSatuan ?></td>
@@ -54,18 +58,18 @@ foreach ($tipebarang as $t) {
                                 $totalkategory[$r->id_tipe_barang] =   $totalkategory[$r->id_tipe_barang] + $total;
                             } ?>
                             <tr>
-                                <td colspan="7">
+                                <td colspan="9">
                                     <hr>
                                 </td>
                             </tr>>
                             <?php foreach ($totalkategory as $key => $a) { ?>
                                 <tr>
-                                    <td align="right" style="background-color: yellow; color: black" colspan="6">Total Barang Kategori <?= $tipename[$key]; ?></td>
+                                    <td align="right" style="background-color: yellow; color: black" colspan="8">Total Barang Kategori <?= $tipename[$key]; ?></td>
                                     <td align="right" style="background-color: yellow; color: black ; "><?php echo rupiah(json_encode($totalkategory[$key])) ?></td>
                                 </tr>
                             <?php } ?>
                             <tr>
-                                <td align="right" style="background-color: burlywood; color: black ; font-weight: bold" colspan="6">Total Keseluruhan</td>
+                                <td align="right" style="background-color: burlywood; color: black ; font-weight: bold" colspan="8">Total Keseluruhan</td>
                                 <td align="right" style="background-color: burlywood; color: black ; font-weight: bold"><?php echo rupiah($totalsemua) ?></td>
                             </tr>
                         </tbody>
