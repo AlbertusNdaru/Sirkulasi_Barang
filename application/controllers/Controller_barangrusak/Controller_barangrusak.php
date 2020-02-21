@@ -17,7 +17,7 @@ class Controller_barangrusak extends CI_Controller
     function get_Barang_rusak()
     {
         $data['kategori']  = $this->Model_tipebarang->get_tipe_barang();
-        $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
+        $data['satuanbarang'] = $this->Model_satuanbarang->get_satuan_barang();
 
 
         $data['stoklimit'] = $this->Model_barang->getlimitstokbarang();
@@ -46,7 +46,7 @@ class Controller_barangrusak extends CI_Controller
     {
         $data['barang']     = $this->Model_barang->get_barang_by_id($id_barang);
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
-        $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
+        $data['satuanbarang'] = $this->Model_satuanbarang->get_satuan_barang();
 
         $data['stoklimit']  = $this->Model_barang->getlimitstokbarang();
         $this->template->load('Template/Template_admin', 'Form_barang/Form_edit_barang', $data);
@@ -56,7 +56,7 @@ class Controller_barangrusak extends CI_Controller
     {
         $data['tipebarang'] = $this->Model_tipebarang->get_tipe_barang();
 
-        $data['satuanbarang']= $this->Model_satuanbarang->get_satuan_barang();
+        $data['satuanbarang'] = $this->Model_satuanbarang->get_satuan_barang();
 
 
         $this->template->load('Template/Template_admin', 'Form_barang/Form_add_barang', $data);
@@ -64,7 +64,7 @@ class Controller_barangrusak extends CI_Controller
 
     function addbarangRusak()
     {
-        $datasatuan = $this->Model_barang_keluar->get_satuan($this->input->post('satuan'));
+        $datasatuan = $this->Model_barang_rusak->get_satuan($this->input->post('satuan'));
         $barang = array(
             'id_barang' => $this->input->post('barang'),
             'Jumlah'    => $this->input->post('jumlah'),
@@ -74,10 +74,10 @@ class Controller_barangrusak extends CI_Controller
         );
 
         $databarang = $this->Model_barang->get_barang_by_id($this->input->post('barang'));
-        
+
 
         $nilai_satuan = $datasatuan->nilai_satuan;
-        $jumlah_barang_keluar = $this->input->post('jumlah')*$nilai_satuan;
+        $jumlah_barang_keluar = $this->input->post('jumlah') * $nilai_satuan;
         $barangedit = array(
 
             'Jumlah' =>  $databarang->Jumlah - $jumlah_barang_keluar,
@@ -85,14 +85,14 @@ class Controller_barangrusak extends CI_Controller
             'Update_at' => get_current_date()
 
         );
-        $add_barang = $this->Model_barang_keluar->add_barang_keluar($barang);
+        $add_barang = $this->Model_barang_rusak->add_barang_rusak($barang);
         $this->Model_barang->update_barang($this->input->post('barang'), $barangedit);
         if ($add_barang) {
             $this->session->set_flashdata('Status', 'Input Success');
-            redirect('barangkeluar');
+            redirect('barangrusak');
         } else {
             $this->session->set_flashdata('Status', 'Input Failed');
-            redirect('barangkeluar');
+            redirect('barangrusak');
         }
     }
 
